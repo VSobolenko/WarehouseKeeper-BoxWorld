@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f423b14b38446d68dc44998fc6e5c59, type: 3}
+  m_Name: UserSkinsData
+  m_EditorClassIdentifier: 
+  <StartedId>k__BackingField: StartedPlayer
+  <DefaultKeysId>k__BackingField:
+  - StartedPlayer
+  <Items>k__BackingField:
+  - keyId: StartedPlayer
+    accessible: 1
+    addressableKey: EntityPlayer
+    icon: {fileID: 0}
+  - keyId: StartedPlayer2
+    accessible: 1
+    addressableKey: EntityPlayer
+    icon: {fileID: 0}

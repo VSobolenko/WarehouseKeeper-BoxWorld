@@ -1,0 +1,718 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Keys xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Key Key="//GENERAL">
+		<Translates/>
+	</Key>
+	<Key Key="game_name">
+		<Translates>
+			<en>Warehouse Keeper: Box world</en>
+			<ru>Warehouse Keeper: Box world</ru>
+			<spain>Warehouse Keeper: Box world</spain>
+			<portuguese>Warehouse Keeper: Box world</portuguese>
+			<french>Warehouse Keeper: Box world</french>
+			<deutsch>Warehouse Keeper: Box world</deutsch>
+			<korean>Warehouse Keeper: Box world</korean>
+			<japanese>Warehouse Keeper: Box world</japanese>
+			<chineseSimplified>Warehouse Keeper: Box world</chineseSimplified>
+			<chineseTraditional>Warehouse Keeper: Box world</chineseTraditional>
+			<italiano>Warehouse Keeper: Box world</italiano>
+			<turkish>Warehouse Keeper: Box world</turkish>
+		</Translates>
+	</Key>
+	<Key Key="//GAME">
+		<Translates/>
+	</Key>
+	<Key Key="game_level">
+		<Translates>
+			<en>Level: {0}</en>
+			<ru>Уровень: {0}</ru>
+			<spain>Nivel: {0}</spain>
+			<portuguese>Nível: {0}</portuguese>
+			<french>Niveau : {0}</french>
+			<deutsch>Stufe: {0}</deutsch>
+			<korean>레벨: {0}</korean>
+			<japanese>レベル: {0}</japanese>
+			<chineseSimplified>等级：{0}</chineseSimplified>
+			<chineseTraditional>等級：{0}</chineseTraditional>
+			<italiano>Livello: {0}</italiano>
+			<turkish>Düzey: {0}</turkish>
+		</Translates>
+	</Key>
+	<Key Key="game_countMoves">
+		<Translates>
+			<en>Moves: {0}</en>
+			<ru>Движений {0}</ru>
+			<spain>Movimientos {0}</spain>
+			<portuguese>Movimentos {0}</portuguese>
+			<french>Mouvements {0}</french>
+			<deutsch>Bewegungen {0}</deutsch>
+			<korean>움직임 {0}</korean>
+			<japanese>動き {0}</japanese>
+			<chineseSimplified>动作{0}</chineseSimplified>
+			<chineseTraditional>動作{0}</chineseTraditional>
+			<italiano>Movimenti {0}</italiano>
+			<turkish>Hareketler {0}</turkish>
+		</Translates>
+	</Key>
+	<Key Key="game_countPushes">
+		<Translates>
+			<en>Pushes: {0}</en>
+			<ru>Толканий: {0}</ru>
+			<spain>Empujes: {0}</spain>
+			<portuguese>Empurrões: {0}</portuguese>
+			<french>Poussées : {0}</french>
+			<deutsch>Pushs: {0}</deutsch>
+			<korean>푸시: {0}</korean>
+			<japanese>プッシュ: {0}</japanese>
+			<chineseSimplified>推送：{0}</chineseSimplified>
+			<chineseTraditional>推送：{0}</chineseTraditional>
+			<italiano>Push: {0}</italiano>
+			<turkish>Basar: {0}</turkish>
+		</Translates>
+	</Key>
+	<Key Key="game_time">
+		<Translates>
+			<en>Time: {0}</en>
+			<ru>Время: {0}</ru>
+			<spain>Hora: {0}</spain>
+			<portuguese>Hora: {0}</portuguese>
+			<french>Heure : {0}</french>
+			<deutsch>Zeit: {0}</deutsch>
+			<korean>시간: {0}</korean>
+			<japanese>時間: {0}</japanese>
+			<chineseSimplified>时间：{0}</chineseSimplified>
+			<chineseTraditional>時間：{0}</chineseTraditional>
+			<italiano>Ora: {0}</italiano>
+			<turkish>Zaman: {0}</turkish>
+		</Translates>
+	</Key>
+	<Key Key="//MAIN">
+		<Translates/>
+	</Key>
+	<Key Key="main_play">
+		<Translates>
+			<en>PLAY</en>
+			<ru>ИГРАТЬ</ru>
+			<spain>JUGAR</spain>
+			<portuguese>JOGAR</portuguese>
+			<french>JOUER</french>
+			<deutsch>SPIELEN</deutsch>
+			<korean>놀다</korean>
+			<japanese>遊ぶ</japanese>
+			<chineseSimplified>玩</chineseSimplified>
+			<chineseTraditional>玩</chineseTraditional>
+			<italiano>GIOCARE</italiano>
+			<turkish>OYNAMAK</turkish>
+		</Translates>
+	</Key>
+	<Key Key="//LEVEL SELECTION">
+		<Translates/>
+	</Key>
+	<Key Key="levelSelection_header">
+		<Translates>
+			<en>LEVELS</en>
+			<ru>УРОВНИ</ru>
+			<spain>NIVELES</spain>
+			<portuguese>NÍVEIS</portuguese>
+			<french>LES NIVEAUX</french>
+			<deutsch>EBENEN</deutsch>
+			<korean>레벨</korean>
+			<japanese>レベル</japanese>
+			<chineseSimplified>级别</chineseSimplified>
+			<chineseTraditional>級別</chineseTraditional>
+			<italiano>LIVELLI</italiano>
+			<turkish>SEVİYELER</turkish>
+		</Translates>
+	</Key>
+	<Key Key="//LEVEL INFO">
+		<Translates/>
+	</Key>
+	<Key Key="levelInfo_number">
+		<Translates>
+			<en>Number level: {0}</en>
+			<ru>Номер уровня {0}</ru>
+			<spain>Número de nivel {0}</spain>
+			<portuguese>Nível número {0}</portuguese>
+			<french>Numéro de niveau {0}</french>
+			<deutsch>Ebenennummer {0}</deutsch>
+			<korean>레벨 번호 {0}</korean>
+			<japanese>レベル番号 {0}</japanese>
+			<chineseSimplified>层数 {0}</chineseSimplified>
+			<chineseTraditional>層數 {0}</chineseTraditional>
+			<italiano>Numero di livello {0}</italiano>
+			<turkish>Seviye numarası {0}</turkish>
+		</Translates>
+	</Key>
+	<Key Key="levelInfo_moves">
+		<Translates>
+			<en>Total number of moves: {0}</en>
+			<ru>Всего передвижений: {0}</ru>
+			<spain>Movimientos totales: {0}</spain>
+			<portuguese>Movimentos totais: {0}</portuguese>
+			<french>Nombre total de mouvements : {0}</french>
+			<deutsch>Bewegungen insgesamt: {0}</deutsch>
+			<korean>총 이동 수: {0}</korean>
+			<japanese>総手数: {0}</japanese>
+			<chineseSimplified>总步数：{0}</chineseSimplified>
+			<chineseTraditional>總步數：{0}</chineseTraditional>
+			<italiano>Spostamenti totali: {0}</italiano>
+			<turkish>Toplam hamle: {0}</turkish>
+		</Translates>
+	</Key>
+	<Key Key="levelInfo_bestMoves">
+		<Translates>
+			<en>Best number of moves: {0}</en>
+			<ru>Лучший результат передвижений: {0}</ru>
+			<spain>Puntuación de mejor movimiento: {0}</spain>
+			<portuguese>Melhor Pontuação de Movimento: {0}</portuguese>
+			<french>Score du meilleur coup : {0}</french>
+			<deutsch>Beste Bewegungspunktzahl: {0}</deutsch>
+			<korean>베스트 무브 점수: {0}</korean>
+			<japanese>ベスト ムーブ スコア: {0}</japanese>
+			<chineseSimplified>最佳移动分数：{0}</chineseSimplified>
+			<chineseTraditional>最佳移動分數：{0}</chineseTraditional>
+			<italiano>Punteggio miglior mossa: {0}</italiano>
+			<turkish>En İyi Hamle Puanı: {0}</turkish>
+		</Translates>
+	</Key>
+	<Key Key="levelInfo_pushes">
+		<Translates>
+			<en>Total number of pushes: {0}</en>
+			<ru>Всего толканий: {0}</ru>
+			<spain>Empujes totales: {0}</spain>
+			<portuguese>Total de pushes: {0}</portuguese>
+			<french>Nombre total d'envois : {0}</french>
+			<deutsch>Pushs insgesamt: {0}</deutsch>
+			<korean>총 푸시 수: {0}</korean>
+			<japanese>合計プッシュ: {0}</japanese>
+			<chineseSimplified>总推送：{0}</chineseSimplified>
+			<chineseTraditional>總推送：{0}</chineseTraditional>
+			<italiano>Push totali: {0}</italiano>
+			<turkish>Toplam itme sayısı: {0}</turkish>
+		</Translates>
+	</Key>
+	<Key Key="levelInfo_bestPushes">
+		<Translates>
+			<en>Best number of pushes {0}</en>
+			<ru>Лучший результат толканий: {0}</ru>
+			<spain>Mejor resultado de lanzamiento de peso: {0}</spain>
+			<portuguese>Melhor resultado de arremesso de peso: {0}</portuguese>
+			<french>Meilleur résultat au lancer du poids : {0}</french>
+			<deutsch>Bestes Ergebnis im Kugelstoßen: {0}</deutsch>
+			<korean>최고의 투포환 결과: {0}</korean>
+			<japanese>砲丸投のベスト結果: {0}</japanese>
+			<chineseSimplified>铅球最佳成绩：{0}</chineseSimplified>
+			<chineseTraditional>鉛球最佳成績：{0}</chineseTraditional>
+			<italiano>Miglior risultato del lancio del peso: {0}</italiano>
+			<turkish>En iyi gülle atma sonucu: {0}</turkish>
+		</Translates>
+	</Key>
+	<Key Key="levelInfo_timeSpent">
+		<Translates>
+			<en>Elapsed time: {0}</en>
+			<ru>Затраченное время: {0}</ru>
+			<spain>Tiempo transcurrido: {0}</spain>
+			<portuguese>Tempo decorrido: {0}</portuguese>
+			<french>Temps écoulé : {0}</french>
+			<deutsch>Verstrichene Zeit: {0}</deutsch>
+			<korean>경과 시간: {0}</korean>
+			<japanese>経過時間: {0}</japanese>
+			<chineseSimplified>已用时间：{0}</chineseSimplified>
+			<chineseTraditional>已用時間：{0}</chineseTraditional>
+			<italiano>Tempo trascorso: {0}</italiano>
+			<turkish>Geçen süre: {0}</turkish>
+		</Translates>
+	</Key>
+	<Key Key="levelInfo_bestTime">
+		<Translates>
+			<en>Best time: {0}</en>
+			<ru>Лучшее время: {0}</ru>
+			<spain>Mejor hora: {0}</spain>
+			<portuguese>Melhor horário: {0}</portuguese>
+			<french>Meilleur temps : {0}</french>
+			<deutsch>Beste Zeit: {0}</deutsch>
+			<korean>최고의 시간: {0}</korean>
+			<japanese>ベストタイム: {0}</japanese>
+			<chineseSimplified>最佳时间：{0}</chineseSimplified>
+			<chineseTraditional>最佳時間：{0}</chineseTraditional>
+			<italiano>Periodo migliore: {0}</italiano>
+			<turkish>En iyi zaman: {0}</turkish>
+		</Translates>
+	</Key>
+	<Key Key="//SHOP">
+		<Translates/>
+	</Key>
+	<Key Key="shop_header">
+		<Translates>
+			<en>SHOP</en>
+			<ru>МАГАЗИН</ru>
+			<spain>COMERCIO</spain>
+			<portuguese>COMPRAR</portuguese>
+			<french>BOUTIQUE</french>
+			<deutsch>GESCHÄFT</deutsch>
+			<korean>가게</korean>
+			<japanese>店</japanese>
+			<chineseSimplified>店铺</chineseSimplified>
+			<chineseTraditional>店鋪</chineseTraditional>
+			<italiano>NEGOZIO</italiano>
+			<turkish>MAĞAZA</turkish>
+		</Translates>
+	</Key>
+	<Key Key="shop_purchasingError">
+		<Translates>
+			<en>Unable to buy, please try again</en>
+			<ru>Невозможно купить, попробуйте позже</ru>
+			<spain>No se puede comprar, vuelve a intentarlo más tarde</spain>
+			<portuguese>Não foi possível comprar, tente novamente mais tarde</portuguese>
+			<french>Impossible d'acheter, réessayez plus tard</french>
+			<deutsch>Kauf nicht möglich, versuchen Sie es später erneut</deutsch>
+			<korean>구매할 수 없습니다. 나중에 다시 시도하세요.</korean>
+			<japanese>購入できません。しばらくしてからもう一度お試しください</japanese>
+			<chineseSimplified>无法购买，请稍后再试</chineseSimplified>
+			<chineseTraditional>無法購買，請稍後再試</chineseTraditional>
+			<italiano>Impossibile acquistare, riprova più tardi</italiano>
+			<turkish>Satın alınamadı, daha sonra tekrar deneyin</turkish>
+		</Translates>
+	</Key>
+	<Key Key="shop_localBoughtError">
+		<Translates>
+			<en>Not enough amber</en>
+			<ru>Недостаточно янтаря</ru>
+			<spain>No hay suficiente ámbar</spain>
+			<portuguese>Âmbar insuficiente</portuguese>
+			<french>Pas assez d'ambre</french>
+			<deutsch>Nicht genug Bernstein</deutsch>
+			<korean>호박색이 충분하지 않습니다</korean>
+			<japanese>琥珀が足りない</japanese>
+			<chineseSimplified>琥珀色不够</chineseSimplified>
+			<chineseTraditional>琥珀色不夠</chineseTraditional>
+			<italiano>Non abbastanza ambra</italiano>
+			<turkish>Yetersiz kehribar</turkish>
+		</Translates>
+	</Key>
+	<Key Key="//SHOP PRODUCTS">
+		<Translates/>
+	</Key>
+	<Key Key="shop_local_productName_hints1">
+		<Translates>
+			<en>Hint:&lt;br&gt;1</en>
+			<ru>Подсказка:&lt;br&gt;1</ru>
+			<spain>Pista:&lt;br&gt;1</spain>
+			<portuguese>Dica:&lt;br&gt;1</portuguese>
+			<french>Indice :&lt;br&gt;1</french>
+			<deutsch>Hinweis:&lt;br&gt;1</deutsch>
+			<korean>힌트:&lt;br&gt;1</korean>
+			<japanese>ヒント:&lt;br&gt;1</japanese>
+			<chineseSimplified>提示：&lt;br&gt;1</chineseSimplified>
+			<chineseTraditional>提示：&lt;br&gt;1</chineseTraditional>
+			<italiano>Suggerimento:&lt;br&gt;1</italiano>
+			<turkish>İpucu:&lt;br&gt;1</turkish>
+		</Translates>
+	</Key>
+	<Key Key="shop_local_productName_hints3">
+		<Translates>
+			<en>Hint set:&lt;br&gt;3</en>
+			<ru>Набор подсказок:&lt;br&gt;3</ru>
+			<spain>Conjunto de pistas:&lt;br&gt;3</spain>
+			<portuguese>Conjunto de dicas:&lt;br&gt;3</portuguese>
+			<french>Ensemble d'indices :&lt;br&gt;3</french>
+			<deutsch>Hinweis-Set:&lt;br&gt;3</deutsch>
+			<korean>힌트 세트:&lt;br&gt;3</korean>
+			<japanese>ヒントセット:&lt;br&gt;3</japanese>
+			<chineseSimplified>提示集：&lt;br&gt;3</chineseSimplified>
+			<chineseTraditional>提示集：&lt;br&gt;3</chineseTraditional>
+			<italiano>Set di suggerimenti:&lt;br&gt;3</italiano>
+			<turkish>İpucu Seti:&lt;br&gt;3</turkish>
+		</Translates>
+	</Key>
+	<Key Key="shop_local_productName_hints10">
+		<Translates>
+			<en>Hint set:&lt;br&gt;10</en>
+			<ru>Набор подсказок:&lt;br&gt;10</ru>
+			<spain>Conjunto de pistas:&lt;br&gt;10</spain>
+			<portuguese>Conjunto de dicas:&lt;br&gt;10</portuguese>
+			<french>Ensemble d'indices :&lt;br&gt;10</french>
+			<deutsch>Hinweis-Set:&lt;br&gt;10</deutsch>
+			<korean>힌트 세트:&lt;br&gt;10</korean>
+			<japanese>ヒントセット:&lt;br&gt;10</japanese>
+			<chineseSimplified>提示集：&lt;br&gt;10</chineseSimplified>
+			<chineseTraditional>提示集：&lt;br&gt;10</chineseTraditional>
+			<italiano>Set di suggerimenti:&lt;br&gt;10</italiano>
+			<turkish>İpucu Seti:&lt;br&gt;10</turkish>
+		</Translates>
+	</Key>
+	<Key Key="shop_local_productName_hints25">
+		<Translates>
+			<en>Hint set:&lt;br&gt;25</en>
+			<ru>Набор подсказок:&lt;br&gt;25</ru>
+			<spain>Conjunto de pistas:&lt;br&gt;25</spain>
+			<portuguese>Conjunto de dicas:&lt;br&gt;25</portuguese>
+			<french>Ensemble d'indices :&lt;br&gt;25</french>
+			<deutsch>Hinweis-Set:&lt;br&gt;25</deutsch>
+			<korean>힌트 세트:&lt;br&gt;25</korean>
+			<japanese>ヒントセット:&lt;br&gt;25</japanese>
+			<chineseSimplified>提示集：&lt;br&gt;25</chineseSimplified>
+			<chineseTraditional>提示集：&lt;br&gt;25</chineseTraditional>
+			<italiano>Set di suggerimenti:&lt;br&gt;25</italiano>
+			<turkish>İpucu Seti:&lt;br&gt;25</turkish>
+		</Translates>
+	</Key>
+	<Key Key="shop_local_productName_hints40">
+		<Translates>
+			<en>Hint set:&lt;br&gt;40</en>
+			<ru>Набор подсказок:&lt;br&gt;40</ru>
+			<spain>Juego de pistas:&lt;br&gt;40</spain>
+			<portuguese>Conjunto de dicas:&lt;br&gt;40</portuguese>
+			<french>Ensemble d'indices :&lt;br&gt;40</french>
+			<deutsch>Hinweis-Set:&lt;br&gt;40</deutsch>
+			<korean>힌트 세트:&lt;br&gt;40</korean>
+			<japanese>ヒントセット:&lt;br&gt;40</japanese>
+			<chineseSimplified>提示集：&lt;br&gt;40</chineseSimplified>
+			<chineseTraditional>提示集：&lt;br&gt;40</chineseTraditional>
+			<italiano>Set di suggerimenti:&lt;br&gt;40</italiano>
+			<turkish>İpucu Seti:&lt;br&gt;40</turkish>
+		</Translates>
+	</Key>
+	<Key Key="shop_com_productName_amber250">
+		<Translates>
+			<en>Amber set:&lt;br&gt;250</en>
+			<ru>Набор янтаря:&lt;br&gt;250</ru>
+			<spain>Conjunto ámbar:&lt;br&gt;250</spain>
+			<portuguese>Conjunto âmbar:&lt;br&gt;250</portuguese>
+			<french>Ensemble Ambre :&lt;br&gt;250</french>
+			<deutsch>Bernstein-Set:&lt;br&gt;250</deutsch>
+			<korean>앰버 세트:&lt;br&gt;250</korean>
+			<japanese>琥珀セット：&lt;br&gt;250</japanese>
+			<chineseSimplified>琥珀套装：&lt;br&gt;250</chineseSimplified>
+			<chineseTraditional>琥珀套裝：&lt;br&gt;250</chineseTraditional>
+			<italiano>Set ambra:&lt;br&gt;250</italiano>
+			<turkish>Sarı set:&lt;br&gt;250</turkish>
+		</Translates>
+	</Key>
+	<Key Key="shop_com_productName_amber750">
+		<Translates>
+			<en>Amber set:&lt;br&gt;750</en>
+			<ru>Набор янтаря:&lt;br&gt;750</ru>
+			<spain>Conjunto ámbar:&lt;br&gt;750</spain>
+			<portuguese>Conjunto âmbar:&lt;br&gt;750</portuguese>
+			<french>Ensemble Ambre :&lt;br&gt;750</french>
+			<deutsch>Bernstein-Set:&lt;br&gt;750</deutsch>
+			<korean>앰버 세트:&lt;br&gt;750</korean>
+			<japanese>琥珀セット：&lt;br&gt;750</japanese>
+			<chineseSimplified>琥珀套装：&lt;br&gt;750</chineseSimplified>
+			<chineseTraditional>琥珀套裝：&lt;br&gt;750</chineseTraditional>
+			<italiano>Set ambra:&lt;br&gt;750</italiano>
+			<turkish>Sarı set:&lt;br&gt;750</turkish>
+		</Translates>
+	</Key>
+	<Key Key="shop_com_productName_amber1250">
+		<Translates>
+			<en>Amber set:&lt;br&gt;1250</en>
+			<ru>Набор янтаря:&lt;br&gt;1250</ru>
+			<spain>Conjunto ámbar:&lt;br&gt;1250</spain>
+			<portuguese>Conjunto âmbar:&lt;br&gt;1250</portuguese>
+			<french>Ensemble d'ambre :&lt;br&gt;1250</french>
+			<deutsch>Bernstein-Set:&lt;br&gt;1250</deutsch>
+			<korean>앰버 세트:&lt;br&gt;1250</korean>
+			<japanese>琥珀セット：&lt;br&gt;1250</japanese>
+			<chineseSimplified>琥珀套装：&lt;br&gt;1250</chineseSimplified>
+			<chineseTraditional>琥珀套裝：&lt;br&gt;1250</chineseTraditional>
+			<italiano>Set ambra:&lt;br&gt;1250</italiano>
+			<turkish>Sarı set:&lt;br&gt;1250</turkish>
+		</Translates>
+	</Key>
+	<Key Key="shop_com_productName_amber2050">
+		<Translates>
+			<en>Amber set:&lt;br&gt;2050</en>
+			<ru>Набор янтаря:&lt;br&gt;2050</ru>
+			<spain>Conjunto ámbar:&lt;br&gt;2050</spain>
+			<portuguese>Conjunto âmbar:&lt;br&gt;2050</portuguese>
+			<french>Parure d'ambre :&lt;br&gt;2050</french>
+			<deutsch>Bernstein-Set:&lt;br&gt;2050</deutsch>
+			<korean>호박 세트:&lt;br&gt;2050</korean>
+			<japanese>アンバー セット:&lt;br&gt;2050</japanese>
+			<chineseSimplified>琥珀套装：&lt;br&gt;2050</chineseSimplified>
+			<chineseTraditional>琥珀套裝：&lt;br&gt;2050</chineseTraditional>
+			<italiano>Set ambra:&lt;br&gt;2050</italiano>
+			<turkish>Sarı set:&lt;br&gt;2050</turkish>
+		</Translates>
+	</Key>
+	<Key Key="shop_com_productName_removeAds">
+		<Translates>
+			<en>No Ads</en>
+			<ru>Убрать рекламу</ru>
+			<spain>Quitar anuncios</spain>
+			<portuguese>Remover propagandas</portuguese>
+			<french>Supprimez la pub</french>
+			<deutsch>Anzeigen entfernen</deutsch>
+			<korean>광고를 제거하다</korean>
+			<japanese>広告を削除</japanese>
+			<chineseSimplified>移除广告</chineseSimplified>
+			<chineseTraditional>移除廣告</chineseTraditional>
+			<italiano>Rimuovere gli annunci</italiano>
+			<turkish>Reklamları kaldırmak</turkish>
+		</Translates>
+	</Key>
+	<Key Key="//SETTINGS">
+		<Translates/>
+	</Key>
+	<Key Key="settings_header">
+		<Translates>
+			<en>SETTINGS</en>
+			<ru>НАСТРОЙКИ</ru>
+			<spain>AJUSTES</spain>
+			<portuguese>CONFIGURAÇÕES</portuguese>
+			<french>PARAMÈTRES</french>
+			<deutsch>EINSTELLUNGEN</deutsch>
+			<korean>설정</korean>
+			<japanese>設定</japanese>
+			<chineseSimplified>设置</chineseSimplified>
+			<chineseTraditional>設置</chineseTraditional>
+			<italiano>IMPOSTAZIONI</italiano>
+			<turkish>AYARLAR</turkish>
+		</Translates>
+	</Key>
+	<Key Key="settings_music">
+		<Translates>
+			<en>Music</en>
+			<ru>Музыка</ru>
+			<spain>Música</spain>
+			<portuguese>Música</portuguese>
+			<french>Musique</french>
+			<deutsch>Musik</deutsch>
+			<korean>음악</korean>
+			<japanese>音楽</japanese>
+			<chineseSimplified>音乐</chineseSimplified>
+			<chineseTraditional>音樂</chineseTraditional>
+			<italiano>Musica</italiano>
+			<turkish>Müzik</turkish>
+		</Translates>
+	</Key>
+	<Key Key="settings_sound">
+		<Translates>
+			<en>Sound</en>
+			<ru>Звук</ru>
+			<spain>Sonido</spain>
+			<portuguese>Som</portuguese>
+			<french>Son</french>
+			<deutsch>Klang</deutsch>
+			<korean>소리</korean>
+			<japanese>音</japanese>
+			<chineseSimplified>声音</chineseSimplified>
+			<chineseTraditional>聲音</chineseTraditional>
+			<italiano>Suono</italiano>
+			<turkish>Ses</turkish>
+		</Translates>
+	</Key>
+	<Key Key="settings_resetProgress">
+		<Translates>
+			<en>Reset progress</en>
+			<ru>Сбросить прогресс</ru>
+			<spain>Restablecer progreso</spain>
+			<portuguese>Redefinir progresso</portuguese>
+			<french>Réinitialiser la progression</french>
+			<deutsch>Fortschritt zurücksetzen</deutsch>
+			<korean>진행률 초기화</korean>
+			<japanese>進行状況をリセット</japanese>
+			<chineseSimplified>重置进度</chineseSimplified>
+			<chineseTraditional>重置進度</chineseTraditional>
+			<italiano>Reimposta i progressi</italiano>
+			<turkish>İlerlemeyi sıfırla</turkish>
+		</Translates>
+	</Key>
+	<Key Key="settings_language">
+		<Translates>
+			<en>Language</en>
+			<ru>Язык</ru>
+			<spain>Idioma</spain>
+			<portuguese>Linguagem</portuguese>
+			<french>Langue</french>
+			<deutsch>Sprache</deutsch>
+			<korean>언어</korean>
+			<japanese>言語</japanese>
+			<chineseSimplified>语言</chineseSimplified>
+			<chineseTraditional>語言</chineseTraditional>
+			<italiano>Lingua</italiano>
+			<turkish>Dil</turkish>
+		</Translates>
+	</Key>
+	<Key Key="settings_resetProgress_header">
+		<Translates>
+			<en>Are you sure you want to reset progress?</en>
+			<ru>Вы уверены что хотите сбросить прогресс?</ru>
+			<spain>¿Está seguro de que desea restablecer el progreso?</spain>
+			<portuguese>Tem certeza de que deseja redefinir o progresso?</portuguese>
+			<french>Voulez-vous vraiment réinitialiser la progression ?</french>
+			<deutsch>Möchten Sie den Fortschritt wirklich zurücksetzen?</deutsch>
+			<korean>진행 상황을 재설정하시겠습니까?</korean>
+			<japanese>進行状況をリセットしてもよろしいですか？</japanese>
+			<chineseSimplified>您确定要重置进度吗？</chineseSimplified>
+			<chineseTraditional>您確定要重置進度嗎？</chineseTraditional>
+			<italiano>Sei sicuro di voler ripristinare i progressi?</italiano>
+			<turkish>İlerlemeyi sıfırlamak istediğinizden emin misiniz?</turkish>
+		</Translates>
+	</Key>
+	<Key Key="settings_resetProgress_agreeKey">
+		<Translates>
+			<en>Yes</en>
+			<ru>Да</ru>
+			<spain>Sí</spain>
+			<portuguese>Sim</portuguese>
+			<french>Oui</french>
+			<deutsch>Ja</deutsch>
+			<korean>예</korean>
+			<japanese>はい</japanese>
+			<chineseSimplified>是的</chineseSimplified>
+			<chineseTraditional>是的</chineseTraditional>
+			<italiano>SÌ</italiano>
+			<turkish>Evet</turkish>
+		</Translates>
+	</Key>
+	<Key Key="settings_resetProgress_disagreeKey">
+		<Translates>
+			<en>No</en>
+			<ru>Нет</ru>
+			<spain>No</spain>
+			<portuguese>Não</portuguese>
+			<french>Non</french>
+			<deutsch>Nein</deutsch>
+			<korean>아니요</korean>
+			<japanese>いいえ</japanese>
+			<chineseSimplified>不</chineseSimplified>
+			<chineseTraditional>不</chineseTraditional>
+			<italiano>NO</italiano>
+			<turkish>HAYIR</turkish>
+		</Translates>
+	</Key>
+	<Key Key="settings_language_selectionHeader">
+		<Translates>
+			<en>Language</en>
+			<ru>Язык</ru>
+			<spain>Idioma</spain>
+			<portuguese>Linguagem</portuguese>
+			<french>Langue</french>
+			<deutsch>Sprache</deutsch>
+			<korean>언어</korean>
+			<japanese>言語</japanese>
+			<chineseSimplified>语言</chineseSimplified>
+			<chineseTraditional>語言</chineseTraditional>
+			<italiano>Lingua</italiano>
+			<turkish>Dil</turkish>
+		</Translates>
+	</Key>
+	<Key Key="//VICTORY">
+		<Translates/>
+	</Key>
+	<Key Key="victory_level">
+		<Translates>
+			<en>Level {0} completed</en>
+			<ru>Уровень {0} пройден</ru>
+			<spain>Nivel {0} completado</spain>
+			<portuguese>Nível {0} concluído</portuguese>
+			<french>Niveau {0} terminé</french>
+			<deutsch>Stufe {0} abgeschlossen</deutsch>
+			<korean>레벨 {0} 완료</korean>
+			<japanese>レベル {0} 完了</japanese>
+			<chineseSimplified>已完成第 {0} 级</chineseSimplified>
+			<chineseTraditional>已完成第 {0} 級</chineseTraditional>
+			<italiano>Livello {0} completato</italiano>
+			<turkish>Seviye {0} tamamlandı</turkish>
+		</Translates>
+	</Key>
+	<Key Key="victory_moves">
+		<Translates>
+			<en>Total number of moves: {0}</en>
+			<ru>Передвижений: {0}</ru>
+			<spain>Movimientos: {0}</spain>
+			<portuguese>Movimentos: {0}</portuguese>
+			<french>Mouvements : {0}</french>
+			<deutsch>Bewegungen: {0}</deutsch>
+			<korean>움직임: {0}</korean>
+			<japanese>動き: {0}</japanese>
+			<chineseSimplified>运动：{0}</chineseSimplified>
+			<chineseTraditional>運動：{0}</chineseTraditional>
+			<italiano>Movimenti: {0}</italiano>
+			<turkish>Hareketler: {0}</turkish>
+		</Translates>
+	</Key>
+	<Key Key="victory_bestMoves">
+		<Translates>
+			<en>Best number of moves: {0}</en>
+			<ru>Лучший результат передвижений: {0}</ru>
+			<spain>Puntuación de mejor movimiento: {0}</spain>
+			<portuguese>Melhor Pontuação de Movimento: {0}</portuguese>
+			<french>Score du meilleur coup : {0}</french>
+			<deutsch>Beste Bewegungspunktzahl: {0}</deutsch>
+			<korean>베스트 무브 점수: {0}</korean>
+			<japanese>ベスト ムーブ スコア: {0}</japanese>
+			<chineseSimplified>最佳移动分数：{0}</chineseSimplified>
+			<chineseTraditional>最佳移動分數：{0}</chineseTraditional>
+			<italiano>Punteggio miglior mossa: {0}</italiano>
+			<turkish>En İyi Hamle Puanı: {0}</turkish>
+		</Translates>
+	</Key>
+	<Key Key="victory_pushes">
+		<Translates>
+			<en>Total number of pushes: {0}</en>
+			<ru>Толканий: {0}</ru>
+			<spain>Empujes: {0}</spain>
+			<portuguese>Empurrões: {0}</portuguese>
+			<french>Poussées : {0}</french>
+			<deutsch>Pushs: {0}</deutsch>
+			<korean>푸시: {0}</korean>
+			<japanese>プッシュ: {0}</japanese>
+			<chineseSimplified>推送：{0}</chineseSimplified>
+			<chineseTraditional>推送：{0}</chineseTraditional>
+			<italiano>Push: {0}</italiano>
+			<turkish>Basar: {0}</turkish>
+		</Translates>
+	</Key>
+	<Key Key="victory_bestPushes">
+		<Translates>
+			<en>Best number of pushes {0}</en>
+			<ru>Лучший результат толканий: {0}</ru>
+			<spain>Mejor resultado de lanzamiento de peso: {0}</spain>
+			<portuguese>Melhor resultado de arremesso de peso: {0}</portuguese>
+			<french>Meilleur résultat au lancer du poids : {0}</french>
+			<deutsch>Bestes Ergebnis im Kugelstoßen: {0}</deutsch>
+			<korean>최고의 투포환 결과: {0}</korean>
+			<japanese>砲丸投のベスト結果: {0}</japanese>
+			<chineseSimplified>铅球最佳成绩：{0}</chineseSimplified>
+			<chineseTraditional>鉛球最佳成績：{0}</chineseTraditional>
+			<italiano>Miglior risultato del lancio del peso: {0}</italiano>
+			<turkish>En iyi gülle atma sonucu: {0}</turkish>
+		</Translates>
+	</Key>
+	<Key Key="victory_elapsedTime">
+		<Translates>
+			<en>Time: {0}</en>
+			<ru>Время: {0}</ru>
+			<spain>Hora: {0}</spain>
+			<portuguese>Hora: {0}</portuguese>
+			<french>Heure : {0}</french>
+			<deutsch>Zeit: {0}</deutsch>
+			<korean>시간: {0}</korean>
+			<japanese>時間: {0}</japanese>
+			<chineseSimplified>时间：{0}</chineseSimplified>
+			<chineseTraditional>時間：{0}</chineseTraditional>
+			<italiano>Ora: {0}</italiano>
+			<turkish>Zaman: {0}</turkish>
+		</Translates>
+	</Key>
+	<Key Key="victory_bestTime">
+		<Translates>
+			<en>Best time: {0}</en>
+			<ru>Лучшее время: {0}</ru>
+			<spain>Mejor hora: {0}</spain>
+			<portuguese>Melhor horário: {0}</portuguese>
+			<french>Meilleur temps : {0}</french>
+			<deutsch>Beste Zeit: {0}</deutsch>
+			<korean>최고의 시간: {0}</korean>
+			<japanese>ベストタイム: {0}</japanese>
+			<chineseSimplified>最佳时间：{0}</chineseSimplified>
+			<chineseTraditional>最佳時間：{0}</chineseTraditional>
+			<italiano>Periodo migliore: {0}</italiano>
+			<turkish>En iyi zaman: {0}</turkish>
+		</Translates>
+	</Key>
+</Keys>

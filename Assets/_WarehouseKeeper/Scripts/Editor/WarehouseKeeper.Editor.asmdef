@@ -1,0 +1,19 @@
+{
+    "name": "WarehouseKeeper.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:de5f51244ee376240847de29264cbb1d",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

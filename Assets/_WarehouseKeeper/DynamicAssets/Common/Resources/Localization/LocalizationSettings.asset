@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1c5db82edfe47e3b909d5fcc23fe81f, type: 3}
+  m_Name: LocalizationSettings
+  m_EditorClassIdentifier: 
+  <DefaultLocalization>k__BackingField: 0
+  <LocalizationDoc>k__BackingField: {fileID: 4900000, guid: 165eea780fc151045a041d2c41e667ca, type: 3}
+  <LanguageBind>k__BackingField:
+  - localizedType: 1
+    bindSystemTypes: 030000001e00000026000000
+  - localizedType: 2
+    bindSystemTypes: 22000000
+  - localizedType: 3
+    bindSystemTypes: 1c000000
+  - localizedType: 4
+    bindSystemTypes: 0e000000
+  - localizedType: 5
+    bindSystemTypes: 0f000000
+  - localizedType: 6
+    bindSystemTypes: 17000000
+  - localizedType: 7
+    bindSystemTypes: 16000000
+  - localizedType: 8
+    bindSystemTypes: 28000000
+  - localizedType: 9
+    bindSystemTypes: 29000000
+  - localizedType: 10
+    bindSystemTypes: 15000000
+  - localizedType: 11
+    bindSystemTypes: 25000000

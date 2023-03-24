@@ -16,7 +16,99 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: d6f7dbd20d2d5554f9777200c6cc118f
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 4fcacfdd07976d2418397fc38d2402c1
+    m_Address: WorldEntityPlayZone
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8bed917a20f9d6e448072a36da3d1f51
+    m_Address: WorldEntityWall
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d4235a7e078ec374894863bebda97764
+    m_Address: WorldEntityTarget
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2773ab14a831d9b4299811faee2059c4
+    m_Address: EntityPlayer
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6ac49671b828a1b4c84edf3034d2cfcd
+    m_Address: EntityBox
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 66555534a6a4db84cbad07827ca422dd
+    m_Address: UI/TestMediator
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ed648ac4245f1964b8f01154bef4a028
+    m_Address: UI/MainWindowMediator
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0934abce891f81248a1a32ce968d6e4c
+    m_Address: UI/GameContextWindowMediator
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6a8a4bf54686ba641b329be3962deaf9
+    m_Address: UI/LevelSelectionWindowMediator
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 52e7ed992144b2c4fbd38e89b39d94ca
+    m_Address: UI/ShopWindowMediator
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 22671fb4de5b0fc48b3c6097ad6b2faf
+    m_Address: UI/SettingsWindowMediator
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4cf999189af388f4382bacfda6388b36
+    m_Address: UI/AppearanceWindowMediator
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f5b38ae66a242a7448ba6cf1be94f0a1
+    m_Address: UI/GameWindowMediator
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d1100890efd385b42ba33fccc2f87c82
+    m_Address: LevelSelectionItem
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 599c431b8a8663b449538aeb762642a0
+    m_Address: AppearanceItem
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 64551f2121cce8a4f90ebec044190e67
+    m_Address: AudioSource
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5882a7842397b684daac8d34047b6caa
+    m_Address: MiddleShopItem
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0571b4895455d624fb22887455386dc9
+    m_Address: DirectionalArrow
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 462f6461849152d4c93f4d06847936d2
+    m_Address: UI/ConfirmWindowMediator
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4a8cd025e757fd142b211abf8218a594
+    m_Address: UI/LanguageSelectionWindowMediator
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b3690240f6202154f93c10a081afa53f
+    m_Address: UI/VictoryWindowMediator
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d9c88da864c495548910ebc2e4727004
+    m_Address: UI/LevelInfoWindowMediator
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 12203d97917005546a4b66d7dc876294
+    m_Address: MiddleShopLocalItem
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: cac3bbd7598ac4f468ded3c461651e5d, type: 2}
   m_SchemaSet:

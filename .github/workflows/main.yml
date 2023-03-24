@@ -1,0 +1,68 @@
+name: Test project
+
+on: workflow_dispatch
+
+jobs:
+  Zenject-usage:
+      runs-on: [windows-latest]
+      name: Zenject-usage
+      steps:
+        - name: Checkout repository
+          uses: actions/checkout@v2
+
+        - name: setup-msbuild
+          uses: microsoft/setup-msbuild@v1
+
+        - name: MSBuild
+          working-directory: AssemblyBuild\Zenject-usage
+          run: msbuild Zenject-usage.sln
+
+        - name: Upload dll
+          uses: actions/upload-artifact@v1
+          with:
+            name: Zenject-usage
+            path: AssemblyBuild\Zenject-usage\bin\Debug\
+  TestAllTtests:
+    name: Test in ${{ matrix.testMode }}
+    runs-on: windows-latest
+    needs: Zenject-usage
+    env:
+      PR_PATH: "test-project"
+    strategy:
+      fail-fast: false
+      matrix:
+        testMode:
+          - playmode
+          - editmode
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          lfs: true
+      - uses: actions/cache@v3
+        with:
+          path: ${{ env.PR_PATH }}/Library
+          key: Library-${{ env.PR_PATH }}
+          restore-keys: |
+            Library-${{ env.PR_PATH }}-
+            Library-
+      - uses: game-ci/unity-test-runner@v2
+        id: tests
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+        with:
+          projectPath: ${{ matrix.projectPath }}
+          testMode: ${{ matrix.testMode }}
+          artifactsPath: ${{ matrix.testMode }}-artifacts
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          checkName: ${{ matrix.testMode }} Test Results
+          coverageOptions: 'generateAdditionalMetrics;generateHtmlReport;generateBadgeReport;assemblyFilters:+my.assembly.*'
+      - uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: Test results for ${{ matrix.testMode }}
+          path: ${{ steps.tests.outputs.artifactsPath }}
+      - uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: Coverage results for ${{ matrix.testMode }}
+          path: ${{ steps.tests.outputs.coveragePath }}
