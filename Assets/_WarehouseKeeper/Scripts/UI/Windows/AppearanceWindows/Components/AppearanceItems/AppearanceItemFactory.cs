@@ -13,7 +13,7 @@ using Zenject;
 
 namespace WarehouseKeeper._WarehouseKeeper.Scripts.UI.Windows.AppearanceWindows.Components.AppearanceItems
 {
-internal class AppearanceItemFactory : PrefabProviderByAddress<AppearanceItem>, IInitializable, IDisposable
+internal class AppearanceItemFactory : PrefabProviderByAddress<AppearanceItem>, IDisposable
 {
     private readonly IObjectPoolManager _objectPool;
     private readonly PlayerResourcesDirector _playerResources;
@@ -30,11 +30,6 @@ internal class AppearanceItemFactory : PrefabProviderByAddress<AppearanceItem>, 
         _objectPool = objectPool;
         _playerResources = playerResources;
         _resourcesDirector = resourcesDirector;
-    }
-
-    public async void Initialize()
-    {
-        //await PrepareItemsAsync();
     }
 
     public void Dispose()

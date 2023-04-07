@@ -19,7 +19,6 @@ public class ProjectInstaller : MonoInstaller
     public override void InstallBindings()
     {
         InstallBaseManagers();
-        InstallManagers();
         DeclareSignals();
     }
 
@@ -36,17 +35,10 @@ public class ProjectInstaller : MonoInstaller
         FactoryInstaller.Install(Container);
         AddressablesInstaller.Install(Container);
         
-        //Container.Bind<IFactoryGameObjects>().To<GameObjectsFactory>().AsSingle();
-        //Container.Bind<IAddressablesManager>().To<AddressablesManager>().AsSingle();
         Container.BindInterfacesAndSelfTo<LevelRepositoryDirector>().AsSingle();
 
     }
-
-    private void InstallManagers()
-    {
-        
-    }
-
+    
     private void DeclareSignals()
     {
         Container.DeclareSignal<LevelGoHome>();

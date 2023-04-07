@@ -40,8 +40,6 @@ public class SceneInstaller : MonoInstaller<SceneInstaller>
         ObjectPoolInstaller.Install(Container, poolCapacity);
         SceneGuiInstaller.Install(Container, uiRoot);
         FactoryInstaller.Install(Container);
-
-        //Container.Bind<IFactoryGameObjects>().To<GameObjectsFactory>().AsSingle();
     }
 
     private void InstallDirectors()
