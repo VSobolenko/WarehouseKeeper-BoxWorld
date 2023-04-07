@@ -44,7 +44,7 @@ internal class GameHint
     {
         if (_spendHints == 0)
         {
-            Log.WriteError("Hint not setup");
+            Log.Error("Hint not setup");
             _activeHintStage = 0;
             _maxHintStage = 0;
             return;
@@ -63,12 +63,12 @@ internal class GameHint
     public Vector2 GetActiveDirection()
     {
         if (_activeHintStage >= _walkthrough.Length)
-            Log.WriteWarning("Index out of hit stage");
+            Log.Warning("Index out of hit stage");
 
         var stage = Mathf.Clamp(_activeHintStage, 0, _walkthrough.Length - 1);
         if (stage >= _walkthrough.Length || stage < 0)
         {
-            Log.WriteError("Stage error! Direction reset");
+            Log.Error("Stage error! Direction reset");
             return Vector2.zero;
         }
         return _walkthrough[stage];

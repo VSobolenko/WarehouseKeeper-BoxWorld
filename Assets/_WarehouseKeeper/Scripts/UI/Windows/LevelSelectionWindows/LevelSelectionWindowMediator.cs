@@ -119,7 +119,7 @@ internal class LevelSelectionWindowMediator : BaseMediator<LevelSelectionWindowV
                 _windowsDirector.OpenShopWindow();
                 break;
             default:
-                Log.WriteError($"Unknown action {action}");
+                Log.Error($"Unknown action {action}");
                 break;        
         }
     }

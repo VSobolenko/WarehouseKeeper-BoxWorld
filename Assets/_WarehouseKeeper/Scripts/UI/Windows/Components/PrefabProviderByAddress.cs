@@ -25,7 +25,7 @@ internal class PrefabProviderByAddress<T> where T : class
         
         if (prefab == null)
         {
-            Log.WriteError($"Addressable key prefab {addressableKey} missing");
+            Log.Error($"Addressable key prefab {addressableKey} missing");
             return null;
         }
 
@@ -33,7 +33,7 @@ internal class PrefabProviderByAddress<T> where T : class
         
         if (levelSelectionItem == null)
         {
-            Log.WriteError($"Component [LevelSelectionItem] missing from {prefab.name} gameObject");
+            Log.Error($"Component [LevelSelectionItem] missing from {prefab.name} gameObject");
             return null;
         }
 
@@ -50,7 +50,7 @@ internal class PrefabProviderByAddress<T> where T : class
         
         if (prefab == null)
         {
-            Log.WriteError($"Addressable key prefab {addressableKey} missing");
+            Log.Error($"Addressable key prefab {addressableKey} missing");
             return null;
         }
 
@@ -58,7 +58,7 @@ internal class PrefabProviderByAddress<T> where T : class
         
         if (levelSelectionItem == null)
         {
-            Log.WriteError($"Component [LevelSelectionItem] missing from {prefab.name} gameObject");
+            Log.Error($"Component [LevelSelectionItem] missing from {prefab.name} gameObject");
             return null;
         }
 

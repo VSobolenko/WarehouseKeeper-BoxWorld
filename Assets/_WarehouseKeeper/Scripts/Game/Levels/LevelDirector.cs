@@ -169,7 +169,7 @@ internal class LevelDirector : ITickable, IDisposable
 #if UNITY_EDITOR
         var hintTunel = GameObject.FindObjectOfType<WarehouseKeeper.EditorTools.Levels.HintTunel>();
         if (hintTunel == null)
-            Log.WriteWarning("Cannot find hint tunel");
+            Log.Warning("Cannot find hint tunel");
         else
             hintTunel.RemoveLast();
 #endif

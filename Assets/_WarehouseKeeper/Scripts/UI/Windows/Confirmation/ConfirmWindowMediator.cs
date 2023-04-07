@@ -56,7 +56,7 @@ internal class ConfirmWindowMediator : BaseMediator<ConfirmWindowView>
                 _disagree?.Invoke();
                 break;
             default:
-                Log.WriteError($"Unknown action {action}");
+                Log.Error($"Unknown action {action}");
                 break;
         }
     }

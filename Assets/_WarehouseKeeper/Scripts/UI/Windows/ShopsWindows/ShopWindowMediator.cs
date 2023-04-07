@@ -133,7 +133,7 @@ internal class ShopWindowMediator : BaseMediator<ShopWindowView>
                     PayoutAmber(reward.quantity);
                     break;
                 default:
-                    Log.WriteError($"Unknown reward type {reward.type}");
+                    Log.Error($"Unknown reward type {reward.type}");
                     break;
             }
         }
@@ -144,7 +144,7 @@ internal class ShopWindowMediator : BaseMediator<ShopWindowView>
         _playerResourcesDirector.UpdateData(data =>
         {
             data.AdsDisable = true;
-            Log.WriteInfo("Remove ad");
+            Log.Info("Remove ad");
         });
         
         DisposeAllItems();
@@ -158,7 +158,7 @@ internal class ShopWindowMediator : BaseMediator<ShopWindowView>
         {
             data.Amber.Spend(spendAmber);
             data.Hints.Add(count);
-            Log.WriteInfo($"Added hints: {count}; Spend amber: {spendAmber}");
+            Log.Info($"Added hints: {count}; Spend amber: {spendAmber}");
         });
     }
     
@@ -167,7 +167,7 @@ internal class ShopWindowMediator : BaseMediator<ShopWindowView>
         _playerResourcesDirector.UpdateData(data =>
         {
             data.Amber.Add(count);
-            Log.WriteInfo($"Added amber: {count}");
+            Log.Info($"Added amber: {count}");
         });
     }
     

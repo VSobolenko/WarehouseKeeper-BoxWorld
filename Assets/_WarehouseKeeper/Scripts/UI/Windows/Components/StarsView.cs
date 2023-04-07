@@ -12,7 +12,7 @@ public class StarsView : MonoBehaviour
     {
 #if UNITY_EDITOR
         if (_stars.Length <= 0)
-            Log.WriteWarning("Null star array");
+            Log.Warning("Null star array");
 #endif
         
         for (var i = 0; i < _stars.Length; i++)

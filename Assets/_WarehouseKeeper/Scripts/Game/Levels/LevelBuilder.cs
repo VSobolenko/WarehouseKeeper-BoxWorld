@@ -40,14 +40,14 @@ internal class LevelBuilder : IInitializable
     {
         if (_activeLevelRoot != null)
         {
-            Log.WriteWarning($"Can't build level because there is built. Build skipped");
+            Log.Warning($"Can't build level because there is built. Build skipped");
             return null;
         }
 
         var levelSettings = _levelRepositoryDirector.GetLevelSetting(levelId);
         if (levelSettings == null)
         {
-            Log.WriteWarning($"Can't load level with id={levelId}; Settings not found");
+            Log.Warning($"Can't load level with id={levelId}; Settings not found");
             return null;
         }
         _activeLevelRoot = _factory.InstantiateEmpty($"Level-{levelId}_[{levelSettings.Pieces.GetLength(0)}|{levelSettings.Pieces.GetLength(1)}]");
@@ -61,7 +61,7 @@ internal class LevelBuilder : IInitializable
     {
         if (_activeLevelRoot == null)
         {
-            Log.WriteWarning("Can't destroy null level");
+            Log.Warning("Can't destroy null level");
 
             return;
         }
@@ -79,7 +79,7 @@ internal class LevelBuilder : IInitializable
 #if UNITY_EDITOR
         if (Application.isPlaying == false)
         {
-            Log.WriteError("Try delete object in editor mode! Use cancellationToken instead");
+            Log.Error("Try delete object in editor mode! Use cancellationToken instead");
             Object.DestroyImmediate(_activeLevelRoot);
         }
         else
@@ -150,14 +150,14 @@ internal class LevelBuilder : IInitializable
     {
         if (_activeLevelRoot == null)
         {
-            Log.WriteWarning("Can't build game entity in empty level");
+            Log.Warning("Can't build game entity in empty level");
 
             return null;
         }
         var levelSettings = _levelRepositoryDirector.GetLevelSetting(levelId);
         if (levelSettings == null)
         {
-            Log.WriteWarning($"Can't load game entity with id={levelId}; Settings not found");
+            Log.Warning($"Can't load game entity with id={levelId}; Settings not found");
             return null;
         }
         
@@ -219,7 +219,7 @@ internal class LevelBuilder : IInitializable
     {
         if (_activeLevelRoot == null)
         {
-            Log.WriteWarning("Can't destroy game entity in null level");
+            Log.Warning("Can't destroy game entity in null level");
 
             return;
         }

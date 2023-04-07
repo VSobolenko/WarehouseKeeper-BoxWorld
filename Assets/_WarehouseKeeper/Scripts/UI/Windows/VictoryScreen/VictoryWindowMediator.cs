@@ -80,7 +80,7 @@ internal class VictoryWindowMediator : BaseMediator<VictoryWindowView>
                 _gameDirector.StartLevel(data.Id);
                 break;
             default:
-                Log.WriteError($"Unknown action {action}");
+                Log.Error($"Unknown action {action}");
                 break;
         }
     }

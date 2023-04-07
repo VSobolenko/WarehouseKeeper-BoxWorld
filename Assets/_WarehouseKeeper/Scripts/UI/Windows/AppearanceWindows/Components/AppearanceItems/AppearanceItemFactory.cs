@@ -34,7 +34,7 @@ internal class AppearanceItemFactory : PrefabProviderByAddress<AppearanceItem>, 
 
     public async void Initialize()
     {
-        await PrepareItemsAsync();
+        //await PrepareItemsAsync();
     }
 
     public void Dispose()
@@ -64,7 +64,7 @@ internal class AppearanceItemFactory : PrefabProviderByAddress<AppearanceItem>, 
         var settings = _resourcesDirector.AnimationsAppearance.Items?.Where(x => x.accessible).ToList();
         if (settings == null)
         {
-            Log.WriteError("Empty settings in animations type");
+            Log.Error("Empty settings in animations type");
             return Array.Empty<AppearanceItem>();
         }
         var items = new AppearanceItem[settings.Count];
@@ -82,7 +82,7 @@ internal class AppearanceItemFactory : PrefabProviderByAddress<AppearanceItem>, 
         var settings = _resourcesDirector.BoxAppearance.Items?.Where(x => x.accessible).ToList();
         if (settings == null)
         {
-            Log.WriteError("Empty settings in box skins type");
+            Log.Error("Empty settings in box skins type");
             return Array.Empty<AppearanceItem>();
         }
         var items = new AppearanceItem[settings.Count];
@@ -100,7 +100,7 @@ internal class AppearanceItemFactory : PrefabProviderByAddress<AppearanceItem>, 
         var settings = _resourcesDirector.EffectsAppearance.Items?.Where(x => x.accessible).ToList();
         if (settings == null)
         {
-            Log.WriteError("Empty settings in effects type");
+            Log.Error("Empty settings in effects type");
             return Array.Empty<AppearanceItem>();
         }
         var items = new AppearanceItem[settings.Count];
@@ -118,7 +118,7 @@ internal class AppearanceItemFactory : PrefabProviderByAddress<AppearanceItem>, 
         var settings = _resourcesDirector.UserSkinsAppearance.Items?.Where(x => x.accessible).ToList();
         if (settings == null)
         {
-            Log.WriteError("Empty settings in user skins type");
+            Log.Error("Empty settings in user skins type");
             return Array.Empty<AppearanceItem>();
         }
         

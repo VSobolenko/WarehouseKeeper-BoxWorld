@@ -1,4 +1,5 @@
-﻿using Game.FSMCore.States;
+﻿using Game;
+using Game.FSMCore.States;
 using Game.Inputs;
 using UnityEngine;
 using WarehouseKeeper.Directors.UI.Windows;
@@ -59,6 +60,12 @@ internal class WaitingState: State<bool, Vector2>
 
     private void SetupWindow()
     {
+        if (_levelDirector.ActiveLevel == null)
+        {
+            Log.InternalError();
+            return;
+        }
+        
         if (_levelDirector.Statistics.moves > 0)
             GetWindow()?.EnableLevelInteraction();
         else

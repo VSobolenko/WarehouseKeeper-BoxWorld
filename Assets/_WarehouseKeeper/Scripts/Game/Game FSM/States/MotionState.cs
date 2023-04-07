@@ -29,7 +29,7 @@ internal class MotionState : State<Vector2, bool>
 #if UNITY_EDITOR
         var hintTunel = GameObject.FindObjectOfType<WarehouseKeeper.EditorTools.Levels.HintTunel>();
         if (hintTunel == null)
-            Log.WriteWarning("Cannot find hint tunel");
+            Log.Warning("Cannot find hint tunel");
         else
             hintTunel.ClearHints();
 #endif
@@ -104,7 +104,7 @@ internal class MotionState : State<Vector2, bool>
 #if UNITY_EDITOR
                     var hintTunel = GameObject.FindObjectOfType<WarehouseKeeper.EditorTools.Levels.HintTunel>();
                     if (hintTunel == null)
-                        Log.WriteWarning("Cannot find hint tunel");
+                        Log.Warning("Cannot find hint tunel");
                     else
                         hintTunel.AddDirection(new Vector2Int((int) direction.x, (int) direction.y));
 #endif
@@ -132,7 +132,7 @@ internal class MotionState : State<Vector2, bool>
 #if UNITY_EDITOR
                 var hintTunel = GameObject.FindObjectOfType<WarehouseKeeper.EditorTools.Levels.HintTunel>();
                 if (hintTunel == null)
-                    Log.WriteWarning("Cannot find hint tunel");
+                    Log.Warning("Cannot find hint tunel");
                 else
                     hintTunel.AddDirection(new Vector2Int((int) direction.x, (int) direction.y));
 #endif

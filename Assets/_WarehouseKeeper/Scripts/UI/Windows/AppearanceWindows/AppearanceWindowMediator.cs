@@ -80,7 +80,7 @@ internal class AppearanceWindowMediator : BaseMediator<AppearanceWindowView>
             case AppearanceWindowAction.OnClickSelect:
                 break;
             default:
-                Log.WriteError($"Unknown action {action}");
+                Log.Error($"Unknown action {action}");
                 break;
             
         }
@@ -163,7 +163,7 @@ internal class AppearanceWindowMediator : BaseMediator<AppearanceWindowView>
             case AppearanceSectionType.UserSkins:
                 return _playerResources.UserData.UserSkins.Exists(codeId);
             default:
-                Log.WriteError($"Unknown type {sectionType}");
+                Log.Error($"Unknown type {sectionType}");
                 return false;
         }
     }
@@ -181,7 +181,7 @@ internal class AppearanceWindowMediator : BaseMediator<AppearanceWindowView>
             case AppearanceSectionType.UserSkins:
                 return _playerResources.UserData.UserSkinSelected == codeId;
             default:
-                Log.WriteError($"Unknown type {sectionType}");
+                Log.Error($"Unknown type {sectionType}");
                 return false;
         }
     }
@@ -199,7 +199,7 @@ internal class AppearanceWindowMediator : BaseMediator<AppearanceWindowView>
             case AppearanceSectionType.UserSkins:
                 return _resourcesDirector.UserSkinsAppearance.Items.FirstOrDefault( x=> x.keyId == codeId).addressableKey;
             default:
-                Log.WriteError($"Unknown type {sectionType}");
+                Log.Error($"Unknown type {sectionType}");
                 return string.Empty;
         }
     }
@@ -210,7 +210,7 @@ internal class AppearanceWindowMediator : BaseMediator<AppearanceWindowView>
         
         if (prefab == null)
         {
-            Log.WriteError($"Addressable key prefab {addressableKey} missing");
+            Log.Error($"Addressable key prefab {addressableKey} missing");
             return null;
         }
 
@@ -218,7 +218,7 @@ internal class AppearanceWindowMediator : BaseMediator<AppearanceWindowView>
         
         if (instance == null)
         {
-            Log.WriteError($"Error instantiate {prefab.name} prefab");
+            Log.Error($"Error instantiate {prefab.name} prefab");
             return null;
         }
 

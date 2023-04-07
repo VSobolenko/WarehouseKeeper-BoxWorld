@@ -70,7 +70,10 @@ internal class AnalyticsDirector : IDisposable
 
     private void UserStartLevel(LevelStart level)
     {
-        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, "levelStart", level.levelId);
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, "levelStart", level.levelId, new Dictionary<string, object>
+        {
+            {"LevelId", level.levelId}
+        });
     }
     
     private void UserRestartLevel(LevelRestart level)

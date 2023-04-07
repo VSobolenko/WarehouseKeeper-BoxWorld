@@ -87,7 +87,7 @@ internal class LevelInfoWindowMediator : BaseMediator<LevelInfoWindowView>
                 _windowsDirector.CloseWindow(this);
                 break;
             default:
-                Log.WriteError($"Unknown action {action}");
+                Log.Error($"Unknown action {action}");
                 break;        
         }
     }

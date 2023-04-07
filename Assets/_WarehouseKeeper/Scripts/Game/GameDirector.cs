@@ -33,7 +33,7 @@ internal class GameDirector : IInitializable, ITickable
         var firstLevelSettings = _levelRepositoryDirector.GetLevelsSettings().FirstOrDefault();
         if (firstLevelSettings == null)
         {
-            Log.WriteError("Null levels");
+            Log.Error("Null levels");
             return;
         }
         var firstLevelData = _levelRepositoryDirector.GetLevelData(firstLevelSettings.Id);

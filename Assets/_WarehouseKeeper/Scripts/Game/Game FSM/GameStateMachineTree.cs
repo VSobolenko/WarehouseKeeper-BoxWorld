@@ -28,7 +28,7 @@ internal sealed class GameStateMachineTree
     {
         _diContainer = diContainer;
         _stateMachine = stateMachine;
-        Log.WriteInfo($"Create new {GetType().Name}; Hash={GetHashCode()}");
+        Log.Info($"Create new {GetType().Name}; Hash={GetHashCode()}");
     }
 
     public void Initialize()

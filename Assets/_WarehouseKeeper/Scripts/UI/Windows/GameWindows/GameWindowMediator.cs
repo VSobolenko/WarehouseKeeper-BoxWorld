@@ -77,6 +77,12 @@ internal class GameWindowMediator : BaseMediator<GameWindowView>
     
     private void UpdateStaticData(LevelStatistics statistics)
     {
+        if (_levelDirector.ActiveLevel == null)
+        {
+            Log.InternalError();
+            return;
+        }
+        
         window.LevelNumberText.text = _localization.LocalizeFormat("game_level", _levelDirector.ActiveLevel.LevelId + 1);
 
         var activeStars = _progressDirector.GetActiveStars();
@@ -138,7 +144,7 @@ internal class GameWindowMediator : BaseMediator<GameWindowView>
                 ClickGoHome();
                 break;
             default:
-                Log.WriteError($"Unknown action {action}");
+                Log.Error($"Unknown action {action}");
                 break;
             
         }
@@ -146,6 +152,12 @@ internal class GameWindowMediator : BaseMediator<GameWindowView>
 
     private void ClickHint()
     {
+        if (_levelDirector.ActiveLevel == null)
+        {
+            Log.InternalError();
+            return;
+        }
+        
         const int spendHints = 1;
         if (_playerResourcesDirector.UserData.Hints.CanSpend(spendHints) == false)
         {
@@ -172,6 +184,12 @@ internal class GameWindowMediator : BaseMediator<GameWindowView>
 
     private void ClickRestart()
     {
+        if (_levelDirector.ActiveLevel == null)
+        {
+            Log.InternalError();
+            return;
+        }
+        
         _signalBus.Fire(new LevelRestart
         {
             levelId = _levelDirector.ActiveLevel.LevelId,
@@ -182,10 +200,13 @@ internal class GameWindowMediator : BaseMediator<GameWindowView>
 
     private void ClickGoHome()
     {
-        _signalBus.Fire(new LevelGoHome
+        if (_levelDirector.ActiveLevel != null)
         {
-            levelId = _levelDirector.ActiveLevel.LevelId,
-        });
+            _signalBus.Fire(new LevelGoHome
+            {
+                levelId = _levelDirector.ActiveLevel.LevelId,
+            });
+        }
         
         _gameDirector.DisposeLevel();
         _windowsDirector.OpenMainWindow();

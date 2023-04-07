@@ -20,7 +20,7 @@ public class GameWindowFadeTransition : MonoBehaviour
     {
         if (_targetGroup == null)
         {
-            Log.WriteWarning($"Null target canvas group in {name}");
+            Log.Warning($"Null target canvas group in {name}");
             return;
         }
         _targetGroup.blocksRaycasts = true;
@@ -31,7 +31,7 @@ public class GameWindowFadeTransition : MonoBehaviour
     {
         if (_targetGroup == null)
         {
-            Log.WriteWarning($"Null target canvas group in {name}");
+            Log.Warning($"Null target canvas group in {name}");
             return;
         }
         

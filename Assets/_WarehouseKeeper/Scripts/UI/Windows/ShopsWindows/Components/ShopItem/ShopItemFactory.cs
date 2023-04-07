@@ -59,7 +59,7 @@ internal class ShopItemFactory : IInitializable, IDisposable
         foreach (var addressableKey in keys)
         {
             if (string.IsNullOrEmpty(addressableKey))
-                Log.WriteError("Null addressable item key");
+                Log.Error("Null addressable item key");
 
             if (_cancellationTokenSource.IsCancellationRequested)
                 return;
@@ -131,7 +131,7 @@ internal class ShopItemFactory : IInitializable, IDisposable
 
         if (prefab == null)
         {
-            Log.WriteError($"Addressable key prefab {addressableKey} missing");
+            Log.Error($"Addressable key prefab {addressableKey} missing");
             return null;
         }
 
@@ -139,7 +139,7 @@ internal class ShopItemFactory : IInitializable, IDisposable
         
         if (levelSelectionItem == null)
         {
-            Log.WriteError($"Component [LevelSelectionItem] missing from {prefab.name} gameObject");
+            Log.Error($"Component [LevelSelectionItem] missing from {prefab.name} gameObject");
             return null;
         }
 
@@ -152,7 +152,7 @@ internal class ShopItemFactory : IInitializable, IDisposable
         
         if (prefab == null)
         {
-            Log.WriteError($"Addressable key prefab {addressableKey} missing");
+            Log.Error($"Addressable key prefab {addressableKey} missing");
             return null;
         }
 
@@ -160,7 +160,7 @@ internal class ShopItemFactory : IInitializable, IDisposable
         
         if (levelSelectionItem == null)
         {
-            Log.WriteError($"Component [LevelSelectionItem] missing from {prefab.name} gameObject");
+            Log.Error($"Component [LevelSelectionItem] missing from {prefab.name} gameObject");
             return null;
         }
 

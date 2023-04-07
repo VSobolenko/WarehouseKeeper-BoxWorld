@@ -38,7 +38,7 @@ internal class LevelRepositoryDirector
     {
         if (data == null)
         {
-            Log.WriteError("Input data is null. Save skipped");
+            Log.Error("Input data is null. Save skipped");
             return;
         }
         

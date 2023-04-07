@@ -83,7 +83,7 @@ internal class MainWindowMediator : BaseMediator<MainWindowView>
                 ClickQuite();
                 break;
             default:
-                Log.WriteError($"Unknown action {action}");
+                Log.Error($"Unknown action {action}");
                 break;
         }
     }
@@ -93,7 +93,7 @@ internal class MainWindowMediator : BaseMediator<MainWindowView>
         var lastLevel = _levelRepositoryDirector.GetLevelsData()?.LastOrDefault();
         if (lastLevel == null)
         {
-            Log.WriteError("Can't load level");
+            Log.Error("Can't load level");
             return;
         }
         
@@ -109,7 +109,7 @@ internal class MainWindowMediator : BaseMediator<MainWindowView>
     private void ClickQuite()
     {
 #if UNITY_EDITOR
-        Log.Write("Game quit");
+        Log.Info("Game quit");
 #endif
         Application.Quit();
     }

@@ -37,7 +37,7 @@ internal class LanguageSelectionWindowMediator : BaseMediator<LanguageSelectionW
         if (_localizationManager.ActiveLanguage == language)
             return;
         
-        Log.WriteInfo($"Select language: {language}");
+        Log.Info($"Select language: {language}");
         _localizationManager.SetLanguage(language);
         ClickCancelButton();
     }
@@ -50,7 +50,7 @@ internal class LanguageSelectionWindowMediator : BaseMediator<LanguageSelectionW
                 ClickCancelButton();
                 break;
             default:
-                Log.WriteError($"Unknown action {action}");
+                Log.Error($"Unknown action {action}");
                 break;
             
         }

@@ -57,7 +57,7 @@ internal class SettingsWindowMediator : BaseMediator<SettingsWindowView>
                 ClickSelectLanguage();
                 break;
             default:
-                Log.WriteError($"Unknown action {action}");
+                Log.Error($"Unknown action {action}");
                 break;
         }
     }
@@ -73,7 +73,7 @@ internal class SettingsWindowMediator : BaseMediator<SettingsWindowView>
                 _audioManager.SoundEnabled = value;
                 break;
             default:
-                Log.WriteError($"Unknown action {action}");
+                Log.Error($"Unknown action {action}");
                 break;
         }
     }

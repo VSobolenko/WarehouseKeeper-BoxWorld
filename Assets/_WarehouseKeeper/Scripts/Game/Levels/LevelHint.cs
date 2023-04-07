@@ -49,7 +49,7 @@ internal class LevelHint : PrefabProviderByAddress<DirectionalArrow>
     {
         if (_levelSettings.SpentHints == 0)
         {
-            Log.WriteError("Hint not setup");
+            Log.Error("Hint not setup");
 
             return _levelSettings.Walkthrough.Length;
         }
@@ -71,7 +71,7 @@ internal class LevelHint : PrefabProviderByAddress<DirectionalArrow>
     private void SetHintState(int moveState)
     {
         if (moveState >= _levelSettings.Walkthrough.Length)
-            Log.WriteError("State overflow");
+            Log.Error("State overflow");
         
         var state = Mathf.Min(moveState, _levelSettings.Walkthrough.Length);
         if (state == _maxStage)
