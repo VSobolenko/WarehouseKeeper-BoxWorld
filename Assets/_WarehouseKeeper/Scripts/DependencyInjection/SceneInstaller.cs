@@ -1,7 +1,8 @@
-﻿using System;
+﻿using Game.Installers.Factories;
+using Game.Installers.GUI;
+using Game.Installers.Pools;
 using UnityEngine;
 using WarehouseKeeper._WarehouseKeeper.Scripts.UI.Windows.AppearanceWindows.Components.AppearanceItems;
-using WarehouseKeeper.DependencyInjection.SceneInstallers;
 using WarehouseKeeper.Directors;
 using WarehouseKeeper.Directors.Game;
 using WarehouseKeeper.Directors.Game.Ads;
@@ -12,8 +13,6 @@ using WarehouseKeeper.Directors.Game.SceneData;
 using WarehouseKeeper.Directors.Game.UserResources;
 using WarehouseKeeper.Directors.UI.Shops;
 using WarehouseKeeper.Directors.UI.Windows;
-using WarehouseKeeper.Factories;
-using WarehouseKeeper.Factories.Implementation;
 using WarehouseKeeper.Levels;
 using WarehouseKeeper.UI.Windows.LevelSelections;
 using WarehouseKeeper.UI.Windows.ShopWindows;
@@ -40,7 +39,9 @@ public class SceneInstaller : MonoInstaller<SceneInstaller>
     {
         ObjectPoolInstaller.Install(Container, poolCapacity);
         SceneGuiInstaller.Install(Container, uiRoot);
-        Container.Bind<IFactoryGameObjects>().To<GameObjectsFactory>().AsSingle();
+        FactoryInstaller.Install(Container);
+
+        //Container.Bind<IFactoryGameObjects>().To<GameObjectsFactory>().AsSingle();
     }
 
     private void InstallDirectors()

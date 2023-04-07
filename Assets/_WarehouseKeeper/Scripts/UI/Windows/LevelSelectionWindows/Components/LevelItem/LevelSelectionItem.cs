@@ -1,10 +1,10 @@
 ﻿using System;
+using Game;
+using Game.Pools;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using WarehouseKeeper.Extension;
 using WarehouseKeeper.Levels;
-using WarehouseKeeper.Pools;
 
 namespace WarehouseKeeper.UI.Windows.LevelSelections
 {

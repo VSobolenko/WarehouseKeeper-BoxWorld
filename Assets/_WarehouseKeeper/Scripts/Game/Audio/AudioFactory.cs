@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using WarehouseKeeper.AssetContent;
-using WarehouseKeeper.Audio;
-using WarehouseKeeper.Extension;
-using WarehouseKeeper.Pools;
+using Game;
+using Game.AssetContent;
+using Game.Audio;
+using Game.Pools;
 using WarehouseKeeper.UI.Windows;
 using Zenject;
 

@@ -1,10 +1,8 @@
-﻿using System;
+﻿using Game;
+using Game.AssetContent;
+using Game.Pools;
 using UnityEngine;
-using WarehouseKeeper.AssetContent;
 using WarehouseKeeper.Directors.Game.Hints;
-using WarehouseKeeper.Directors.Game.UserResources;
-using WarehouseKeeper.Extension;
-using WarehouseKeeper.Pools;
 using WarehouseKeeper.UI.Windows;
 
 namespace WarehouseKeeper.Levels
@@ -16,7 +14,6 @@ internal class LevelHint : PrefabProviderByAddress<DirectionalArrow>
     private readonly IObjectPoolManager _objectPool;
     private readonly LevelSettings _levelSettings;
     private readonly LevelDirector _levelDirector;
-    private readonly PlayerResourcesDirector _playerResourcesDirector;
 
     public bool HintIsActive => _activeMoveState <= _maxStage;
     public Vector2 TargetDirection => _levelSettings.Walkthrough[_activeMoveState].GetVector2();
@@ -30,13 +27,12 @@ internal class LevelHint : PrefabProviderByAddress<DirectionalArrow>
     public LevelHint(IAddressablesManager addressablesManager, 
                      IObjectPoolManager objectPool,
                      LevelRepositoryDirector levelRepositoryDirector, 
-                     LevelDirector levelDirector, PlayerResourcesDirector playerResourcesDirector) 
+                     LevelDirector levelDirector) 
         : base(addressablesManager)
     {
         _objectPool = objectPool;
         _levelSettings = levelRepositoryDirector.GetLevelSetting(levelDirector.ActiveLevel.LevelId);
         _levelDirector = levelDirector;
-        _playerResourcesDirector = playerResourcesDirector;
 
         _activeMoveState = 0;
         _levelDirector.ActiveLevel.Data.CountActiveHints++;

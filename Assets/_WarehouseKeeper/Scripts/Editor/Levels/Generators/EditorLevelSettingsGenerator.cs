@@ -1,11 +1,11 @@
-﻿using UnityEditor;
+﻿using Game.Installers.IO;
+using Game.Installers.Repositories;
+using Game.Repositories;
+using UnityEditor;
 using UnityEngine;
 using WarehouseKeeper.EditorScripts;
 using WarehouseKeeper.Levels;
-using WarehouseKeeper.Repositories;
-using WarehouseKeeper.Repositories.FileSave;
-using WarehouseKeeper.Repositories.FileSave.Implementation;
-using WarehouseKeeper.Repositories.Implementation;
+using Zenject;
 
 namespace WarehouseKeeper.EditorTools.Levels
 {
@@ -15,7 +15,7 @@ public class EditorLevelSettingsGenerator : EditorWindow
     private const string PathToLevels = "_WarehouseKeeper/DynamicAssets/Resources/Levels/";
     private string _console = "Level generator console";
 
-    [MenuItem(EditorGameNaming.WindowStartedName + "Level generator")]
+    [MenuItem(EditorGameData.EditorName + "/Level generator")]
     private static void ShowWindow()
     {
         var window = GetWindow<EditorLevelSettingsGenerator>();
@@ -43,8 +43,12 @@ public class EditorLevelSettingsGenerator : EditorWindow
     {
         var savePath = $"{Application.dataPath}/{PathToLevels}";
         var defaultGridSize = new Vector2Int(3, 3);
-        ISaveFile saveFile = new BinarySave();
-        IRepository<LevelSettings> repository = new FileRepositoryManager<LevelSettings>(savePath, saveFile, false);
+        
+        var container = new DiContainer();
+        EditorFileIOInstaller.Install(container);
+        EditorRepositoryInstaller<LevelSettings>.Install(container, savePath);
+
+        var repository = container.Resolve<IRepository<LevelSettings>>();
         _levelGenerator = new LevelSettingsGenerator(repository, OnLogText, defaultGridSize, ReimportResourcesLevels);
     }
 

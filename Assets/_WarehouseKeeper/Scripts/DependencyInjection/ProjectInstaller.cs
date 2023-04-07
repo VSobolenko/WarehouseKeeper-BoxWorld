@@ -1,11 +1,15 @@
-using System;
-using WarehouseKeeper.AssetContent;
-using WarehouseKeeper.AssetContent.Implementation;
-using WarehouseKeeper.DependencyInjection.ProjectInstallers;
+using Game.Installers.Ads;
+using Game.Installers.AssetContent;
+using Game.Installers.Audio;
+using Game.Installers.Factories;
+using Game.Installers.GUI;
+using Game.Installers.Inputs;
+using Game.Installers.Localizations;
+using Game.Installers.Repositories;
+using Game.Installers.Shops;
 using WarehouseKeeper.Directors.Game.Analytics.Signals;
-using WarehouseKeeper.Factories;
-using WarehouseKeeper.Factories.Implementation;
-using WarehouseKeeper.Shops;
+using WarehouseKeeper.Directors.Game.UserResources;
+using WarehouseKeeper.Levels;
 using Zenject;
 
 namespace WarehouseKeeper.DependencyInjection
@@ -22,17 +26,20 @@ public class ProjectInstaller : MonoInstaller
     private void InstallBaseManagers()
     {
         SignalBusInstaller.Install(Container);
-        SaveSystemInstaller.Install(Container);
-        CommonInstaller.Install(Container);
+        SaveSystemInstaller<LevelData, LevelSettings, UserData>.Install(Container);
         InputInstaller.Install(Container);
         LocalizationInstaller.Install(Container);
         ProjectGuiInstaller.Install(Container);
         AudioInstaller.Install(Container);
         ShopInstaller.Install(Container);
         AdsInstaller.Install(Container);
+        FactoryInstaller.Install(Container);
+        AddressablesInstaller.Install(Container);
         
-        Container.Bind<IFactoryGameObjects>().To<GameObjectsFactory>().AsSingle();
-        Container.Bind<IAddressablesManager>().To<AddressablesManager>().AsSingle();
+        //Container.Bind<IFactoryGameObjects>().To<GameObjectsFactory>().AsSingle();
+        //Container.Bind<IAddressablesManager>().To<AddressablesManager>().AsSingle();
+        Container.BindInterfacesAndSelfTo<LevelRepositoryDirector>().AsSingle();
+
     }
 
     private void InstallManagers()

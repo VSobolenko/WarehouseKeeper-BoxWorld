@@ -1,9 +1,8 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
+using Game;
 using WarehouseKeeper.Directors.Game.Game_FSM;
 using WarehouseKeeper.Directors.Game.Game_FSM.Transitions;
 using WarehouseKeeper.Directors.UI.Windows;
-using WarehouseKeeper.Extension;
 using WarehouseKeeper.Levels;
 using WarehouseKeeper.UI.Windows.GameWindows;
 using Zenject;

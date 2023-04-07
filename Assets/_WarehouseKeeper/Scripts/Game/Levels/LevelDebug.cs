@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 using Zenject;
 
@@ -10,9 +9,9 @@ public class LevelDebug : MonoBehaviour
 #if UNITY_EDITOR
     [Inject] private LevelDirector _levelDirector;
 
-    [SerializeField] private bool enableNodeDebug;
-    [SerializeField] private bool enableEntityDebug;
-    [Space, SerializeField] private bool enableType;
+    [SerializeField] private bool _enableNodeDebug;
+    [SerializeField] private bool _enableEntityDebug;
+    [Space, SerializeField] private bool _enableType;
 
     private void OnDrawGizmos()
     {
@@ -20,12 +19,12 @@ public class LevelDebug : MonoBehaviour
         if (activeLevel == null)
             return;
 
-        if (enableNodeDebug)
+        if (_enableNodeDebug)
         {
             DrawNodeDebug(activeLevel);
         }
 
-        if (enableEntityDebug)
+        if (_enableEntityDebug)
         {
             DrawEntityDebug(activeLevel);
         }
@@ -41,7 +40,7 @@ public class LevelDebug : MonoBehaviour
                 if (node.Type == PieceType.Empty)
                     continue;
 
-                var data = enableType ? $"[{node.Type}][{x}, {y}]" : $"[{x}, {y}]";
+                var data = _enableType ? $"[{node.Type}][{x}, {y}]" : $"[{x}, {y}]";
                 Handles.Label(node.Entity.transform.position + Vector3.up / 2f + Vector3.right / 2f, data);
             }
         }
@@ -56,7 +55,7 @@ public class LevelDebug : MonoBehaviour
                 var entity = activeLevel.entities[x, y];
                 if (entity.Type == GameEntityType.None)
                     continue;
-                var data = enableType ? $"[{entity.Type}][{x}, {y}]" : $"[{x}, {y}]";
+                var data = _enableType ? $"[{entity.Type}][{x}, {y}]" : $"[{x}, {y}]";
                 Handles.Label(entity.Entity.transform.position + Vector3.up / 2f + Vector3.right / 2f, data);
             }
         }

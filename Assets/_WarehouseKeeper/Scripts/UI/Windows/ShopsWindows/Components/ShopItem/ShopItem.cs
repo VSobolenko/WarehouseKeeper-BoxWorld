@@ -1,9 +1,9 @@
 using System;
+using Game.Pools;
+using Game.Shops;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using WarehouseKeeper.Pools;
-using WarehouseKeeper.Shops;
 
 namespace WarehouseKeeper.UI.Windows.ShopWindows
 {

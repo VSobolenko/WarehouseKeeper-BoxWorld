@@ -37,10 +37,6 @@ MonoBehaviour:
     m_Address: EntityBox
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 66555534a6a4db84cbad07827ca422dd
-    m_Address: UI/TestMediator
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: ed648ac4245f1964b8f01154bef4a028
     m_Address: UI/MainWindowMediator
     m_ReadOnly: 0
@@ -61,20 +57,12 @@ MonoBehaviour:
     m_Address: UI/SettingsWindowMediator
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 4cf999189af388f4382bacfda6388b36
-    m_Address: UI/AppearanceWindowMediator
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: f5b38ae66a242a7448ba6cf1be94f0a1
     m_Address: UI/GameWindowMediator
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: d1100890efd385b42ba33fccc2f87c82
     m_Address: LevelSelectionItem
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 599c431b8a8663b449538aeb762642a0
-    m_Address: AppearanceItem
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 64551f2121cce8a4f90ebec044190e67
@@ -107,6 +95,65 @@ MonoBehaviour:
     m_SerializedLabels: []
   - m_GUID: 12203d97917005546a4b66d7dc876294
     m_Address: MiddleShopLocalItem
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1ac6353e5cc7f2041994feb6e702b549
+    m_Address: Assets/_WarehouseKeeper/StaticAssets/Fonts/Noto Sans/Noto_Sans/NotoSans-Regular.ttf
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a52824e7c8ff39a40a148412b09c29c2
+    m_Address: Assets/_WarehouseKeeper/StaticAssets/Fonts/Noto Sans/Noto_Sans_JP/NotoSansJP-Regular.otf
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 49ee44abbc7d5fe428b120b58753c988
+    m_Address: Assets/_WarehouseKeeper/StaticAssets/Fonts/Noto Sans/Noto_Sans_KR/NotoSansKR-Regular.otf
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e7e155798aedf4a4b835b5a64c47eed7
+    m_Address: Assets/_WarehouseKeeper/StaticAssets/Fonts/Noto Sans/Noto_Sans_SC/NotoSansSC-Regular.otf
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2069cbb3e873ff845a7a2623ce4890b6
+    m_Address: Assets/_WarehouseKeeper/StaticAssets/Fonts/Noto Sans/Noto_Sans_TC/NotoSansTC-Regular.otf
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3491e504e5734ce468c392aa741efd82
+    m_Address: Assets/_WarehouseKeeper/StaticAssets/Fonts/Noto Sans/Noto_Sans/NotoSans-Regular
+      SDF.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: fc1f21c554462904db706ac70f5805dc
+    m_Address: Assets/_WarehouseKeeper/StaticAssets/Fonts/Noto Sans/Noto_Sans_JP/NotoSansJP-Regular
+      SDF.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a92c8dee118d33e43a0267702e056e60
+    m_Address: Assets/_WarehouseKeeper/StaticAssets/Fonts/Noto Sans/Noto_Sans_KR/NotoSansKR-Regular
+      SDF.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c5b76d1cc76d75d47a5d5e02a887af72
+    m_Address: Assets/_WarehouseKeeper/StaticAssets/Fonts/Noto Sans/Noto_Sans_SC/NotoSansSC-Regular
+      SDF.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9a63bb3662b44464b80e5ba5596f74c6
+    m_Address: Assets/_WarehouseKeeper/StaticAssets/Fonts/Noto Sans/Noto_Sans_TC/NotoSansTC-Regular
+      SDF.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f29d8ccf93ea0904381f06711c6f99e3
+    m_Address: Assets/_WarehouseKeeper/StaticAssets/Sprites/Hint/incandescent_light_bulb_negate
+      (1) (1) (2).png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 11e0e86e93fc9b14481cb99c86f51f07
+    m_Address: Assets/_WarehouseKeeper/StaticAssets/Sprites/no-ads-icon-24.jpg
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9291b2fab4f1290469b7281e5b692e69
+    m_Address: Assets/_WarehouseKeeper/StaticAssets/Sprites/Background/pixil-frame-0
+      (5).png
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

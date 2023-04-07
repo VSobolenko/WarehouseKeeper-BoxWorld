@@ -1,4 +1,4 @@
-﻿using WarehouseKeeper.Directors.Common.Managers.Ads;
+﻿using Game.Ads;
 using WarehouseKeeper.Directors.Game.UserResources;
 
 namespace WarehouseKeeper.Directors.Game.Ads

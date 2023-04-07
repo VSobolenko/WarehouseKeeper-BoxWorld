@@ -1,4 +1,4 @@
-﻿using WarehouseKeeper.UI.Windows;
+﻿using Game.GUI.Windows.Components;
 
 namespace WarehouseKeeper._WarehouseKeeper.Scripts.UI.Windows.LevelSelectionWindows.SybWindows.Components
 {

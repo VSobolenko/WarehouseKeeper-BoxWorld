@@ -1,0 +1,3 @@
+[submodule "Assets/_WarehouseKeeper/GameCoreLib"]
+	path = Assets/_WarehouseKeeper/GameCoreLib
+	url = https://github.com/VSobolenko/GameCorLib

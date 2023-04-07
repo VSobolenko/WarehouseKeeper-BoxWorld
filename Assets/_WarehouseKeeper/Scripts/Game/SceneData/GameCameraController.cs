@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using WarehouseKeeper.Components;
+﻿using Game.Components;
+using UnityEngine;
 
 namespace WarehouseKeeper.Directors.Game.SceneData
 {

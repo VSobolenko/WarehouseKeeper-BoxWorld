@@ -1,15 +1,14 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
+using Game;
+using Game.GUI.Windows;
+using Game.Localizations;
 using UnityEngine;
 using WarehouseKeeper.Directors.Game;
 using WarehouseKeeper.Directors.Game.Analytics.Signals;
 using WarehouseKeeper.Directors.Game.Audio;
 using WarehouseKeeper.Directors.Game.UserResources;
 using WarehouseKeeper.Directors.UI.Windows;
-using WarehouseKeeper.Extension;
-using WarehouseKeeper.Gui.Windows.Mediators;
 using WarehouseKeeper.Levels;
-using WarehouseKeeper.Localizations;
 using WarehouseKeeper.StaticData;
 using Zenject;
 
@@ -24,11 +23,11 @@ internal class MainWindowMediator : BaseMediator<MainWindowView>
     private readonly LevelRepositoryDirector _levelRepositoryDirector;
     private readonly ILocalizationManager _localizationManager;
     private readonly SignalBus _signalBus;
-    
-    public MainWindowMediator(MainWindowView window, 
-                              WindowsDirector windowsDirector,
-                              GameDirector gameDirector, 
-                              AudioDirector audioDirector, ILocalizationManager localizationManager, PlayerResourcesDirector playerResourcesDirector, LevelRepositoryDirector levelRepositoryDirector, SignalBus signalBus) : base(window)
+
+    public MainWindowMediator(MainWindowView window, WindowsDirector windowsDirector, GameDirector gameDirector,
+                              AudioDirector audioDirector, ILocalizationManager localizationManager,
+                              PlayerResourcesDirector playerResourcesDirector,
+                              LevelRepositoryDirector levelRepositoryDirector, SignalBus signalBus) : base(window)
     {
         _windowsDirector = windowsDirector;
         _gameDirector = gameDirector;

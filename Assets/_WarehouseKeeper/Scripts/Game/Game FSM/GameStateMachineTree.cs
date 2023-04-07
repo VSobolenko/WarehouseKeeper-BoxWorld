@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Game;
+using Game.FSMCore;
+using Game.FSMCore.States;
+using Game.FSMCore.Transitions;
 using WarehouseKeeper.Directors.Game.Game_FSM.Transitions;
-using WarehouseKeeper.Extension;
-using WarehouseKeeper.FSMCore;
 using Zenject;
 
 namespace WarehouseKeeper.Directors.Game.Game_FSM
@@ -19,8 +21,8 @@ internal sealed class GameStateMachineTree
     private LevelCollectorState _levelCollectorState;
     private PauseState _pauseState;
 
-    private readonly List<BaseState> _states = new List<BaseState>();
-    private readonly StateMachineTree _tree = new StateMachineTree();
+    private readonly List<BaseState> _states = new();
+    private readonly StateMachineTree _tree = new();
     
     public GameStateMachineTree(DiContainer diContainer, GameStateMachine stateMachine)
     {

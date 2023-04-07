@@ -1,7 +1,6 @@
-﻿using WarehouseKeeper.Directors.Game.Audio;
-using WarehouseKeeper.Directors.Game.SceneData;
+﻿using Game.FSMCore.States;
+using WarehouseKeeper.Directors.Game.Audio;
 using WarehouseKeeper.Directors.UI.Windows;
-using WarehouseKeeper.FSMCore;
 using WarehouseKeeper.Levels;
 
 namespace WarehouseKeeper.Directors.Game.Game_FSM

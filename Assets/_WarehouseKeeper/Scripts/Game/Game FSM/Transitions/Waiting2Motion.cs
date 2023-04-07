@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+﻿using Game.FSMCore;
+using Game.FSMCore.Transitions;
+using Game.Inputs;
+using UnityEngine;
 using WarehouseKeeper.Directors.UI.Windows;
-using WarehouseKeeper.FSMCore;
-using WarehouseKeeper.Inputs;
 using WarehouseKeeper.Levels;
 using WarehouseKeeper.UI.Windows.GameWindows;
 
@@ -9,7 +10,7 @@ namespace WarehouseKeeper.Directors.Game.Game_FSM.Transitions
 {
 internal class Waiting2Motion : DirectedTransition<bool, Vector2, bool>
 {
-    private readonly SwipeManager _swipeManager;
+    private readonly SwipeDetector _swipeDetector;
     private readonly WaitingState _waitingState;
     private readonly MotionState _motionState;
     private readonly LevelDirector _levelDirector;
@@ -17,16 +18,17 @@ internal class Waiting2Motion : DirectedTransition<bool, Vector2, bool>
     private GameWindowMediator _cachedWindow;
 
     private bool _canDecide = false;
-    
+
     public Waiting2Motion(IStateMachine stateMachine, WaitingState sourceState, MotionState targetState,
-                          SwipeManager swipeManager, LevelDirector levelDirector, WindowsDirector windowsDirector) : base(stateMachine, sourceState, targetState)
+                          SwipeDetector swipeDetector, LevelDirector levelDirector, WindowsDirector windowsDirector) :
+        base(stateMachine, sourceState, targetState)
     {
-        _swipeManager = swipeManager;
+        _swipeDetector = swipeDetector;
         _levelDirector = levelDirector;
         _windowsDirector = windowsDirector;
         _waitingState = sourceState;
         _motionState = targetState;
-        _swipeManager.OnSwipeNormalized += OnUserSwipe;
+        _swipeDetector.OnSwipeNormalized += OnUserSwipe;
     }
 
     private void OnUserSwipe(Vector2 direction)
@@ -49,7 +51,7 @@ internal class Waiting2Motion : DirectedTransition<bool, Vector2, bool>
 
     public override void Dispose()
     {
-        _swipeManager.OnSwipeNormalized -= OnUserSwipe;
+        _swipeDetector.OnSwipeNormalized -= OnUserSwipe;
     }
     
     private GameWindowMediator GetWindow()

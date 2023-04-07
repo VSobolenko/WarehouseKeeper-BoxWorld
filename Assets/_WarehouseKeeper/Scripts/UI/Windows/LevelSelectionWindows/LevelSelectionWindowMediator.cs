@@ -1,10 +1,9 @@
-﻿using System;
+﻿using Game;
+using Game.GUI.Windows;
 using WarehouseKeeper.Directors.Game;
 using WarehouseKeeper.Directors.Game.Analytics.Signals;
 using WarehouseKeeper.Directors.Game.UserResources;
 using WarehouseKeeper.Directors.UI.Windows;
-using WarehouseKeeper.Extension;
-using WarehouseKeeper.Gui.Windows.Mediators;
 using WarehouseKeeper.Levels;
 using WarehouseKeeper.UI.Windows.LevelSelection;
 using Zenject;

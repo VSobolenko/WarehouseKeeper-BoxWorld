@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Text;
+using Game;
+using Game.GUI.Windows;
+using Game.Localizations;
 using WarehouseKeeper.Directors.Game;
 using WarehouseKeeper.Directors.Game.Analytics.Signals;
 using WarehouseKeeper.Directors.Game.Audio;
 using WarehouseKeeper.Directors.Game.UserResources;
 using WarehouseKeeper.Directors.UI.Windows;
-using WarehouseKeeper.Extension;
-using WarehouseKeeper.Gui.Windows.Mediators;
 using WarehouseKeeper.Levels;
-using WarehouseKeeper.Localizations;
 using Zenject;
 
 namespace WarehouseKeeper.UI.Windows.GameWindows

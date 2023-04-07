@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Threading;
-using System.Threading.Tasks;
+using Game;
+using Game.GUI.Windows;
+using Game.Localizations;
+using Game.Shops;
 using WarehouseKeeper.Directors.Game.Analytics.Signals;
 using WarehouseKeeper.Directors.Game.UserResources;
 using WarehouseKeeper.Directors.UI.Shops;
 using WarehouseKeeper.Directors.UI.Windows;
-using WarehouseKeeper.Extension;
-using WarehouseKeeper.Gui.Windows.Mediators;
-using WarehouseKeeper.Localizations;
-using WarehouseKeeper.Shops;
 using WarehouseKeeper.UI.Windows.MainWindows;
 using Zenject;
 

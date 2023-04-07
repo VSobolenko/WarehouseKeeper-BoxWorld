@@ -1,5 +1,5 @@
 ﻿using System;
-using WarehouseKeeper.Repositories;
+using Game.Repositories;
 
 namespace WarehouseKeeper.Levels
 {

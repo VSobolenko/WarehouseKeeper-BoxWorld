@@ -1,12 +1,12 @@
 ﻿using System;
 using Cysharp.Threading.Tasks;
+using Game;
+using Game.GUI.Windows;
+using Game.Localizations;
 using WarehouseKeeper.Directors.Game;
 using WarehouseKeeper.Directors.Game.Analytics.Signals;
 using WarehouseKeeper.Directors.UI.Windows.VictoryScreen.Components;
-using WarehouseKeeper.Extension;
-using WarehouseKeeper.Gui.Windows.Mediators;
 using WarehouseKeeper.Levels;
-using WarehouseKeeper.Localizations;
 using Zenject;
 
 namespace WarehouseKeeper.Directors.UI.Windows.VictoryScreen

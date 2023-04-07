@@ -1,7 +1,7 @@
-﻿using UnityEngine;
+﻿using Game.FSMCore.States;
+using Game.Inputs;
+using UnityEngine;
 using WarehouseKeeper.Directors.UI.Windows;
-using WarehouseKeeper.FSMCore;
-using WarehouseKeeper.Inputs;
 using WarehouseKeeper.Levels;
 using WarehouseKeeper.UI.Windows.GameWindows;
 
@@ -9,16 +9,16 @@ namespace WarehouseKeeper.Directors.Game.Game_FSM
 {
 internal class WaitingState: State<bool, Vector2>
 {
-    private readonly SwipeManager _swipeManager;
+    private readonly SwipeDetector _swipeDetector;
     private readonly WindowsDirector _windowsDirector;
     private readonly LevelDirector _levelDirector;
     private GameWindowMediator _cachedWindow;
 
     private Vector2 _lastSwipeDirection;
     
-    public WaitingState(SwipeManager swipeManager, WindowsDirector windowsDirector, LevelDirector levelDirector)
+    public WaitingState(SwipeDetector swipeDetector, WindowsDirector windowsDirector, LevelDirector levelDirector)
     {
-        _swipeManager = swipeManager;
+        _swipeDetector = swipeDetector;
         _windowsDirector = windowsDirector;
         _levelDirector = levelDirector;
     }
@@ -27,7 +27,7 @@ internal class WaitingState: State<bool, Vector2>
 
     protected override void OnStateActivated()
     {
-        _swipeManager.OnSwipeNormalized += OnUserSwipe;
+        _swipeDetector.OnSwipeNormalized += OnUserSwipe;
         SetupWindow();
     }
 
@@ -40,13 +40,13 @@ internal class WaitingState: State<bool, Vector2>
         if (_levelDirector.ActiveLevel.Hint.InProgress || _levelDirector.ActiveLevel.Hint.IsActive == false || _levelDirector.ActiveLevel.Hint.IsComplete)
             GetWindow()?.DisableHint();
         _levelDirector.DisableHintView();
-        _swipeManager.OnSwipeNormalized -= OnUserSwipe;
+        _swipeDetector.OnSwipeNormalized -= OnUserSwipe;
         return _lastSwipeDirection;
     }
 
     public override void Dispose()
     {
-        _swipeManager.OnSwipeNormalized -= OnUserSwipe;
+        _swipeDetector.OnSwipeNormalized -= OnUserSwipe;
     }
 
     private void OnUserSwipe(Vector2 direction)

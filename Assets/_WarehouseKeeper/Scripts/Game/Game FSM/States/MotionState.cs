@@ -1,9 +1,9 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
+using Game;
+using Game.FSMCore.States;
 using UnityEngine;
 using WarehouseKeeper.Directors.UI.Windows;
-using WarehouseKeeper.Extension;
-using WarehouseKeeper.FSMCore;
 using WarehouseKeeper.Levels;
 using WarehouseKeeper.UI.Windows.GameWindows;
 

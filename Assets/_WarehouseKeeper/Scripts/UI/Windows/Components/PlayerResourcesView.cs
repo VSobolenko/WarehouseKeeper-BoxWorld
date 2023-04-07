@@ -1,9 +1,7 @@
-﻿using TMPro;
+﻿using Game.Localizations;
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 using WarehouseKeeper.Directors.Game.UserResources;
-using WarehouseKeeper.Localizations;
-using Zenject;
 
 namespace WarehouseKeeper.UI.Windows
 {

@@ -5,7 +5,7 @@ namespace WarehouseKeeper.EditorScripts
 {
 public class TestEditorWindow : EditorWindow
 {
-    [MenuItem("Warehouse Keeper/Test window")]
+    [MenuItem(EditorGameData.EditorName + "/Test window")]
     private static void ShowWindow()
     {
         var window = GetWindow<TestEditorWindow>();

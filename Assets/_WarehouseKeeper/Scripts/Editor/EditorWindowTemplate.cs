@@ -6,7 +6,7 @@ namespace WarehouseKeeper.EditorScripts
 {
 public class EditorWindowTemplate : EditorWindow
 {
-    [MenuItem(EditorGameNaming.WindowStartedName + "Editor template")]
+    [MenuItem(EditorGameData.EditorName + "/Editor template")]
     public static void OpenWindow()
     {
         var window = GetWindow<EditorWindowTemplate>();

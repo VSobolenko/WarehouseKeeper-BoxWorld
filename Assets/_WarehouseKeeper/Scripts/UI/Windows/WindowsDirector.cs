@@ -1,8 +1,7 @@
 ﻿using System;
+using Game.GUI.Windows;
 using WarehouseKeeper._WarehouseKeeper.Scripts.UI.Windows.LevelSelectionWindows.SybWindows;
 using WarehouseKeeper.Directors.UI.Windows.VictoryScreen;
-using WarehouseKeeper.Gui.Windows;
-using WarehouseKeeper.Gui.Windows.Mediators;
 using WarehouseKeeper.Levels;
 using WarehouseKeeper.UI.Windows.AppearanceWindows;
 using WarehouseKeeper.UI.Windows.ConfirmationWindows;
@@ -19,12 +18,10 @@ namespace WarehouseKeeper.Directors.UI.Windows
 internal class WindowsDirector : IInitializable
 {
     private readonly IWindowsManager _windowsManager;
-    private readonly IWindowsManagerAsync _windowsManagerAsync;
 
-    public WindowsDirector(IWindowsManager windowsManager, IWindowsManagerAsync windowsManagerAsync)
+    public WindowsDirector(IWindowsManager windowsManager)
     {
         _windowsManager = windowsManager;
-        _windowsManagerAsync = windowsManagerAsync;
     }
 
     public void Initialize()

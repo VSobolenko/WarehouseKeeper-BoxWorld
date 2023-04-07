@@ -8,7 +8,7 @@ public class DataCleaner : EditorWindow
 {
     private string PathToUserData => $"{Application.persistentDataPath}/UserData";
     
-    [MenuItem(EditorGameNaming.WindowStartedName + "Data manager", false)]
+    [MenuItem(EditorGameData.EditorName + "/Data manager", false)]
     private static void ShowWindow()
     {
         var window = GetWindow<DataCleaner>();

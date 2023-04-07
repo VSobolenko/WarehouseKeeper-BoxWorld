@@ -1,4 +1,4 @@
-﻿using WarehouseKeeper.Shops;
+﻿using Game.Shops;
 
 namespace WarehouseKeeper.Directors.Game.Analytics.Signals
 {

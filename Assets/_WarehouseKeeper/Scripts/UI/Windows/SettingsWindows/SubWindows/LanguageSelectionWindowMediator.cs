@@ -1,8 +1,8 @@
 ﻿using System;
+using Game;
+using Game.GUI.Windows;
+using Game.Localizations;
 using WarehouseKeeper.Directors.UI.Windows;
-using WarehouseKeeper.Extension;
-using WarehouseKeeper.Gui.Windows.Mediators;
-using WarehouseKeeper.Localizations;
 using WarehouseKeeper.UI.Windows.SettingsWindows.SubWindows.Elements;
 
 namespace WarehouseKeeper.UI.Windows.SettingsWindows.SubWindows

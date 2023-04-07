@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Game;
+using Game.AssetContent;
+using Game.Localizations;
+using Game.Pools;
+using Game.Shops;
 using UnityEngine;
-using WarehouseKeeper.AssetContent;
 using WarehouseKeeper.Directors.Game.UserResources;
 using WarehouseKeeper.Directors.UI.Shops;
-using WarehouseKeeper.Extension;
-using WarehouseKeeper.Localizations;
-using WarehouseKeeper.Pools;
-using WarehouseKeeper.Shops;
 using Zenject;
 
 namespace WarehouseKeeper.UI.Windows.ShopWindows
@@ -25,9 +25,9 @@ internal class ShopItemFactory : IInitializable, IDisposable
     private readonly ShopDirector _shopDirector;
     private readonly PlayerResourcesDirector _playerResourcesDirector;
 
-    public ShopItemFactory(IAddressablesManager addressablesManager,
-                           IObjectPoolManager objectPool,
-                           IShopManager shopManager, ILocalizationManager localizationManager, ShopDirector shopDirector, PlayerResourcesDirector playerResourcesDirector)
+    public ShopItemFactory(IAddressablesManager addressablesManager, IObjectPoolManager objectPool,
+                           IShopManager shopManager, ILocalizationManager localizationManager,
+                           ShopDirector shopDirector, PlayerResourcesDirector playerResourcesDirector)
     {
         _addressablesManager = addressablesManager;
         _objectPool = objectPool;
@@ -61,7 +61,12 @@ internal class ShopItemFactory : IInitializable, IDisposable
             if (string.IsNullOrEmpty(addressableKey))
                 Log.WriteError("Null addressable item key");
 
-            var item = await GetPrefabAsync<ShopItem>(addressableKey);
+            if (_cancellationTokenSource.IsCancellationRequested)
+                return;
+            var item = await GetPrefabAsync<ShopItem>(addressableKey, _cancellationTokenSource.Token);
+            if (_cancellationTokenSource.IsCancellationRequested)
+                return;
+            
             if (item == null)
             {
                 Log.InternalError();
@@ -117,10 +122,13 @@ internal class ShopItemFactory : IInitializable, IDisposable
         return instance;
     }
     
-    protected async Task<T> GetPrefabAsync<T>(string addressableKey) where T : class
+    protected async Task<T> GetPrefabAsync<T>(string addressableKey, CancellationToken token) where T : class
     {
         var prefab = await _addressablesManager.LoadAssetAsync<GameObject>(addressableKey);
-        
+
+        if (token.IsCancellationRequested)
+            return null;
+
         if (prefab == null)
         {
             Log.WriteError($"Addressable key prefab {addressableKey} missing");

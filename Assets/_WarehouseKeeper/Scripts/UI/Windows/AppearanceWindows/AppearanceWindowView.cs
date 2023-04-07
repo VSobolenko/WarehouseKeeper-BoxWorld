@@ -1,8 +1,7 @@
 ﻿using System;
+using Game.GUI.Windows;
 using UnityEngine;
-using WarehouseKeeper.Gui.Windows;
 using WarehouseKeeper.UI.Windows.AppearanceWindows.Components;
-using WarehouseKeeper.UI.Windows.ShopWindows.Components;
 
 namespace WarehouseKeeper.UI.Windows.AppearanceWindows
 {

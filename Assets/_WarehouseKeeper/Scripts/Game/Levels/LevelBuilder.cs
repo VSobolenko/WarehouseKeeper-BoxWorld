@@ -1,11 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using Game;
+using Game.AssetContent;
+using Game.Factories;
+using Game.Pools;
 using UnityEngine;
-using WarehouseKeeper.AssetContent;
-using WarehouseKeeper.Extension;
-using WarehouseKeeper.Factories;
-using WarehouseKeeper.Pools;
 using Zenject;
 
 namespace WarehouseKeeper.Levels

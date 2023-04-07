@@ -1,5 +1,6 @@
-﻿using UnityEngine;
-using WarehouseKeeper.FSMCore;
+﻿using Game.FSMCore;
+using Game.FSMCore.Transitions;
+using UnityEngine;
 
 namespace WarehouseKeeper.Directors.Game.Game_FSM.Transitions
 {

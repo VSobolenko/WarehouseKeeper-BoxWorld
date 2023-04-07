@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
+using Game;
+using Game.AssetContent;
 using UnityEngine;
-using WarehouseKeeper.AssetContent;
-using WarehouseKeeper.Extension;
 
 namespace WarehouseKeeper.UI.Windows
 {

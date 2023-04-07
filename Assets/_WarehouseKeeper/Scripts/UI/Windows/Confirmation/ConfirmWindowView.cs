@@ -1,7 +1,7 @@
 using System;
+using Game.GUI.Windows;
 using TMPro;
 using UnityEngine;
-using WarehouseKeeper.Gui.Windows;
 using WarehouseKeeper.UI.Windows.ConfirmationWindows.Components;
 
 namespace WarehouseKeeper.UI.Windows.ConfirmationWindows

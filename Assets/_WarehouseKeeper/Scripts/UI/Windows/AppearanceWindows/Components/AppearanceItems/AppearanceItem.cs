@@ -1,8 +1,8 @@
 ﻿using System;
+using Game.Pools;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using WarehouseKeeper.Pools;
 
 namespace WarehouseKeeper._WarehouseKeeper.Scripts.UI.Windows.AppearanceWindows.Components.AppearanceItems
 {

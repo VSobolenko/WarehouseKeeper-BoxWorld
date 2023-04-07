@@ -1,7 +1,7 @@
 using System;
-using WarehouseKeeper.Extension;
-using WarehouseKeeper.Gui.Windows.Mediators;
-using WarehouseKeeper.Localizations;
+using Game;
+using Game.GUI.Windows;
+using Game.Localizations;
 using WarehouseKeeper.UI.Windows.ConfirmationWindows.Components;
 
 namespace WarehouseKeeper.UI.Windows.ConfirmationWindows

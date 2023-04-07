@@ -1,12 +1,10 @@
-﻿using System;
-using WarehouseKeeper.Audio;
+﻿using Game;
+using Game.Audio;
+using Game.GUI.Windows;
 using WarehouseKeeper.Directors.Game.Analytics.Signals;
 using WarehouseKeeper.Directors.Game.UserResources;
 using WarehouseKeeper.Directors.UI.Windows;
-using WarehouseKeeper.Extension;
-using WarehouseKeeper.Gui.Windows.Mediators;
 using WarehouseKeeper.Levels;
-using WarehouseKeeper.UI.Windows.MainWindows;
 using Zenject;
 
 namespace WarehouseKeeper.UI.Windows.SettingsWindows

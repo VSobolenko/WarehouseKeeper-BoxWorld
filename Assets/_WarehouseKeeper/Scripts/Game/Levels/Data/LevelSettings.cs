@@ -1,6 +1,6 @@
 ﻿using System;
+using Game.Repositories;
 using UnityEngine;
-using WarehouseKeeper.Repositories;
 
 namespace WarehouseKeeper.Levels
 {

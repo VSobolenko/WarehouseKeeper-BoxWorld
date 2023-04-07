@@ -1,6 +1,6 @@
 ﻿using System;
+using Game;
 using UnityEngine;
-using WarehouseKeeper.Extension;
 
 namespace WarehouseKeeper.UI.Windows
 {

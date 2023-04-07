@@ -1,1 +1,0 @@
-All namespace to GUI - not UI/Gui

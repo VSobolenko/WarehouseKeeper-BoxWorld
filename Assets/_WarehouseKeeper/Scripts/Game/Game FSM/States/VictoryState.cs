@@ -1,9 +1,8 @@
-﻿using System;
+﻿using Game.FSMCore.States;
 using UnityEngine;
 using WarehouseKeeper.Directors.Game.Ads;
 using WarehouseKeeper.Directors.Game.UserResources;
 using WarehouseKeeper.Directors.UI.Windows;
-using WarehouseKeeper.FSMCore;
 using WarehouseKeeper.Levels;
 using WarehouseKeeper.UI.Windows.GameWindows;
 

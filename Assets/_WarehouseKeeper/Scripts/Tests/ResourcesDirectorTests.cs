@@ -1,8 +1,9 @@
 ﻿using System.Reflection;
 using NUnit.Framework;
+using UnityEngine;
 using WarehouseKeeper.Directors;
 
-namespace WarehouseKeeper.Test
+namespace GameTests
 {
 [TestFixture]
 public class ResourcesDirectorTests
@@ -20,6 +21,9 @@ public class ResourcesDirectorTests
         foreach (var propertyInfo in properties)
         {
             var value = propertyInfo.GetValue(resourcesDirector);
+            if (value == null)
+                Debug.Log($"Null properties: {propertyInfo.Name}");
+
             Assert.IsNotNull(value);
         }
     }

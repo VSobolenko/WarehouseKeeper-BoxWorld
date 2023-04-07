@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Text;
+using Game;
+using Game.GUI.Windows;
+using Game.Localizations;
 using WarehouseKeeper._WarehouseKeeper.Scripts.UI.Windows.LevelSelectionWindows.SybWindows.Components;
 using WarehouseKeeper.Directors.UI.Windows;
-using WarehouseKeeper.Extension;
-using WarehouseKeeper.Gui.Windows.Mediators;
 using WarehouseKeeper.Levels;
-using WarehouseKeeper.Localizations;
 
 namespace WarehouseKeeper._WarehouseKeeper.Scripts.UI.Windows.LevelSelectionWindows.SybWindows
 {

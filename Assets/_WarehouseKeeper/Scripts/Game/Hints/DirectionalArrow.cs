@@ -1,7 +1,6 @@
-﻿using System;
-using DG.Tweening;
+﻿using DG.Tweening;
+using Game.Pools;
 using UnityEngine;
-using WarehouseKeeper.Pools;
 
 namespace WarehouseKeeper.Directors.Game.Hints
 {

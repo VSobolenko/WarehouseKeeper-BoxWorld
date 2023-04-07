@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Game.Extensions;
+using Game.Repositories;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
-using WarehouseKeeper.Extension;
 using WarehouseKeeper.Levels;
-using WarehouseKeeper.Repositories;
 
 namespace WarehouseKeeper.EditorTools.Levels
 {
@@ -226,15 +226,16 @@ internal class LevelSettingsGenerator : LevelsGenerator<LevelSettings, LevelPiec
     private void CreateAllMirror()
     {
         var allId = repository.ReadAll().Select(x => x.Id).ToList();
-        allId.Shuffle();
+        var random = new System.Random();
+        allId.Shuffle(random);
         foreach (var id in allId)
             CreateMirrorXLevel(id);
         
-        allId.Shuffle();
+        allId.Shuffle(random);
         foreach (var id in allId)
             CreateMirrorYLevel(id);
 
-        allId.Shuffle();
+        allId.Shuffle(random);
         foreach (var id in allId)
             CreateMirrorXYLevel(id);
     }

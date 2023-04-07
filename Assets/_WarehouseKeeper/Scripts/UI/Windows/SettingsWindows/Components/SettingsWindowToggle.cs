@@ -1,5 +1,4 @@
-﻿using WarehouseKeeper.Gui.Windows;
-using WarehouseKeeper.UI.Windows;
+﻿using Game.GUI.Windows.Components;
 using WarehouseKeeper.UI.Windows.SettingsWindows;
 
 namespace WarehouseKeeper._WarehouseKeeper.Scripts.UI.Windows.SettingsWindows.Components

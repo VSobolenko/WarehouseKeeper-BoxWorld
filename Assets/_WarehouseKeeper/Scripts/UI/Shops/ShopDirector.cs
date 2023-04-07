@@ -1,7 +1,6 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
+using Game.Shops;
 using WarehouseKeeper.Directors.Game.UserResources;
-using WarehouseKeeper.Shops;
 
 namespace WarehouseKeeper.Directors.UI.Shops
 {

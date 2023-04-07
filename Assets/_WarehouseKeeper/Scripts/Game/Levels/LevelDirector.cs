@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Game;
 using UnityEngine;
 using WarehouseKeeper.Directors.Game.SceneData;
-using WarehouseKeeper.Directors.Game.UserResources;
-using WarehouseKeeper.Extension;
 using Zenject;
 
 namespace WarehouseKeeper.Levels
@@ -23,7 +22,7 @@ internal class LevelDirector : ITickable, IDisposable
     public event Action<LevelStatistics> OnUpdateStaticData; 
     public event Action<LevelStatistics> OnUpdateDynamicData; 
 
-    public LevelDirector(LevelRepositoryDirector levelRepositoryDirector, LevelBuilder levelBuilder, DiContainer diContainer, PlayerResourcesDirector playerResourcesDirector, GameCameraController gameCamera)
+    public LevelDirector(LevelRepositoryDirector levelRepositoryDirector, LevelBuilder levelBuilder, DiContainer diContainer, GameCameraController gameCamera)
     {
         _levelRepositoryDirector = levelRepositoryDirector;
         _levelBuilder = levelBuilder;

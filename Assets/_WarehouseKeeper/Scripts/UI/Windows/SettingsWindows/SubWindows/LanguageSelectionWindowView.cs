@@ -1,8 +1,7 @@
 ﻿using System;
+using Game.GUI.Windows;
+using Game.Localizations;
 using UnityEngine;
-using UnityEngine.UI;
-using WarehouseKeeper.Gui.Windows;
-using WarehouseKeeper.Localizations;
 using WarehouseKeeper.UI.Windows.SettingsWindows.SubWindows.Elements;
 
 namespace WarehouseKeeper.UI.Windows.SettingsWindows.SubWindows
@@ -36,7 +35,7 @@ internal class LanguageSelectionWindowView : WindowUI
     
 #if UNITY_EDITOR
     
-    [UnityEngine.ContextMenu("Collect window buttons"),]
+    [ContextMenu("Collect window buttons"),]
     private void CollectWindowButtons()
     {
         _windowButtons = GetComponentsInChildren<LanguageSelectionWindowButton>(true);
@@ -44,7 +43,7 @@ internal class LanguageSelectionWindowView : WindowUI
         UnityEditor.EditorUtility.SetDirty(this);
     }
 
-    [UnityEngine.ContextMenu("Collect window languages"),]
+    [ContextMenu("Collect window languages"),]
     private void CollectWindowLanguages()
     {
         _languages = GetComponentsInChildren<LanguageSelectionWindowLanguageButton>(true);

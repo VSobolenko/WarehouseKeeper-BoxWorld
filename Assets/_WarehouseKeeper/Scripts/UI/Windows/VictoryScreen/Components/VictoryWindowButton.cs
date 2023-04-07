@@ -1,4 +1,4 @@
-﻿using WarehouseKeeper.UI.Windows;
+﻿using Game.GUI.Windows.Components;
 
 namespace WarehouseKeeper.Directors.UI.Windows.VictoryScreen.Components
 {

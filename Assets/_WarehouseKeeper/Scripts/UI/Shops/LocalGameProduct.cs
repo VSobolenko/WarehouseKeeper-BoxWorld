@@ -1,5 +1,5 @@
 ﻿using System;
-using WarehouseKeeper.Shops;
+using Game.Shops;
 
 namespace WarehouseKeeper.Directors.UI.Shops
 {

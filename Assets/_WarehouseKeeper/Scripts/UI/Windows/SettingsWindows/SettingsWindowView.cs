@@ -1,8 +1,8 @@
 ﻿using System;
+using Game.GUI.Windows;
 using UnityEngine;
 using UnityEngine.UI;
 using WarehouseKeeper._WarehouseKeeper.Scripts.UI.Windows.SettingsWindows.Components;
-using WarehouseKeeper.Gui.Windows;
 using WarehouseKeeper.UI.Windows.SettingsWindows.Components;
 
 namespace WarehouseKeeper.UI.Windows.SettingsWindows
@@ -39,7 +39,7 @@ public sealed class SettingsWindowView : WindowUI
     
 #if UNITY_EDITOR
     
-    [UnityEngine.ContextMenu("Collect window buttons"),]
+    [ContextMenu("Collect window buttons"),]
     private void CollectWindowButtons()
     {
         windowButtons = GetComponentsInChildren<SettingsWindowButton>(true);
@@ -47,7 +47,7 @@ public sealed class SettingsWindowView : WindowUI
         UnityEditor.EditorUtility.SetDirty(this);
     }
     
-    [UnityEngine.ContextMenu("Collect window toggles"),]
+    [ContextMenu("Collect window toggles"),]
     private void CollectWindowToggles()
     {
         windowToggles = GetComponentsInChildren<SettingsWindowToggle>(true);

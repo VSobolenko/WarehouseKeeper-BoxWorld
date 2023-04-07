@@ -1,6 +1,6 @@
 ﻿using System;
+using Game.Repositories;
 using WarehouseKeeper.Directors.Game.UserResources.BaseModels;
-using WarehouseKeeper.Repositories;
 
 namespace WarehouseKeeper.Directors.Game.UserResources
 {

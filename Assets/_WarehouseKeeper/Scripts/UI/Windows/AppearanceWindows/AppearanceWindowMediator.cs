@@ -1,14 +1,13 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
+using Game;
+using Game.AssetContent;
+using Game.Factories;
+using Game.GUI.Windows;
 using UnityEngine;
 using WarehouseKeeper._WarehouseKeeper.Scripts.UI.Windows.AppearanceWindows.Components.AppearanceItems;
-using WarehouseKeeper.AssetContent;
 using WarehouseKeeper.Directors;
 using WarehouseKeeper.Directors.Game.UserResources;
 using WarehouseKeeper.Directors.UI.Windows;
-using WarehouseKeeper.Extension;
-using WarehouseKeeper.Factories;
-using WarehouseKeeper.Gui.Windows.Mediators;
 
 namespace WarehouseKeeper.UI.Windows.AppearanceWindows
 {

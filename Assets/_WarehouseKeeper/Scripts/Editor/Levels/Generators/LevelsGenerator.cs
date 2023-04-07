@@ -1,8 +1,8 @@
 using System;
 using System.Linq;
+using Game.Repositories;
 using UnityEditor;
 using UnityEngine;
-using WarehouseKeeper.Repositories;
 
 namespace WarehouseKeeper.EditorTools.Levels
 {
@@ -15,8 +15,8 @@ internal abstract class LevelsGenerator<TData, TLevel>
     private readonly Vector2Int _defaultGridSize;
     private readonly Vector2 _offset;
     private readonly Action<string> _log;
-    private int _editorGriddSizeX = 3;
-    private int _editorGriddSizeY = 3;
+    private int _editorGridSizeX = 3;
+    private int _editorGridSizeY = 3;
     private Vector2 _scrollPos;
 
     protected LevelsGenerator(IRepository<TData> repository, Action<string> log, Vector2Int defaultGridSize, Action onUpdateAssets)
@@ -170,13 +170,13 @@ internal abstract class LevelsGenerator<TData, TLevel>
         GUILayout.Space(5);
         EditorGUILayout.LabelField("Grid size:", GUILayout.MaxWidth(70));
         EditorGUILayout.LabelField("X", GUILayout.MaxWidth(10));
-        _editorGriddSizeX = EditorGUILayout.IntField(_editorGriddSizeX, GUILayout.MaxWidth(100));
+        _editorGridSizeX = EditorGUILayout.IntField(_editorGridSizeX, GUILayout.MaxWidth(100));
         EditorGUILayout.LabelField("Y", GUILayout.MaxWidth(10));
-        _editorGriddSizeY = EditorGUILayout.IntField(_editorGriddSizeY, GUILayout.MaxWidth(100));
+        _editorGridSizeY = EditorGUILayout.IntField(_editorGridSizeY, GUILayout.MaxWidth(100));
         
         
         if (GUILayout.Button("Rebuild", GUILayout.MaxWidth(100)))
-            RebuildGameGrid(new Vector2Int(_editorGriddSizeX, _editorGriddSizeY), true);
+            RebuildGameGrid(new Vector2Int(_editorGridSizeX, _editorGridSizeY), true);
         
         EditorGUILayout.EndHorizontal();
 
@@ -242,8 +242,8 @@ internal abstract class LevelsGenerator<TData, TLevel>
         var activeLevels = _levels;
         _levels = new TLevel[newSize.x, newSize.y];
 
-        _editorGriddSizeX = _levels.GetLength(0);
-        _editorGriddSizeY = _levels.GetLength(1);
+        _editorGridSizeX = _levels.GetLength(0);
+        _editorGridSizeY = _levels.GetLength(1);
         
         if (saveActiveLevelParts == false)
             return;

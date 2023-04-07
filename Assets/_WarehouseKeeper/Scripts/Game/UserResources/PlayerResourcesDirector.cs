@@ -1,6 +1,6 @@
 ﻿using System;
+using Game.Repositories;
 using WarehouseKeeper.Directors.Game.UserResources.BaseModels;
-using WarehouseKeeper.Repositories;
 using Zenject;
 
 namespace WarehouseKeeper.Directors.Game.UserResources
@@ -37,7 +37,7 @@ internal class PlayerResourcesDirector : IInitializable
         {
             Id = UserDataId,
             Version = 1,
-            Hints = new NumericalResource(3000),
+            Hints = new NumericalResource(3),
             Amber = new NumericalResource(0),
             AdsDisable = false,
             

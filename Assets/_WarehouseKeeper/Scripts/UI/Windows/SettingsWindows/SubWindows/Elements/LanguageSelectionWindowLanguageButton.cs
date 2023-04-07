@@ -1,4 +1,5 @@
-﻿using WarehouseKeeper.Localizations;
+﻿using Game.GUI.Windows.Components;
+using Game.Localizations;
 
 namespace WarehouseKeeper.UI.Windows.SettingsWindows.SubWindows.Elements
 {

@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Text;
+using Game.GUI.Windows;
+using Game.Localizations;
 using TMPro;
 using UnityEngine;
 using WarehouseKeeper.Directors.UI.Windows.VictoryScreen.Components;
-using WarehouseKeeper.Gui.Windows;
 using WarehouseKeeper.Levels;
-using WarehouseKeeper.Localizations;
 using WarehouseKeeper.UI.Windows;
 
 namespace WarehouseKeeper.Directors.UI.Windows.VictoryScreen
@@ -75,7 +75,7 @@ internal class VictoryWindowView : WindowUI
     
 #if UNITY_EDITOR
     
-    [UnityEngine.ContextMenu("Collect window buttons"),]
+    [ContextMenu("Collect window buttons"),]
     private void CollectWindowButtons()
     {
         _windowButtons = GetComponentsInChildren<VictoryWindowButton>(true);

@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using WarehouseKeeper.Extension;
+﻿using Game;
+using UnityEngine;
 
 namespace WarehouseKeeper.Levels
 {

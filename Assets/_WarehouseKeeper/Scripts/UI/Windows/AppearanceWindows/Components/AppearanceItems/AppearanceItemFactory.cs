@@ -2,12 +2,12 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Game;
+using Game.AssetContent;
+using Game.Pools;
 using UnityEngine;
-using WarehouseKeeper.AssetContent;
 using WarehouseKeeper.Directors;
 using WarehouseKeeper.Directors.Game.UserResources;
-using WarehouseKeeper.Extension;
-using WarehouseKeeper.Pools;
 using WarehouseKeeper.UI.Windows;
 using Zenject;
 

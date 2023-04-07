@@ -1,5 +1,4 @@
-﻿using System;
-using WarehouseKeeper.Audio;
+﻿using Game.Audio;
 using Zenject;
 
 namespace WarehouseKeeper.Directors.Game.Audio
@@ -8,7 +7,7 @@ internal class AudioDirector : IInitializable
 {
     private readonly IAudioManager _audioManager;
     private readonly AudioFactory _audioFactory;
-    private readonly AudioScriptableObject _audioData;
+    private readonly AudioSo _audioData;
 
     private AudioSound _lobbySound;
     private AudioSound _gameSound;

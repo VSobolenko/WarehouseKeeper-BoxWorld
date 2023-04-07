@@ -1,4 +1,4 @@
-﻿using WarehouseKeeper.FSMCore;
+﻿using Game.FSMCore.States;
 
 namespace WarehouseKeeper.Directors.Game.Game_FSM
 {

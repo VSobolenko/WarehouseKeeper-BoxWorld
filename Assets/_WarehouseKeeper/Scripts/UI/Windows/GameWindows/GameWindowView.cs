@@ -1,8 +1,8 @@
 ﻿using System;
+using Game.GUI.Windows;
 using TMPro;
 using UnityEngine;
 using WarehouseKeeper._WarehouseKeeper.Scripts.UI.Windows.GameWindows.Components;
-using WarehouseKeeper.Gui.Windows;
 using WarehouseKeeper.UI.Windows.GameWindows.Components;
 
 namespace WarehouseKeeper.UI.Windows.GameWindows

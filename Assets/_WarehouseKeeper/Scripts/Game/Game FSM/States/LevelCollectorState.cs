@@ -1,5 +1,5 @@
-﻿using WarehouseKeeper.Directors.Game.Audio;
-using WarehouseKeeper.FSMCore;
+﻿using Game.FSMCore.States;
+using WarehouseKeeper.Directors.Game.Audio;
 using WarehouseKeeper.Levels;
 
 namespace WarehouseKeeper.Directors.Game.Game_FSM

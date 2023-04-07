@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using WarehouseKeeper.Extension;
-using WarehouseKeeper.Repositories;
+using Game;
+using Game.Repositories;
 
 namespace WarehouseKeeper.Levels
 {
