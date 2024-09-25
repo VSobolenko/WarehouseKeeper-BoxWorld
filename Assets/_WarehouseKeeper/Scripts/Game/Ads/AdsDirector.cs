@@ -10,7 +10,7 @@ internal class AdsDirector
 
     private const int AmountEnjoyment = 3;
     private int _sessionView;
-    
+
     public AdsDirector(IAdsManager adsManager, PlayerResourcesDirector playerResourcesDirector)
     {
         _adsManager = adsManager;
@@ -19,14 +19,17 @@ internal class AdsDirector
 
     public void TryShowAd()
     {
-        if (_playerResourcesDirector?.UserData == null || _playerResourcesDirector.UserData.AdsDisable)
-            return;
-        _sessionView++;
-        if (_sessionView % AmountEnjoyment != 0)
-            return;
-        _sessionView = 0;
+        //Ads are currently disabled.
+        return;
 
-        _adsManager.ShowInterstitialAd();
+        // if (_playerResourcesDirector?.UserData == null || _playerResourcesDirector.UserData.AdsDisable)
+        //     return;
+        // _sessionView++;
+        // if (_sessionView % AmountEnjoyment != 0)
+        //     return;
+        // _sessionView = 0;
+        //
+        // _adsManager.ShowInterstitialAd();
     }
 }
 }

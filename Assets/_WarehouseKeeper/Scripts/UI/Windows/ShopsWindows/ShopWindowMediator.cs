@@ -25,9 +25,12 @@ internal class ShopWindowMediator : BaseMediator<ShopWindowView>
     private readonly CancellationTokenSource _cancellationTokenSource = new();
     private ShopItem[] _currencyItems;
     private ShopItem[] _localItems;
-    
-    public ShopWindowMediator(ShopWindowView window, 
-                              WindowsDirector windowsDirector, ShopItemFactory shopItemFactory, IShopManager shopManager, PlayerResourcesDirector playerResourcesDirector, ShopDirector shopDirector, ILocalizationManager localizationManager, SignalBus signalBus) : base(window)
+
+    public ShopWindowMediator(ShopWindowView window,
+                              WindowsDirector windowsDirector, ShopItemFactory shopItemFactory,
+                              IShopManager shopManager, PlayerResourcesDirector playerResourcesDirector,
+                              ShopDirector shopDirector, ILocalizationManager localizationManager,
+                              SignalBus signalBus) : base(window)
     {
         _windowsDirector = windowsDirector;
         _shopItemFactory = shopItemFactory;
@@ -63,7 +66,7 @@ internal class ShopWindowMediator : BaseMediator<ShopWindowView>
             shopItem.OnClickItem += ProcessPurchasingLocalProduct;
         }
     }
-    
+
     private void InitializeCurrencyProducts()
     {
         _localItems = _shopItemFactory.GetCurrencyItems(window.ProductsRoot);
@@ -82,20 +85,25 @@ internal class ShopWindowMediator : BaseMediator<ShopWindowView>
             foreach (var shopItem in _currencyItems)
                 shopItem.Release();
     }
+
     private async void ProcessPurchasingCurrencyProduct(ShopItem shopItem)
     {
         window.DisableInteraction();
-        var result = await _shopManager.PurchaseProduct(shopItem.product.ProductId);
+        var purchaseResponse = await _shopManager.PurchaseProduct(shopItem.product.ProductId);
         window.EnableInteraction();
+
         if (_cancellationTokenSource.IsCancellationRequested || shopItem.product == null)
             return;
         var productId = shopItem.product.ProductId;
-        if (result == PurchaseResult.Success)
+        if (purchaseResponse.result == PurchaseResult.Success)
             ProcessPayoutReward(shopItem.product, shopItem.product.Rewards);
         else
             window.Informer.Show(_localizationManager.Localize("shop_purchasingError"));
-        
-        _signalBus.Fire(new PurchaseAmber {productId = productId, result = result});
+
+        _signalBus.Fire(new PurchaseAmber
+        {
+            productId = productId, result = purchaseResponse.result, message = purchaseResponse.message
+        });
     }
 
     private void ProcessPurchasingLocalProduct(ShopItem shopItem)
@@ -125,15 +133,19 @@ internal class ShopWindowMediator : BaseMediator<ShopWindowView>
             {
                 case RewardType.RemoveAds:
                     PayoutRemoveAds();
+
                     break;
                 case RewardType.Hint:
                     PayoutHint(reward.quantity, (int) product.Price);
+
                     break;
                 case RewardType.Amber:
                     PayoutAmber(reward.quantity);
+
                     break;
                 default:
                     Log.Error($"Unknown reward type {reward.type}");
+
                     break;
             }
         }
@@ -146,12 +158,12 @@ internal class ShopWindowMediator : BaseMediator<ShopWindowView>
             data.AdsDisable = true;
             Log.Info("Remove ad");
         });
-        
+
         DisposeAllItems();
         InitializeLocalProducts();
         InitializeCurrencyProducts();
     }
-    
+
     private void PayoutHint(int count, int spendAmber)
     {
         _playerResourcesDirector.UpdateData(data =>
@@ -161,7 +173,7 @@ internal class ShopWindowMediator : BaseMediator<ShopWindowView>
             Log.Info($"Added hints: {count}; Spend amber: {spendAmber}");
         });
     }
-    
+
     private void PayoutAmber(int count)
     {
         _playerResourcesDirector.UpdateData(data =>
@@ -170,9 +182,9 @@ internal class ShopWindowMediator : BaseMediator<ShopWindowView>
             Log.Info($"Added amber: {count}");
         });
     }
-    
+
     #endregion
-    
+
     #region Button event handler
 
     private void ProceedButtonAction(ShopWindowAction action)
@@ -181,6 +193,7 @@ internal class ShopWindowMediator : BaseMediator<ShopWindowView>
         {
             case ShopWindowAction.OnClickCloseYourself:
                 _windowsDirector.CloseWindow(this);
+
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(action), action, null);

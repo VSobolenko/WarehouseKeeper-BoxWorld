@@ -13,16 +13,6 @@ MonoBehaviour:
   m_Name: ProductsConfig
   m_EditorClassIdentifier: 
   products:
-  - <ProductId>k__BackingField: com.gexetr.warehousekeeper.removeads
-    <Ignored>k__BackingField: 0
-    <Price>k__BackingField: 2.99
-    <Type>k__BackingField: 1
-    <AddressableItemKey>k__BackingField: MiddleShopItem
-    <Icon>k__BackingField: {fileID: 21300000, guid: 11e0e86e93fc9b14481cb99c86f51f07, type: 3}
-    <LocalizationKeyName>k__BackingField: shop_com_productName_removeAds
-    <Rewards>k__BackingField:
-    - type: 0
-      quantity: 1
   - <ProductId>k__BackingField: com.gexetr.warehousekeeper.amber250
     <Ignored>k__BackingField: 0
     <Price>k__BackingField: 1.99

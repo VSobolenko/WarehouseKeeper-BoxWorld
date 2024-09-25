@@ -6,6 +6,7 @@ internal struct PurchaseAmber
 {
     public string productId;
     public PurchaseResult result;
+    public string message;
 }
 
 internal struct PurchaseProduct

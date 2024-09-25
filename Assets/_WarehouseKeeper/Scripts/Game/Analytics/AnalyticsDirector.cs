@@ -59,7 +59,9 @@ internal class AnalyticsDirector : IDisposable
     {
         GameAnalytics.NewDesignEvent("AmberPurchaser", new Dictionary<string, object>
         {
+            {"ProductId", product.result},
             {"Result", product.result},
+            {"Message", product.message},
         });
     }
     
