@@ -50,7 +50,7 @@ internal class GameWindowMediator : BaseMediator<GameWindowView>
         UpdateStaticWindowData();
     }
 
-    public override void OnShow()
+    public override void OnFocus()
     {
         _gameDirector.Resume();
     }

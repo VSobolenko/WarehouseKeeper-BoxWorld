@@ -48,7 +48,7 @@ internal class SettingsWindowMediator : BaseMediator<SettingsWindowView>
         switch (action)
         {
             case SettingsWindowAction.OnClickCloseYourself:
-                _windowsDirector.CloseWindow(this);
+                _windowsDirector.CloseWindowAsync(this);
                 break;
             case SettingsWindowAction.OnClickResetProgress:
                 ClickResetProgress();

@@ -10,7 +10,7 @@ public class MaxSdkLogger
     /// </summary>
     public static void UserDebug(string message)
     {
-        Debug.Log("Debug [" + SdkTag + "] " + message);
+        //Debug.Log("Debug [" + SdkTag + "] " + message);
     }
     
     /// <summary>

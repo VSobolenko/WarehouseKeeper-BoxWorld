@@ -113,7 +113,7 @@ internal class LevelSelectionWindowMediator : BaseMediator<LevelSelectionWindowV
         switch (action)
         {
             case LevelSelectionWindowAction.OnClickCloseYourself:
-                _windowsDirector.CloseWindow(this);
+                _windowsDirector.CloseWindowAsync(this);
                 break;
             case LevelSelectionWindowAction.OnClickAmber:
                 _windowsDirector.OpenShopWindow();

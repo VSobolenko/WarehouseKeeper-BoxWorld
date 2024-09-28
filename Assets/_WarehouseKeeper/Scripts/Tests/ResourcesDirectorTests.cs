@@ -22,7 +22,7 @@ public class ResourcesDirectorTests
         {
             var value = propertyInfo.GetValue(resourcesDirector);
             if (value == null)
-                Debug.Log($"Null properties: {propertyInfo.Name}");
+                Debug.Log($"ResourcesDirector. Null properties: {propertyInfo.Name}");
 
             Assert.IsNotNull(value);
         }

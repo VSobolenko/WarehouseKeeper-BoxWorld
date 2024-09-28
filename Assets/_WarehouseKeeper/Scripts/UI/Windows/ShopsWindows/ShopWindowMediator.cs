@@ -192,7 +192,7 @@ internal class ShopWindowMediator : BaseMediator<ShopWindowView>
         switch (action)
         {
             case ShopWindowAction.OnClickCloseYourself:
-                _windowsDirector.CloseWindow(this);
+                _windowsDirector.CloseWindowAsync(this);
 
                 break;
             default:

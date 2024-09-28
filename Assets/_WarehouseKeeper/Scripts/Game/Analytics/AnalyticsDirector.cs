@@ -15,7 +15,7 @@ internal class AnalyticsDirector : IDisposable
     {
         _resourcesDirector = resourcesDirector;
         _signalBus = signalBus;
-        GameAnalytics.Initialize();
+        InitializeGameAnalytics();
         SubscribeEvents();
     }
 
@@ -31,7 +31,7 @@ internal class AnalyticsDirector : IDisposable
         _signalBus.Subscribe<ResetProgress>(UserResetProgress);
         _signalBus.Subscribe<UnlockLevelByAmber>(UserBoughtLevel);
     }
-    
+
     public void Dispose()
     {
         _signalBus.Unsubscribe<LevelGoHome>(UserGoHome);
@@ -54,7 +54,7 @@ internal class AnalyticsDirector : IDisposable
                                            {"HintInit", product.hintInitValue},
                                        });
     }
-    
+
     private void UserPurchaseProductReal(PurchaseAmber product)
     {
         GameAnalytics.NewDesignEvent("AmberPurchaser", new Dictionary<string, object>
@@ -64,7 +64,7 @@ internal class AnalyticsDirector : IDisposable
             {"Message", product.message},
         });
     }
-    
+
     private void UserResetProgress(ResetProgress progress)
     {
         GameAnalytics.NewDesignEvent("ResetProgress", progress.countUnlockLevels);
@@ -72,17 +72,18 @@ internal class AnalyticsDirector : IDisposable
 
     private void UserStartLevel(LevelStart level)
     {
-        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, "levelStart", level.levelId, new Dictionary<string, object>
-        {
-            {"LevelId", level.levelId}
-        });
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, "levelStart", level.levelId,
+                                          new Dictionary<string, object>
+                                          {
+                                              {"LevelId", level.levelId}
+                                          });
     }
-    
+
     private void UserRestartLevel(LevelRestart level)
     {
         GameAnalytics.NewProgressionEvent(GAProgressionStatus.Undefined, "levelRestart", level.levelId);
     }
-    
+
     private void UserGoHome(LevelGoHome level)
     {
         GameAnalytics.NewProgressionEvent(GAProgressionStatus.Undefined, "levelGoHome", level.levelId);
@@ -90,13 +91,14 @@ internal class AnalyticsDirector : IDisposable
 
     private void UserCompleteLevel(LevelVictory level)
     {
-        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "levelComplete", level.levelId, new Dictionary<string, object>
-        {
-            {"LevelId", level.levelId},
-            {"StarReceived", level.starReceived},
-            {"ElapsedTime", level.elapsedTime},
-            {"ActivatedHint", level.countActivatedHint},
-        });
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "levelComplete", level.levelId,
+                                          new Dictionary<string, object>
+                                          {
+                                              {"LevelId", level.levelId},
+                                              {"StarReceived", level.starReceived},
+                                              {"ElapsedTime", level.elapsedTime},
+                                              {"ActivatedHint", level.countActivatedHint},
+                                          });
     }
 
     private void UserActivateHint(ActivateHint level)
@@ -107,7 +109,7 @@ internal class AnalyticsDirector : IDisposable
                                            {"LevelId", level.levelId},
                                        });
     }
-    
+
     private void UserBoughtLevel(UnlockLevelByAmber level)
     {
         GameAnalytics.NewResourceEvent(GAResourceFlowType.Sink, "Amber", 1, "Level", "BoughtLevel",
@@ -115,6 +117,11 @@ internal class AnalyticsDirector : IDisposable
                                        {
                                            {"LevelId", level.levelId},
                                        });
+    }
+
+    private void InitializeGameAnalytics()
+    {
+        GameAnalytics.Initialize();
     }
 }
 }
