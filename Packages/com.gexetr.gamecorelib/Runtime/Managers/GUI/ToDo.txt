@@ -1,4 +1,0 @@
-All namespace to GUI - not UI/Gui
-Добавить дебаг лэйаут, поверх окна, где выводится(пример счётчик фпс):
--индекс;медиатор;состояние
-Clash Royale UI Style - new Windows Manager
