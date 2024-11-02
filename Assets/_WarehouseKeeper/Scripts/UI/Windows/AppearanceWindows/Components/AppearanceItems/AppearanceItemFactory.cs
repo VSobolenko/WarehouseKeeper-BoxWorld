@@ -22,10 +22,10 @@ internal class AppearanceItemFactory : PrefabProviderByAddress<AppearanceItem>, 
     private const string AddressableItemKey = "AppearanceItem";
     private readonly CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
 
-    public AppearanceItemFactory(IAddressablesManager addressablesManager, 
+    public AppearanceItemFactory(IResourceManagement resourceManagement, 
                                  IObjectPoolManager objectPool, 
                                  PlayerResourcesDirector playerResources,
-                                 ResourcesDirector resourcesDirector) : base(addressablesManager)
+                                 ResourcesDirector resourcesDirector) : base(resourceManagement)
     {
         _objectPool = objectPool;
         _playerResources = playerResources;

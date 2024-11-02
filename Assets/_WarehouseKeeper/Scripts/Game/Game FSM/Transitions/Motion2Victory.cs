@@ -18,18 +18,14 @@ internal class Motion2Victory : DirectedTransition<Vector2, bool, bool>
         _motionState = sourceState;
     }
 
-    public override bool Decide()
+    protected override bool CanDecide()
     {
-        var decide = IsDecidedTransient;
-        if (decide == false)
-            return false;
-
         var motion = _motionState.ExitedState;
         if (motion == false)
             return false;
         var victory = _levelDirector.CheckVictory();
 
-        return decide && motion && victory;
+        return victory;
     }
 }
 }

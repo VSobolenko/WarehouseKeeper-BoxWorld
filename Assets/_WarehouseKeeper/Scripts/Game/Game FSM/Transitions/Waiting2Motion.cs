@@ -1,4 +1,6 @@
-﻿using Game.FSMCore;
+﻿using System;
+using Game.FSMCore;
+using Game.FSMCore.States;
 using Game.FSMCore.Transitions;
 using Game.Inputs;
 using UnityEngine;
@@ -29,6 +31,18 @@ internal class Waiting2Motion : DirectedTransition<bool, Vector2, bool>
         _waitingState = sourceState;
         _motionState = targetState;
         _swipeDetector.OnSwipeNormalized += OnUserSwipe;
+        Debug.Log("SUBSCRIBE");
+    }
+
+    private bool IsDecidedTransient
+    {
+        get
+        {
+            // Debug.Log($"Active;{stateMachine.ActiveState.GetType().Name};" +
+            //           $"Source={_waitingState.GetType().Name};" +
+            //           $"Result={stateMachine.ActiveState == _waitingState}");
+            return stateMachine.ActiveState == _waitingState;
+        }
     }
 
     private void OnUserSwipe(Vector2 direction)
@@ -39,7 +53,10 @@ internal class Waiting2Motion : DirectedTransition<bool, Vector2, bool>
         _canDecide = true;
     }
 
-    public override bool Decide() => IsDecidedTransient && _canDecide;
+    protected override bool CanDecide()
+    {
+        return _canDecide;
+    }
 
     protected override void OnTransit()
     {

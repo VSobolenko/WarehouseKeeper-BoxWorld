@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using Game;
+using Game.FSMCore;
 using WarehouseKeeper.Directors.Game.Game_FSM;
-using WarehouseKeeper.Directors.Game.Game_FSM.Transitions;
 using WarehouseKeeper.Directors.UI.Windows;
 using WarehouseKeeper.Levels;
 using WarehouseKeeper.UI.Windows.GameWindows;
@@ -16,7 +16,7 @@ internal class GameDirector : IInitializable, ITickable
     private readonly LevelDirector _levelDirector;
     private readonly LevelRepositoryDirector _levelRepositoryDirector;
 
-    private GameStateMachineTree _stateMachine;
+    private GameStateMachineBuilder _stateMachine;
 
     public GameDirector(DiContainer diContainer, 
                         WindowsDirector windowsDirector, 
@@ -50,7 +50,8 @@ internal class GameDirector : IInitializable, ITickable
 
     public void StartLevel(int id)
     {
-        _stateMachine = _diContainer.Resolve<GameStateMachineTree>();
+        _stateMachine = _diContainer.Resolve<GameStateMachineBuilder>();
+        _diContainer.Rebind<IStateMachine>().FromInstance(_stateMachine.StateMachine);
         _stateMachine.Initialize();
         _stateMachine.StartMachine(id);
     }
@@ -65,7 +66,7 @@ internal class GameDirector : IInitializable, ITickable
     public void PopLevel()
     {
         _levelDirector.PopGameStage();
-        _stateMachine.ExternalTransit<Waiting2Waiting>();
+        _stateMachine.ExternalTransit();
     }
 
     public void DisposeLevel()

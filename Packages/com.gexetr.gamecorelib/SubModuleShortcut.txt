@@ -1,0 +1,26 @@
+//SETUP
+git submodule add https://github.com/VSobolenko/GameCoreLib - add submodule to folder root
+git submodule add https://github.com/VSobolenko/GameCoreLib Assets/Plugins/GameCoreLib - add submodule to folder Assets (./GameCor/.git)
+
+.. git clone https://github.com/VSobolenko...
+git submodule init - run this command after "git clone" to initialize the submodule 
+git submodule update - run this command after "git submodule init" to fetch repository data and checkout commit(analog "git clone" but for a submodule)
+
+что бы не делать init и update после git clone, а автоматически сразу инициализировать подмодули, можно клонировани с параметром "--recurse-submodules"
+git clone --recurse-submodules https://github.com/VSobolenko
+
+если клонирование было без параметра "--recurse-submodules", то можно выполнить команду ниже, для быстрой инициализации и репозитория
+git submodule update --init - объединение команд "git submodule init" и "git submodule update"
+git submodule update --init --recursive - объединение команд "git submodule init" и "git submodule update"
+
+//UPDATE
+для получения изменений, необходимо перейти в папку с подмодулем и выполнить команды "git fetch" и "git merge origin/master"
+git submodule update --remote [ModuleName] - автоматическое выполнение команд "git fetch" и "git merge origin/master", до текущего состояния ветки master
+git submodule update --remote --merge [ModuleName] - автоматическое выполнение команд "git fetch" и "git merge origin/master", до текущего состояния ветки master
+git config -f .gitmodules submodule.DbConnector.branch [BranchName] - установление ветки [BranchName] по умолчанию
+git push --recurse-submodules=on-demand - отправить изменения и локальные и всех подмодулей
+git push --recurse-submodules=check - отправить локальные изменения и если присутсвует изменения в подмодуле остановить всё выполнение команды
+
+//USEFUL
+git config status.submodulesummary 1 - отображать краткие сведения для сабмодуля при выполнении команды git status
+git config --global diff.submodule log -более детальныя информация при команде git diff

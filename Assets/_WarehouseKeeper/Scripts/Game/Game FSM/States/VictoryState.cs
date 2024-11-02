@@ -8,7 +8,7 @@ using WarehouseKeeper.UI.Windows.GameWindows;
 
 namespace WarehouseKeeper.Directors.Game.Game_FSM
 {
-internal class VictoryState: State<bool, bool>
+internal class VictoryState : State<bool, bool>
 {
     private readonly LevelRepositoryDirector _levelRepository;
     private readonly PlayerResourcesDirector _playerResourcesDirector;
@@ -17,10 +17,11 @@ internal class VictoryState: State<bool, bool>
     private readonly WindowsDirector _windowsDirector;
     private readonly AdsDirector _adsDirector;
     private GameWindowMediator _cachedWindow;
-    
-    public VictoryState(LevelRepositoryDirector levelRepository, 
+
+    public VictoryState(LevelRepositoryDirector levelRepository,
                         LevelProgressDirector progressDirector,
-                        LevelDirector levelDirector, WindowsDirector windowsDirector, PlayerResourcesDirector playerResourcesDirector, AdsDirector adsDirector)
+                        LevelDirector levelDirector, WindowsDirector windowsDirector,
+                        PlayerResourcesDirector playerResourcesDirector, AdsDirector adsDirector)
     {
         _levelRepository = levelRepository;
         _levelDirector = levelDirector;
@@ -30,8 +31,6 @@ internal class VictoryState: State<bool, bool>
         _progressDirector = progressDirector;
     }
 
-    public override StateType Type => StateType.Victory;
-
     protected override void OnStateActivated()
     {
         var activeLevel = SaveActiveProgress();
@@ -39,12 +38,12 @@ internal class VictoryState: State<bool, bool>
         _windowsDirector.OpenVictoryWindow(activeLevel.Id, _levelDirector.Statistics);
         _adsDirector.TryShowAd();
     }
-    
-    protected override void OnStateUpdated()
+
+    public override void UpdateState()
     {
     }
 
-    protected override bool OnStateFinished()
+    protected override bool ReturnProcessedResult()
     {
         return false;
     }
@@ -56,16 +55,15 @@ internal class VictoryState: State<bool, bool>
 
         if (_levelRepository.GetLevelData(unlockLevelId) == null)
         {
-            _playerResourcesDirector.UpdateData(userData =>
-            {
-                userData.Amber.Add(15);
-            });
+            _playerResourcesDirector.UpdateData(userData => { userData.Amber.Add(15); });
         }
+
         _levelRepository.SaveLevelData(data);
 
         if (_levelRepository.GetLevelSetting(unlockLevelId) != null &&
             _levelRepository.GetLevelData(unlockLevelId) == null)
             _levelRepository.CreateEmptyData(unlockLevelId);
+
         return data;
     }
 
@@ -77,13 +75,13 @@ internal class VictoryState: State<bool, bool>
         {
             Id = _levelDirector.ActiveLevel.LevelId,
             StarsReceived = Mathf.Max(starReceived, _levelDirector.ActiveLevel.Data.StarsReceived),
-            
+
             CountMoves = _levelDirector.Statistics.moves + _levelDirector.ActiveLevel.Data.CountMoves,
             BestMoves = Mathf.Min(_levelDirector.Statistics.moves, _levelDirector.ActiveLevel.Data.BestMoves),
-            
+
             CountPushes = _levelDirector.Statistics.pushes + _levelDirector.ActiveLevel.Data.CountPushes,
             BestPushes = Mathf.Min(_levelDirector.Statistics.pushes, _levelDirector.ActiveLevel.Data.BestPushes),
-            
+
             CountActiveHints = _levelDirector.ActiveLevel.Data.CountActiveHints,
             TimeSpent = _levelDirector.ActiveLevel.Data.TimeSpent.Add(_levelDirector.Statistics.passedTime),
             BestTime = _levelDirector.Statistics.passedTime < _levelDirector.ActiveLevel.Data.BestTime
@@ -91,7 +89,7 @@ internal class VictoryState: State<bool, bool>
                 : _levelDirector.ActiveLevel.Data.BestTime
         };
     }
-    
+
     private GameWindowMediator GetWindow()
     {
         if (_cachedWindow != null)

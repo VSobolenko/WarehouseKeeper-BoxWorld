@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c928eb8f92ea4c489decdd6ce97e033a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasGroup: {fileID: 4280964720023780143}
   <PlayerResourcesView>k__BackingField: {fileID: 6998998754893565409}
   <ItemsRoot>k__BackingField: {fileID: 106341006900978534}
   windowButtons:
@@ -311,7 +312,7 @@ GameObject:
   - component: {fileID: 6858489319529512068}
   - component: {fileID: 3236169541574958273}
   - component: {fileID: 8682634470318833755}
-  - component: {fileID: 288265582192215092}
+  - component: {fileID: 5947344852037881340}
   m_Layer: 5
   m_Name: Header
   m_TagString: Untagged
@@ -435,7 +436,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &288265582192215092
+--- !u!114 &5947344852037881340
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -444,7 +445,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7930849197008822007}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e93987ea15c41e08e7daaa28930c231, type: 3}
+  m_Script: {fileID: 11500000, guid: df4668d89a344cc2b4f09fbd6f824570, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   key: levelSelection_header

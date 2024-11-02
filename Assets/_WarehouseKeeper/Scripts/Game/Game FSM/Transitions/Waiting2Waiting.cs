@@ -11,6 +11,6 @@ internal class Waiting2Waiting : CircularTransition<bool, Vector2>
     {
     }
 
-    public override bool Decide() => false;
+    protected override bool CanDecide() => false;
 }
 }

@@ -679,6 +679,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6be6806696984ae5b60e70018cd534af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasGroup: {fileID: 8877977320223562897}
   <LevelNumberText>k__BackingField: {fileID: 3410881147397120079}
   <Time>k__BackingField: {fileID: 5308858394131151610}
   _movesTargetText: {fileID: 4878326346137943921}

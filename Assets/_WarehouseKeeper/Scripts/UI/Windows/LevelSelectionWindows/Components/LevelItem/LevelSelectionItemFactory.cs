@@ -19,9 +19,9 @@ internal class LevelSelectionItemFactory : PrefabProviderByAddress<LevelSelectio
     private readonly IObjectPoolManager _objectPool;
     private readonly LevelRepositoryDirector _levelRepository;
 
-    public LevelSelectionItemFactory(IAddressablesManager addressablesManager, 
-                                     IObjectPoolManager objectPool, 
-                                     LevelRepositoryDirector levelRepository) : base(addressablesManager)
+    public LevelSelectionItemFactory(IResourceManagement resourceManagement,
+                                     IObjectPoolManager objectPool,
+                                     LevelRepositoryDirector levelRepository) : base(resourceManagement)
     {
         _objectPool = objectPool;
         _levelRepository = levelRepository;
@@ -37,7 +37,7 @@ internal class LevelSelectionItemFactory : PrefabProviderByAddress<LevelSelectio
         _cancellationTokenSource.Cancel();
         _cancellationTokenSource.Dispose();
     }
-    
+
     public async Task PrepareItemsAsync()
     {
         var countSettings = _levelRepository.GetLevelsSettings().Count();
@@ -45,6 +45,7 @@ internal class LevelSelectionItemFactory : PrefabProviderByAddress<LevelSelectio
         if (item == null)
         {
             Log.InternalError();
+
             return;
         }
 
@@ -55,7 +56,7 @@ internal class LevelSelectionItemFactory : PrefabProviderByAddress<LevelSelectio
     // {
     //     return null;
     // }
-    
+
     public LevelSelectionItem[] GetItems(Transform root)
     {
         var settings = _levelRepository.GetLevelsSettings().OrderBy(x => x.Id).ToList();
@@ -74,6 +75,7 @@ internal class LevelSelectionItemFactory : PrefabProviderByAddress<LevelSelectio
         instance.transform.localScale = prefab.transform.localScale;
         instance.LevelId = id;
         UpdateItemState(instance);
+
         return instance;
     }
 
@@ -82,6 +84,7 @@ internal class LevelSelectionItemFactory : PrefabProviderByAddress<LevelSelectio
         if (item == null)
         {
             Log.InternalError();
+
             return;
         }
 
@@ -94,6 +97,7 @@ internal class LevelSelectionItemFactory : PrefabProviderByAddress<LevelSelectio
 
             return;
         }
+
         item.SetupUnlockedState(data);
     }
 }

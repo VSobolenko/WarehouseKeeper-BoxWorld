@@ -11,7 +11,7 @@ namespace WarehouseKeeper.Levels
 internal class LevelBuilder : IInitializable
 {
     private readonly LevelRepositoryDirector _levelRepositoryDirector;
-    private readonly IAddressablesManager _addressablesManager;
+    private readonly IResourceManagement _resourceManagement;
     private readonly IFactoryGameObjects _factory;
     private readonly IObjectPoolManager _objectPool;
 
@@ -23,11 +23,11 @@ internal class LevelBuilder : IInitializable
 
     private GameObject _activeLevelRoot;
     
-    public LevelBuilder(LevelRepositoryDirector levelRepositoryDirector, IAddressablesManager addressablesManager,
+    public LevelBuilder(LevelRepositoryDirector levelRepositoryDirector, IResourceManagement resourceManagement,
                         IFactoryGameObjects factory, IObjectPoolManager objectPool)
     {
         _levelRepositoryDirector = levelRepositoryDirector;
-        _addressablesManager = addressablesManager;
+        _resourceManagement = resourceManagement;
         _factory = factory;
         _objectPool = objectPool;
 
@@ -94,9 +94,9 @@ internal class LevelBuilder : IInitializable
 
     private async Task<PiecePrefabs> LoadLevelPrefabs()
     {
-        var wallPrefab = await _addressablesManager.LoadAssetAsync<GameObject>(EntityWall);
-        var playZonePrefab = await _addressablesManager.LoadAssetAsync<GameObject>(EntityPlayZone);
-        var targetPrefab = await _addressablesManager.LoadAssetAsync<GameObject>(EntityTarget);
+        var wallPrefab = await _resourceManagement.LoadAssetAsync<GameObject>(EntityWall);
+        var playZonePrefab = await _resourceManagement.LoadAssetAsync<GameObject>(EntityPlayZone);
+        var targetPrefab = await _resourceManagement.LoadAssetAsync<GameObject>(EntityTarget);
         if (wallPrefab == null || playZonePrefab == null || targetPrefab == null)
         {
             Log.InternalError();
@@ -133,8 +133,10 @@ internal class LevelBuilder : IInitializable
                 var prefab = prefabs.GetPiecePrefab(pieceType);
                 EntityPiece activePiece = null;
                 if (prefab != null)
+                {
+                    _objectPool.Prepare(prefab, 0);
                     activePiece = _objectPool.Get(prefab, position, Quaternion.identity, root);
-
+                }
                 nodes[x, y] = new Node {X = x, Y = y, Type = pieceType, Entity = activePiece};
             }
         }
@@ -168,8 +170,8 @@ internal class LevelBuilder : IInitializable
 
     private async Task<GamePrefabs> LoadGameEntityPrefabs()
     {
-        var player = await _addressablesManager.LoadAssetAsync<GameObject>(EntityPlayer);
-        var box = await _addressablesManager.LoadAssetAsync<GameObject>(EntityBox);
+        var player = await _resourceManagement.LoadAssetAsync<GameObject>(EntityPlayer);
+        var box = await _resourceManagement.LoadAssetAsync<GameObject>(EntityBox);
         if (player == null || box == null)
         {
             Log.InternalError();
@@ -205,6 +207,7 @@ internal class LevelBuilder : IInitializable
                 if (settings.Pieces[x, y].Start != GameEntityType.None)
                 {
                     var prefab = prefabs.GetGamePrefab(settings.Pieces[x, y].Start);
+                    _objectPool.Prepare(prefab, 0);
                     gameEntity.Entity = _objectPool.Get(prefab, root);
                 }
 

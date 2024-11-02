@@ -1,4 +1,5 @@
-﻿using Game.FSMCore.States;
+﻿using System;
+using Game.FSMCore.States;
 using WarehouseKeeper.Directors.Game.Audio;
 using WarehouseKeeper.Directors.UI.Windows;
 using WarehouseKeeper.Levels;
@@ -12,7 +13,7 @@ internal class EntryPointState : State<int, bool>
     private readonly AudioDirector _audioDirector;
 
     public EntryPointState(LevelDirector levelDirector,
-                           WindowsDirector windowsDirector, 
+                           WindowsDirector windowsDirector,
                            AudioDirector audioDirector)
     {
         _levelDirector = levelDirector;
@@ -20,25 +21,15 @@ internal class EntryPointState : State<int, bool>
         _audioDirector = audioDirector;
     }
 
-    public override StateType Type => StateType.EntryPoint;
-
     protected override async void OnStateActivated()
     {
         _audioDirector.PlayGameBackground();
         await _levelDirector.StartLevel(inputData);
-        _windowsDirector.OpenGameWindow(mediator =>
-        {
-            mediator.UpdateWindowData();
-        });
-    }
-    
-    protected override void OnStateUpdated()
-    {
+        _windowsDirector.OpenGameWindow(mediator => { mediator.UpdateWindowData(); });
     }
 
-    protected override bool OnStateFinished()
-    {
-        return false;
-    }
+    protected override bool ReturnProcessedResult() => false;
+
+    public override void UpdateState() { }
 }
 }

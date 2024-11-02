@@ -16,7 +16,7 @@ internal class AudioFactory : PrefabProviderByAddress<Source>, IInitializable, I
     private const string AddressableItemKey = "AudioSource";
     private readonly CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
 
-    public AudioFactory(IAddressablesManager addressablesManager, IObjectPoolManager objectPool) : base(addressablesManager)
+    public AudioFactory(IResourceManagement resourceManagement, IObjectPoolManager objectPool) : base(resourceManagement)
     {
         _objectPool = objectPool;
     }
@@ -47,6 +47,7 @@ internal class AudioFactory : PrefabProviderByAddress<Source>, IInitializable, I
     public Source GetSource()
     {
         var prefab = GetPrefab(AddressableItemKey);
+        _objectPool.Prepare(prefab, 0);
 
         return _objectPool.Get(prefab);
     }

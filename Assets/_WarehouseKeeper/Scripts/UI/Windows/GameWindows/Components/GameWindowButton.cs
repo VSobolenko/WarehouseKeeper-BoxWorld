@@ -2,22 +2,5 @@
 
 namespace WarehouseKeeper.UI.Windows.GameWindows.Components
 {
-public class GameWindowButton : BaseButton<GameWindowAction>
-{
-#if UNITY_EDITOR
-
-    [UnityEngine.ContextMenu("Editor simulate click")]
-    private void EditorClickSimulate()
-    {
-        configuration.SimulateClick();
-    }
-    
-    [UnityEngine.ContextMenu("Editor force validate")]
-    private void EditorForceValidate()
-    {
-        configuration?.ValidateButton(transform);
-    }
-    
-#endif
-}
+public class GameWindowButton : BaseButton<GameWindowAction> { }
 }

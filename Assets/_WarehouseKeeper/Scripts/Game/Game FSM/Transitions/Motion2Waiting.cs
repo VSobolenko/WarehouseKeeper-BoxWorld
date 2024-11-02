@@ -14,6 +14,6 @@ internal class Motion2Waiting : DirectedTransition<Vector2, bool, Vector2>
         _motionState = sourceState;
     }
 
-    public override bool Decide() => IsDecidedTransient && _motionState.ExitedState;
+    protected override bool CanDecide() => _motionState.ExitedState;
 }
 }

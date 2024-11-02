@@ -9,26 +9,24 @@ internal class LevelCollectorState : State<bool, bool>
     private readonly LevelDirector _levelDirector;
     private readonly AudioDirector _audioDirector;
 
-    public LevelCollectorState(LevelDirector levelDirector, 
+    public LevelCollectorState(LevelDirector levelDirector,
                                AudioDirector audioDirector)
     {
         _levelDirector = levelDirector;
         _audioDirector = audioDirector;
     }
 
-    public override StateType Type => StateType.None;
-
     protected override void OnStateActivated()
     {
         _audioDirector.StopGameBackground();
         _levelDirector.DestroyLevel();
     }
-    
-    protected override void OnStateUpdated()
+
+    public override void UpdateState()
     {
     }
 
-    protected override bool OnStateFinished()
+    protected override bool ReturnProcessedResult()
     {
         return false;
     }

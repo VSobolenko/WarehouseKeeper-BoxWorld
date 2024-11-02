@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: WindowSettings
   m_EditorClassIdentifier: 
   windowSettings:
-    transitionMoveDuration: 2
+    transitionMoveDuration: 0.5
     moveType: 6

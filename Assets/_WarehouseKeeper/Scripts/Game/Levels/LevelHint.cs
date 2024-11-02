@@ -24,11 +24,11 @@ internal class LevelHint : PrefabProviderByAddress<DirectionalArrow>
     private int _activeMoveState;
     private readonly int _maxStage;
 
-    public LevelHint(IAddressablesManager addressablesManager, 
+    public LevelHint(IResourceManagement resourceManagement, 
                      IObjectPoolManager objectPool,
                      LevelRepositoryDirector levelRepositoryDirector, 
                      LevelDirector levelDirector) 
-        : base(addressablesManager)
+        : base(resourceManagement)
     {
         _objectPool = objectPool;
         _levelSettings = levelRepositoryDirector.GetLevelSetting(levelDirector.ActiveLevel.LevelId);

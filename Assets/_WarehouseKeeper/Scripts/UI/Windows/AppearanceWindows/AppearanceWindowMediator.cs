@@ -17,7 +17,7 @@ internal class AppearanceWindowMediator : BaseMediator<AppearanceWindowView>
     private readonly AppearanceItemFactory _appearanceItemFactory;
     private readonly PlayerResourcesDirector _playerResources;
     private readonly ResourcesDirector _resourcesDirector;
-    private readonly IAddressablesManager _addressablesManager;
+    private readonly IResourceManagement _resourceManagement;
     private readonly IFactoryGameObjects _factoryGameObjects;
 
     private AppearanceItem[] _items;
@@ -30,14 +30,14 @@ internal class AppearanceWindowMediator : BaseMediator<AppearanceWindowView>
                                     AppearanceItemFactory appearanceItemFactory,
                                     PlayerResourcesDirector playerResources,
                                     ResourcesDirector resourcesDirector,
-                                    IAddressablesManager addressablesManager,
+                                    IResourceManagement resourceManagement,
                                     IFactoryGameObjects factoryGameObjects) : base(window)
     {
         _windowsDirector = windowsDirector;
         _appearanceItemFactory = appearanceItemFactory;
         _playerResources = playerResources;
         _resourcesDirector = resourcesDirector;
-        _addressablesManager = addressablesManager;
+        _resourceManagement = resourceManagement;
         _factoryGameObjects = factoryGameObjects;
     }
 
@@ -206,7 +206,7 @@ internal class AppearanceWindowMediator : BaseMediator<AppearanceWindowView>
 
     private GameObject InstantiateItemView(string addressableKey)
     {
-        var prefab = _addressablesManager.LoadAsset<GameObject>(addressableKey);
+        var prefab = _resourceManagement.LoadAsset<GameObject>(addressableKey);
         
         if (prefab == null)
         {

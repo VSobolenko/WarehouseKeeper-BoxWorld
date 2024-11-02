@@ -1,0 +1,31 @@
+{
+    "name": "GameCoreLib.UnitTests",
+    "rootNamespace": "GameTests",
+    "references": [
+        "UnityEditor.TestRunner",
+        "UnityEngine.TestRunner",
+        "GameCoreLib",
+        "Zenject",
+        "Unity.ResourceManager",
+        "Unity.Addressables",
+        "UniTask",
+        "BoundfoxStudios.FluentAssertions"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll",
+        "Newtonsoft.Json.dll",
+        "Moq.dll"
+    ],
+    "autoReferenced": true,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,8 +1,16 @@
-﻿using Game.Installers.Factories;
-using Game.Installers.GUI;
-using Game.Installers.Pools;
+﻿using System;
+using System.Collections.Generic;
+using Game.AssetContent;
+using Game.Factories;
+using Game.Factories.Installers;
+using Game.GUI.Installers;
+using Game.GUI.Windows;
+using Game.Localizations;
+using Game.Pools;
+using Game.Pools.Installers;
 using UnityEngine;
 using WarehouseKeeper._WarehouseKeeper.Scripts.UI.Windows.AppearanceWindows.Components.AppearanceItems;
+using WarehouseKeeper.DependencyInjection.ZenjectDependency;
 using WarehouseKeeper.Directors;
 using WarehouseKeeper.Directors.Game;
 using WarehouseKeeper.Directors.Game.Ads;
@@ -14,13 +22,14 @@ using WarehouseKeeper.Directors.Game.UserResources;
 using WarehouseKeeper.Directors.UI.Shops;
 using WarehouseKeeper.Directors.UI.Windows;
 using WarehouseKeeper.Levels;
+using WarehouseKeeper.UI.Windows;
 using WarehouseKeeper.UI.Windows.LevelSelections;
 using WarehouseKeeper.UI.Windows.ShopWindows;
 using Zenject;
 
 namespace WarehouseKeeper.DependencyInjection
 {
-public class SceneInstaller : MonoInstaller<SceneInstaller>
+public class SceneInstaller : MonoInstaller
 {
     [SerializeField, Min(0)] private int poolCapacity;
     [SerializeField] private Transform uiRoot;
@@ -29,6 +38,7 @@ public class SceneInstaller : MonoInstaller<SceneInstaller>
     public override void InstallBindings()
     {
         InstallBaseManagers();
+        InstallUI();
         InstallDirectors();
         InstallGameComponents();
         InstallFactories();
@@ -37,9 +47,22 @@ public class SceneInstaller : MonoInstaller<SceneInstaller>
 
     private void InstallBaseManagers()
     {
-        ObjectPoolInstaller.Install(Container, poolCapacity);
-        SceneGuiInstaller.Install(Container, uiRoot);
-        FactoryInstaller.Install(Container);
+        Container.Bind<IFactoryGameObjects>().To<DependencyInjectionFactory>().AsSingle();
+        var factory = Container.Resolve<IFactoryGameObjects>();
+        var pool = ObjectPoolInstaller.KeyAutoEditor(factory, null, poolCapacity);
+        Container.Bind<IObjectPoolManager>().FromInstance(pool).AsSingle().NonLazy();
+        //ObjectPoolInstallerZenject.Install(Container, poolCapacity);
+        //SceneGuiInstaller.Install(Container, uiRoot);
+    }
+
+    private void InstallUI()
+    {
+        var mediatorInstaller = new ZenjectMediatorInstantiator(Container);
+        var resourceManagement = Container.Resolve<IResourceManagement>();
+        var factory = Container.Resolve<IFactoryGameObjects>();
+        var transition = GuiInstaller.VerticalTransition();
+        var uiManager = GuiInstaller.ManagerAsync(mediatorInstaller, resourceManagement, factory, transition, uiRoot);
+        Container.BindInterfacesAndSelfTo<IWindowsManagerAsync>().FromInstance(uiManager);
     }
 
     private void InstallDirectors()
@@ -61,8 +84,7 @@ public class SceneInstaller : MonoInstaller<SceneInstaller>
 
     private void InstallGameComponents()
     {
-        Container.BindInterfacesAndSelfTo<GameStateMachine>().AsCached();
-        Container.BindInterfacesAndSelfTo<GameStateMachineTree>().AsTransient();
+        Container.BindInterfacesAndSelfTo<GameStateMachineBuilder>().AsTransient();
         Container.BindInterfacesAndSelfTo<LevelHint>().AsTransient();
         Container.Bind<GameCameraController>().FromInstance(_gameCamera).AsSingle();
     }

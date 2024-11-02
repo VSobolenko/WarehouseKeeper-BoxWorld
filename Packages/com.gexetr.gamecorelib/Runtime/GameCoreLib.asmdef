@@ -1,0 +1,27 @@
+{
+    "name": "GameCoreLib",
+    "rootNamespace": "Game",
+    "references": [
+        "Unity.TextMeshPro",
+        "Unity.Services.Core",
+        "Unity.Services.Core.Environments",
+        "Unity.Addressables",
+        "Unity.ResourceManager",
+        "DOTween.Modules",
+        "UniTask",
+        "UnityEngine.Purchasing",
+        "UnityEngine.Purchasing.Stores"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "DOTween.dll",
+        "Newtonsoft.Json.dll"
+    ],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

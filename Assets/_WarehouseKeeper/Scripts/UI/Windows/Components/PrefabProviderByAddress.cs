@@ -7,13 +7,13 @@ namespace WarehouseKeeper.UI.Windows
 {
 internal class PrefabProviderByAddress<T> where T : class
 {
-    protected readonly IAddressablesManager addressablesManager;
+    protected readonly IResourceManagement resourceManagement;
 
     private T _cachedPrefab;
 
-    public PrefabProviderByAddress(IAddressablesManager addressablesManager)
+    public PrefabProviderByAddress(IResourceManagement resourceManagement)
     {
-        this.addressablesManager = addressablesManager;
+        this.resourceManagement = resourceManagement;
     }
 
     protected async Task<T> GetPrefabAsync(string addressableKey)
@@ -21,7 +21,7 @@ internal class PrefabProviderByAddress<T> where T : class
         if (_cachedPrefab != null)
             return _cachedPrefab;
 
-        var prefab = await addressablesManager.LoadAssetAsync<GameObject>(addressableKey);
+        var prefab = await resourceManagement.LoadAssetAsync<GameObject>(addressableKey);
         
         if (prefab == null)
         {
@@ -46,7 +46,7 @@ internal class PrefabProviderByAddress<T> where T : class
         if (_cachedPrefab != null)
             return _cachedPrefab;
         
-        var prefab = addressablesManager.LoadAsset<GameObject>(addressableKey);
+        var prefab = resourceManagement.LoadAsset<GameObject>(addressableKey);
         
         if (prefab == null)
         {

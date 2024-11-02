@@ -1,6 +1,7 @@
-﻿using Game.Installers.IO;
-using Game.Installers.Repositories;
+﻿using Game.IO;
+using Game.IO.Installers;
 using Game.Repositories;
+using Game.Repositories.Installers;
 using UnityEditor;
 using UnityEngine;
 using WarehouseKeeper.EditorScripts;
@@ -45,8 +46,10 @@ public class EditorLevelSettingsGenerator : EditorWindow
         var defaultGridSize = new Vector2Int(3, 3);
         
         var container = new DiContainer();
-        EditorFileIOInstaller.Install(container);
-        EditorRepositoryInstaller<LevelSettings>.Install(container, savePath);
+        var saver = SaveSystemInstaller.FileSaver();
+        var fileRepository = RepositoryInstaller.File<LevelSettings>(savePath, saver);
+        container.Bind<ISaveFile>().FromInstance(saver);
+        container.Bind<IRepository<LevelSettings>>().FromInstance(fileRepository);
 
         var repository = container.Resolve<IRepository<LevelSettings>>();
         _levelGenerator = new LevelSettingsGenerator(repository, OnLogText, defaultGridSize, ReimportResourcesLevels);

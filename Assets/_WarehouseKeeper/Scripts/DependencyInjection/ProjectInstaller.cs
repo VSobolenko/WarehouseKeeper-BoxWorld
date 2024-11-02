@@ -1,15 +1,31 @@
-using Game.Installers.Ads;
-using Game.Installers.AssetContent;
-using Game.Installers.Audio;
-using Game.Installers.Factories;
-using Game.Installers.GUI;
-using Game.Installers.Inputs;
-using Game.Installers.Localizations;
-using Game.Installers.Repositories;
-using Game.Installers.Shops;
+using System;
+using System.Reflection;
+using System.Reflection.Emit;
+using Game.Ads;
+using Game.Ads.Installers;
+using Game.Ads.Managers;
+using Game.AssetContent;
+using Game.AssetContent.Installers;
+using Game.Audio;
+using Game.Audio.Installers;
+using Game.Factories;
+using Game.GUI.Windows;
+using Game.GUI.Windows.Factories;
+using Game.Inputs;
+using Game.Inputs.Installers;
+using Game.IO.Installers;
+using Game.Localizations;
+using Game.Localizations.Installers;
+using Game.Repositories;
+using Game.Repositories.Installers;
+using Game.Shops;
+using Game.Shops.Installers;
+using UnityEngine;
+using WarehouseKeeper.DependencyInjection.ZenjectDependency;
 using WarehouseKeeper.Directors.Game.Analytics.Signals;
 using WarehouseKeeper.Directors.Game.UserResources;
 using WarehouseKeeper.Levels;
+using WarehouseKeeper.UI.Windows.MainWindows;
 using Zenject;
 
 namespace WarehouseKeeper.DependencyInjection
@@ -24,21 +40,62 @@ public class ProjectInstaller : MonoInstaller
 
     private void InstallBaseManagers()
     {
+        const string levelsSettingsResourcesDirectory = "Levels/";
+        var levelDirectory = Application.persistentDataPath + "/UserData/Levels/";
+        var userDataDirectory = Application.persistentDataPath + "/UserData/";
+        ;
+
+        var fileSaver = SaveSystemInstaller.FileSaver();
+        var levelDataRepository = RepositoryInstaller.File<LevelData>(levelDirectory, fileSaver);
+        var userDataRepository = RepositoryInstaller.File<UserData>(userDataDirectory, fileSaver);
+        var levelSettingsRepository =
+            RepositoryInstaller.StaticResources<LevelSettings>(levelsSettingsResourcesDirectory, fileSaver);
+        Container.Bind<IRepository<LevelData>>().FromInstance(levelDataRepository).AsSingle().NonLazy();
+        Container.Bind<IRepository<UserData>>().FromInstance(userDataRepository).AsSingle().NonLazy();
+        Container.Bind<IRepository<LevelSettings>>().FromInstance(levelSettingsRepository).AsSingle().NonLazy();
+        Container.Bind<IResourceManagement>().FromInstance(ResourceManagementInstaller.Addressable()).AsSingle();
+        Container.Bind<IFactoryGameObjects>().To<DependencyInjectionFactory>().AsSingle();
+        var inputManager = InputInstaller.Manager();
+        var swipe = InputInstaller.Swipe(inputManager);
+        Container.Bind<IInputManager>().FromInstance(inputManager).AsSingle();
+        Container.Bind<SwipeDetector>().FromInstance(swipe).AsSingle();
+
+        var adDetails = new AdDetails
+        {
+            sdkKey = "6nhv2UISHVtgZNl9Ml2fwH5v-MxHFBoVkybv1no4mCaTKIMsxmCNBLJiNBnGLyBeTSV9dCWt2u-I3w1r9wQ_kN",
+            rewardedAdUnitId = "79c242342de99d2d",
+            interstitialAdUnitId = "9c4f76c0b6c71a2e",
+        };
+        var adManager = new ApplovinAdManager(adDetails);
+        Container.Bind<IAdsManager>().FromInstance(adManager).AsSingle().NonLazy();
+
+        var localization = LocalizationInstaller.Manager();
+        Container.Bind<ILocalizationManager>().FromInstance(localization).AsSingle().NonLazy();
+
+        var factory = Container.Resolve<IFactoryGameObjects>();
+        var audioManager = AudioInstaller.UnityAudio(factory);
+        Container.Bind<IAudioManager>().FromInstance(audioManager).AsSingle().NonLazy();
+        var shopManager = ShopInstaller.IAP();
+        Container.Bind<IShopManager>().FromInstance(shopManager).AsSingle().NonLazy();
+
+        // SaveSystemInstallerZenject<LevelData, LevelSettings, UserData>.Install(Container);
+        // AddressablesInstaller.Install(Container);
+        // FactoryInstallerZenject.Install(Container);
+        // InputInstallerZenject.Install(Container);
+        // ProjectGuiInstaller.Install(Container);
+        // AdsInstallerZenject.Install(Container);
+        // LocalizationInstallerZenject.Install(Container);
+        // AudioInstallerZenject.Install(Container);
+        // ShopInstallerZenject.Install(Container);
+
         SignalBusInstaller.Install(Container);
-        SaveSystemInstaller<LevelData, LevelSettings, UserData>.Install(Container);
-        InputInstaller.Install(Container);
-        LocalizationInstaller.Install(Container);
-        ProjectGuiInstaller.Install(Container);
-        AudioInstaller.Install(Container);
-        ShopInstaller.Install(Container);
-        AdsInstaller.Install(Container);
-        FactoryInstaller.Install(Container);
-        AddressablesInstaller.Install(Container);
-        
         Container.BindInterfacesAndSelfTo<LevelRepositoryDirector>().AsSingle();
 
+        var tickWrapper = new TickWrapper();
+        tickWrapper.items.Add(inputManager);
+        Container.Bind<ITickable>().FromInstance(tickWrapper).NonLazy();
     }
-    
+
     private void DeclareSignals()
     {
         Container.DeclareSignal<LevelGoHome>();

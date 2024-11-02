@@ -452,7 +452,7 @@ GameObject:
   - component: {fileID: 7841073354947891670}
   - component: {fileID: 5292760901993631782}
   - component: {fileID: 6982851502329446939}
-  - component: {fileID: 3203279520103451347}
+  - component: {fileID: 1827973533936491459}
   m_Layer: 5
   m_Name: Header
   m_TagString: Untagged
@@ -576,7 +576,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &3203279520103451347
+--- !u!114 &1827973533936491459
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -585,7 +585,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1341544480366587537}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e93987ea15c41e08e7daaa28930c231, type: 3}
+  m_Script: {fileID: 11500000, guid: df4668d89a344cc2b4f09fbd6f824570, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   key: settings_language_selectionHeader
@@ -1882,6 +1882,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52fffb924d134b57aff2cdcc4fc6df10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasGroup: {fileID: 4675056231531620988}
   _languages:
   - {fileID: 7079105745212790167}
   - {fileID: 6813515947964153411}

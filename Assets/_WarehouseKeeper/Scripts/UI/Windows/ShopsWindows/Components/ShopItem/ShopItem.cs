@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace WarehouseKeeper.UI.Windows.ShopWindows
 {
-internal class ShopItem : BasePooledObject
+internal class ShopItem : KeyPooledObject
 {
     [SerializeField] private Image _icon;
     [SerializeField] private TextMeshProUGUI _priceText;

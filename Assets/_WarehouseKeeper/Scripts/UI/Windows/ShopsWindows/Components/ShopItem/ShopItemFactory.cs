@@ -18,18 +18,18 @@ namespace WarehouseKeeper.UI.Windows.ShopWindows
 internal class ShopItemFactory : IInitializable, IDisposable
 {
     private readonly CancellationTokenSource _cancellationTokenSource = new();
-    private readonly IAddressablesManager _addressablesManager;
+    private readonly IResourceManagement _resourceManagement;
     private readonly IShopManager _shopManager;
     private readonly IObjectPoolManager _objectPool;
     private readonly ILocalizationManager _localizationManager;
     private readonly ShopDirector _shopDirector;
     private readonly PlayerResourcesDirector _playerResourcesDirector;
 
-    public ShopItemFactory(IAddressablesManager addressablesManager, IObjectPoolManager objectPool,
+    public ShopItemFactory(IResourceManagement resourceManagement, IObjectPoolManager objectPool,
                            IShopManager shopManager, ILocalizationManager localizationManager,
                            ShopDirector shopDirector, PlayerResourcesDirector playerResourcesDirector)
     {
-        _addressablesManager = addressablesManager;
+        _resourceManagement = resourceManagement;
         _objectPool = objectPool;
         _shopManager = shopManager;
         _localizationManager = localizationManager;
@@ -124,7 +124,7 @@ internal class ShopItemFactory : IInitializable, IDisposable
     
     protected async Task<T> GetPrefabAsync<T>(string addressableKey, CancellationToken token) where T : class
     {
-        var prefab = await _addressablesManager.LoadAssetAsync<GameObject>(addressableKey);
+        var prefab = await _resourceManagement.LoadAssetAsync<GameObject>(addressableKey);
 
         if (token.IsCancellationRequested)
             return null;
@@ -148,7 +148,7 @@ internal class ShopItemFactory : IInitializable, IDisposable
     
     protected T GetPrefab<T>(string addressableKey) where T : class
     {
-        var prefab = _addressablesManager.LoadAsset<GameObject>(addressableKey);
+        var prefab = _resourceManagement.LoadAsset<GameObject>(addressableKey);
         
         if (prefab == null)
         {

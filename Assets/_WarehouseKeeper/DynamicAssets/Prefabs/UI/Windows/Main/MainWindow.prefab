@@ -179,6 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1788665bf0a4f93a8a4efdc5c4bc36f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasGroup: {fileID: 6971367661431892223}
   <PlayerResourcesView>k__BackingField: {fileID: 4219451224972092692}
   windowButtons:
   - {fileID: 2856918345817287236}
@@ -362,7 +363,7 @@ GameObject:
   - component: {fileID: 2968034114014949621}
   - component: {fileID: 5066344126147049835}
   - component: {fileID: 8171486034527119360}
-  - component: {fileID: 4312147849865072495}
+  - component: {fileID: 57781617187791255}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -486,7 +487,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &4312147849865072495
+--- !u!114 &57781617187791255
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -495,7 +496,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4295103569078704337}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e93987ea15c41e08e7daaa28930c231, type: 3}
+  m_Script: {fileID: 11500000, guid: df4668d89a344cc2b4f09fbd6f824570, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   key: main_play
@@ -590,7 +591,7 @@ GameObject:
   - component: {fileID: 6858489319529512068}
   - component: {fileID: 3236169541574958273}
   - component: {fileID: 8682634470318833755}
-  - component: {fileID: 7205493895090118629}
+  - component: {fileID: 7432549026525863618}
   m_Layer: 5
   m_Name: Game name
   m_TagString: Untagged
@@ -714,7 +715,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &7205493895090118629
+--- !u!114 &7432549026525863618
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -723,7 +724,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7930849197008822007}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e93987ea15c41e08e7daaa28930c231, type: 3}
+  m_Script: {fileID: 11500000, guid: df4668d89a344cc2b4f09fbd6f824570, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   key: game_name

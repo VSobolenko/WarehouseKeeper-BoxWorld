@@ -8,7 +8,7 @@ using WarehouseKeeper.UI.Windows.GameWindows;
 
 namespace WarehouseKeeper.Directors.Game.Game_FSM
 {
-internal class WaitingState: State<bool, Vector2>
+internal class WaitingState : State<bool, Vector2>
 {
     private readonly SwipeDetector _swipeDetector;
     private readonly WindowsDirector _windowsDirector;
@@ -16,7 +16,7 @@ internal class WaitingState: State<bool, Vector2>
     private GameWindowMediator _cachedWindow;
 
     private Vector2 _lastSwipeDirection;
-    
+
     public WaitingState(SwipeDetector swipeDetector, WindowsDirector windowsDirector, LevelDirector levelDirector)
     {
         _swipeDetector = swipeDetector;
@@ -24,24 +24,24 @@ internal class WaitingState: State<bool, Vector2>
         _levelDirector = levelDirector;
     }
 
-    public override StateType Type => StateType.Waiting;
-
     protected override void OnStateActivated()
     {
         _swipeDetector.OnSwipeNormalized += OnUserSwipe;
         SetupWindow();
     }
 
-    protected override void OnStateUpdated()
+    public override void UpdateState()
     {
     }
 
-    protected override Vector2 OnStateFinished()
+    protected override Vector2 ReturnProcessedResult()
     {
-        if (_levelDirector.ActiveLevel.Hint.InProgress || _levelDirector.ActiveLevel.Hint.IsActive == false || _levelDirector.ActiveLevel.Hint.IsComplete)
+        if (_levelDirector.ActiveLevel.Hint.InProgress || _levelDirector.ActiveLevel.Hint.IsActive == false ||
+            _levelDirector.ActiveLevel.Hint.IsComplete)
             GetWindow()?.DisableHint();
         _levelDirector.DisableHintView();
         _swipeDetector.OnSwipeNormalized -= OnUserSwipe;
+
         return _lastSwipeDirection;
     }
 
@@ -58,14 +58,17 @@ internal class WaitingState: State<bool, Vector2>
         _lastSwipeDirection = direction;
     }
 
+    private bool IsActiveState => stateMachine.ActiveState == this;
+
     private void SetupWindow()
     {
         if (_levelDirector.ActiveLevel == null)
         {
             Log.InternalError();
+
             return;
         }
-        
+
         if (_levelDirector.Statistics.moves > 0)
             GetWindow()?.EnableLevelInteraction();
         else
@@ -78,11 +81,11 @@ internal class WaitingState: State<bool, Vector2>
         }
 
         if (_levelDirector.ActiveLevel.Hint.LastStateWithHint)
-            GetWindow()?.EnableHintIfPossible(); 
-        
+            GetWindow()?.EnableHintIfPossible();
+
         if (_levelDirector.ActiveLevel.Hint.IsActive == false && _levelDirector.Statistics.moves == 0)
-            GetWindow()?.EnableHintIfPossible(); 
-        
+            GetWindow()?.EnableHintIfPossible();
+
         if (_levelDirector.ActiveLevel.Hint.IsComplete && _levelDirector.ActiveLevel.Hint.LastStateWithHint == false)
             GetWindow()?.DisableHint();
     }

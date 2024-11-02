@@ -203,6 +203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3086885d4fb40f0a1c927bef9450f3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasGroup: {fileID: -8877057690765624862}
   <SoundToggle>k__BackingField: {fileID: 2172145818515476300}
   <MusicToggle>k__BackingField: {fileID: 6019043824694000424}
   windowButtons:
@@ -235,7 +236,7 @@ GameObject:
   - component: {fileID: 7773408385115636849}
   - component: {fileID: 7523945633450202480}
   - component: {fileID: 5306847229020508153}
-  - component: {fileID: 2358883193305883574}
+  - component: {fileID: 2642667759462946308}
   m_Layer: 5
   m_Name: Description
   m_TagString: Untagged
@@ -361,7 +362,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &2358883193305883574
+--- !u!114 &2642667759462946308
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -370,10 +371,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3237665965159921450}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e93987ea15c41e08e7daaa28930c231, type: 3}
+  m_Script: {fileID: 11500000, guid: df4668d89a344cc2b4f09fbd6f824570, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: settings_sound
+  key: settings_music
   fallback: 
   disableStartedLocalization: 0
   targetText: {fileID: 5306847229020508153}
@@ -465,7 +466,7 @@ GameObject:
   - component: {fileID: 8383647136190904307}
   - component: {fileID: 6764193356417046853}
   - component: {fileID: 5239878003131031810}
-  - component: {fileID: 542987736285262973}
+  - component: {fileID: 8449901393767064796}
   m_Layer: 5
   m_Name: Description
   m_TagString: Untagged
@@ -591,7 +592,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &542987736285262973
+--- !u!114 &8449901393767064796
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -600,7 +601,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4386625055859387494}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e93987ea15c41e08e7daaa28930c231, type: 3}
+  m_Script: {fileID: 11500000, guid: df4668d89a344cc2b4f09fbd6f824570, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   key: settings_music
@@ -686,7 +687,7 @@ GameObject:
   - component: {fileID: 5249791751278147353}
   - component: {fileID: 8702593147543791757}
   - component: {fileID: 1215193478477270138}
-  - component: {fileID: 1442050543904800665}
+  - component: {fileID: 1794258725619949344}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -812,7 +813,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &1442050543904800665
+--- !u!114 &1794258725619949344
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -821,7 +822,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6060276844020963353}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e93987ea15c41e08e7daaa28930c231, type: 3}
+  m_Script: {fileID: 11500000, guid: df4668d89a344cc2b4f09fbd6f824570, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   key: settings_language
@@ -841,7 +842,7 @@ GameObject:
   - component: {fileID: 5431737350335663582}
   - component: {fileID: 9139873201593939902}
   - component: {fileID: 3566158326541739414}
-  - component: {fileID: 5661917289372583469}
+  - component: {fileID: 8981579593624349542}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -965,7 +966,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &5661917289372583469
+--- !u!114 &8981579593624349542
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -974,7 +975,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6325550348192769216}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e93987ea15c41e08e7daaa28930c231, type: 3}
+  m_Script: {fileID: 11500000, guid: df4668d89a344cc2b4f09fbd6f824570, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   key: settings_resetProgress
@@ -994,7 +995,7 @@ GameObject:
   - component: {fileID: 6858489319529512068}
   - component: {fileID: 3236169541574958273}
   - component: {fileID: 8682634470318833755}
-  - component: {fileID: 225403747057004556}
+  - component: {fileID: 684734573980530383}
   m_Layer: 5
   m_Name: Header
   m_TagString: Untagged
@@ -1118,7 +1119,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &225403747057004556
+--- !u!114 &684734573980530383
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1127,7 +1128,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7930849197008822007}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e93987ea15c41e08e7daaa28930c231, type: 3}
+  m_Script: {fileID: 11500000, guid: df4668d89a344cc2b4f09fbd6f824570, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   key: settings_header

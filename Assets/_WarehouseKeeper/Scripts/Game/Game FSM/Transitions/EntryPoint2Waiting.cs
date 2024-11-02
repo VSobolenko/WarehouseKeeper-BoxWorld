@@ -1,4 +1,5 @@
-﻿using Game.FSMCore;
+﻿using System;
+using Game.FSMCore;
 using Game.FSMCore.Transitions;
 using UnityEngine;
 using WarehouseKeeper.Levels;
@@ -15,6 +16,6 @@ internal class EntryPoint2Waiting : DirectedTransition<int, bool, Vector2>
         _levelDirector = levelDirector;
     }
 
-    public override bool Decide() => IsDecidedTransient && _levelDirector.ActiveLevel != null;
+    protected override bool CanDecide() => _levelDirector.ActiveLevel != null;
 }
 }
