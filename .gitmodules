@@ -1,0 +1,3 @@
+[submodule "Packages/com.gexetr.gamecorelib"]
+	path = Packages/com.gexetr.gamecorelib
+	url = https://github.com/VSobolenko/com.gexetr.gamecorelib
