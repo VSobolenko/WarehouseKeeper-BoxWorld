@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Game;
+﻿using Game;
 using Game.FSMCore;
-using Game.FSMCore.States;
+using Game.FSMCore.Profiler;
+using UnityEngine;
 using WarehouseKeeper.Directors.Game.Game_FSM.Transitions;
 using Zenject;
 
@@ -18,11 +17,18 @@ public class GameStateMachineBuilder
     private WaitingState _waitingState;
     private LevelCollectorState _levelCollectorState;
     private PauseState _pauseState;
-    
+    private readonly FSMProfilerProvider _fsmProfiler;
+
     public GameStateMachineBuilder(DiContainer diContainer)
     {
         _diContainer = diContainer;
         _stateMachine = new FiniteStateMachine();
+        if (Application.isEditor)
+        {
+            _fsmProfiler = new GameObject("FSM Linker").AddComponent<FSMProfilerProvider>();
+            _fsmProfiler.stateMachine = _stateMachine;
+        };
+
         Log.Info($"Create new {GetType().Name}; Hash={GetHashCode()}");
     }
 
@@ -84,6 +90,8 @@ public class GameStateMachineBuilder
     {
         _stateMachine.ForceTransitTo(_levelCollectorState, true);
         _stateMachine.StopMachine();
+        if (_fsmProfiler != null)
+            Object.Destroy(_fsmProfiler.gameObject);
     }
 }
 }

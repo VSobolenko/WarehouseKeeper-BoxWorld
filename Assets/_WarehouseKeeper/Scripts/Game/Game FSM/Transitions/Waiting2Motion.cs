@@ -10,7 +10,7 @@ using WarehouseKeeper.UI.Windows.GameWindows;
 
 namespace WarehouseKeeper.Directors.Game.Game_FSM.Transitions
 {
-internal class Waiting2Motion : DirectedTransition<bool, Vector2, bool>
+internal class Waiting2Motion : AliveTransition<Vector2>
 {
     private readonly SwipeDetector _swipeDetector;
     private readonly WaitingState _waitingState;
@@ -31,7 +31,6 @@ internal class Waiting2Motion : DirectedTransition<bool, Vector2, bool>
         _waitingState = sourceState;
         _motionState = targetState;
         _swipeDetector.OnSwipeNormalized += OnUserSwipe;
-        Debug.Log("SUBSCRIBE");
     }
 
     private bool IsDecidedTransient

@@ -1,12 +1,11 @@
 ﻿using System;
 using Game.FSMCore;
 using Game.FSMCore.Transitions;
-using UnityEngine;
 using WarehouseKeeper.Levels;
 
 namespace WarehouseKeeper.Directors.Game.Game_FSM.Transitions
 {
-internal class EntryPoint2Waiting : DirectedTransition<int, bool, Vector2>
+internal class EntryPoint2Waiting : AliveTransition<bool>
 {
     private readonly LevelDirector _levelDirector;
 

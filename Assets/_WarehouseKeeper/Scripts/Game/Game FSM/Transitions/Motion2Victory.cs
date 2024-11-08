@@ -5,7 +5,7 @@ using WarehouseKeeper.Levels;
 
 namespace WarehouseKeeper.Directors.Game.Game_FSM.Transitions
 {
-internal class Motion2Victory : DirectedTransition<Vector2, bool, bool>
+internal class Motion2Victory : AliveTransition<bool>
 {
     private readonly LevelDirector _levelDirector;
     private readonly MotionState _motionState;

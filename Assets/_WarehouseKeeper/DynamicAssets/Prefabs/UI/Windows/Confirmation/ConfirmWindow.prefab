@@ -643,6 +643,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8f2c2116f5828848a570a35aeb66830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasGroup: {fileID: 4883805188304559760}
   _description: {fileID: 517537567506386456}
   _agreementText: {fileID: 8903694991363014047}
   _disagreementText: {fileID: 8746433403601056120}

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace WarehouseKeeper.Directors.Game.Game_FSM.Transitions
 {
-internal class Motion2Waiting : DirectedTransition<Vector2, bool, Vector2>
+internal class Motion2Waiting : AliveTransition<bool>
 {
     private readonly MotionState _motionState;
 
