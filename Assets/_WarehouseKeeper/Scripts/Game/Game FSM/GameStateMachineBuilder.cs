@@ -62,10 +62,10 @@ public class GameStateMachineBuilder
         var move2Waiting = _diContainer.Instantiate<Motion2Waiting>(new object [] {motionState, _waitingState});
         var waiting2Move = _diContainer.Instantiate<Waiting2Motion>(new object [] {_waitingState, motionState});
         
-        _stateMachine.Tree.AddTransition(entryPoint2Waiting, 3);
-        _stateMachine.Tree.AddTransition(motion2Victory, 1);
-        _stateMachine.Tree.AddTransition(waiting2Waiting, move2Waiting, waiting2Move);
-        _stateMachine.Tree.AddState(_entryPointState, motionState, victoryState, _waitingState, 
+        _stateMachine.Tree.AddTransition(entryPoint2Waiting, 3)
+                     .AddTransition(motion2Victory, 1)
+                     .AddTransition(waiting2Waiting, move2Waiting, waiting2Move)
+                     .AddState(_entryPointState, motionState, victoryState, _waitingState, 
                                     _levelCollectorState, _pauseState);
     }
 
