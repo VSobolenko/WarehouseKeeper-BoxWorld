@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Game.Extensions;
 using Game.Repositories;
+using Game.Utility.Extensions;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
