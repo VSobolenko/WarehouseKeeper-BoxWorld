@@ -72,9 +72,9 @@ internal class WindowsDirector : IInitializable
         return _windowsManager.OpenWindowOnTop(initWindow);
     }
     
-    internal LanguageSelectionWindowMediator OpenLanguageSelectionWindow()
+    internal Task<LanguageSelectionWindowMediator> OpenLanguageSelectionWindow()
     {
-        return _windowsManager.OpenWindowOnTop<LanguageSelectionWindowMediator>();
+        return _windowsManager.OpenWindowOnTopAsync<LanguageSelectionWindowMediator>();
     }
     
     internal VictoryWindowMediator OpenVictoryWindow(int levelID, LevelStatistics statistics)
