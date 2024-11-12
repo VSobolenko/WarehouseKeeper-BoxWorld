@@ -61,7 +61,7 @@ public class SceneInstaller : MonoInstaller
         var resourceManagement = Container.Resolve<IResourceManagement>();
         var factory = Container.Resolve<IFactoryGameObjects>();
         var transition = GuiInstaller.VerticalTransition();
-        var uiManager = GuiInstaller.ManagerAsync(mediatorInstaller, resourceManagement, factory, transition, uiRoot);
+        var uiManager = GuiInstaller.ManagerAsync(GuiInstaller.WindowFactory(mediatorInstaller, resourceManagement, factory), transition, uiRoot);
         Container.BindInterfacesAndSelfTo<IWindowsManagerAsync>().FromInstance(uiManager);
     }
 
