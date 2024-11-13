@@ -60,8 +60,11 @@ public class SceneInstaller : MonoInstaller
         var mediatorInstaller = new ZenjectMediatorInstantiator(Container);
         var resourceManagement = Container.Resolve<IResourceManagement>();
         var factory = Container.Resolve<IFactoryGameObjects>();
-        var transition = GuiInstaller.VerticalTransition();
-        var uiManager = GuiInstaller.ManagerAsync(GuiInstaller.WindowFactory(mediatorInstaller, resourceManagement, factory), transition, uiRoot);
+        var transitionOpen = GuiInstaller.Vertical();
+        var transitionClose = GuiInstaller.VerticalInverted();
+        var uiManager = GuiInstaller.ManagerAsync(
+            GuiInstaller.WindowFactory(mediatorInstaller, resourceManagement, factory), transitionOpen, transitionClose,
+            uiRoot);
         Container.BindInterfacesAndSelfTo<IWindowsManagerAsync>().FromInstance(uiManager);
     }
 
