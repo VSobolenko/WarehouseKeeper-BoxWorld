@@ -66,7 +66,7 @@ internal class MainWindowMediator : BaseMediator<MainWindowView>
                 _windowsDirector.OpenLevelSelectionWindow();
                 break;
             case MainWindowAction.OnClickShop:
-                _windowsDirector.OpenShopWindow();
+                _windowsDirector.OpenShopWindowAsync();
                 break;
             case MainWindowAction.OnClickSettings:
                 _windowsDirector.OpenSettingsWindow();

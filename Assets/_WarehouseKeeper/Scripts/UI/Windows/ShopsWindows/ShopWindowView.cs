@@ -7,6 +7,7 @@ namespace WarehouseKeeper.UI.Windows.ShopWindows
 {
 internal sealed class ShopWindowView : WindowUI
 {
+    [SerializeField] private GameObject _background;
     [field: SerializeField] public RectTransform ProductsRoot { get; private set; }
     [field: SerializeField] public PlayerResourcesView PlayerResourcesView { get; private set; }
     [field: SerializeField] public InformedText Informer { get; private set; }
@@ -27,11 +28,10 @@ internal sealed class ShopWindowView : WindowUI
             button.OnClickButton -= ClickWindowAction;
     }
 
-    private void ClickWindowAction(ShopWindowAction action)
-    {
-        OnWindowAction?.Invoke(action);
-    }
-    
+    private void ClickWindowAction(ShopWindowAction action) => OnWindowAction?.Invoke(action);
+
+    public void SetActiveBackground(bool value) => _background.SetActive(value);
+
 #if UNITY_EDITOR
     
     [ContextMenu("Collect window buttons"),]

@@ -39,7 +39,7 @@ internal class LevelInfoWindowMediator : BaseMediator<LevelInfoWindowView>
         if (data == null)
         {
             Log.InternalError();
-            _windowsDirector.CloseWindow(this);
+            _windowsDirector.CloseWindowBouncedAsync(this);
             return;
         }
 
@@ -85,7 +85,7 @@ internal class LevelInfoWindowMediator : BaseMediator<LevelInfoWindowView>
         switch (action)
         {
             case LevelInfoWindowAction.OnClickCancel:
-                _windowsDirector.CloseWindow(this);
+                _windowsDirector.CloseWindowBouncedAsync(this);
                 break;
             default:
                 Log.Error($"Unknown action {action}");

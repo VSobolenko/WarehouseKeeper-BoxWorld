@@ -250,7 +250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.42745098}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -460,6 +460,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 4076978866251346876}
+  overrideTransition: {fileID: 0}
   <LevelNumber>k__BackingField: {fileID: 3984896200576976106}
   <CountMoves>k__BackingField: {fileID: 2103293530968225812}
   <BestMoves>k__BackingField: {fileID: 2809685609697047958}

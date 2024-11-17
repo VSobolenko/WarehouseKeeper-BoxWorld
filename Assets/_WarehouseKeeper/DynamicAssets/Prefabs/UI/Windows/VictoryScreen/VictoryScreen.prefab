@@ -92,6 +92,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 7522765713434191882}
+  overrideTransition: {fileID: 7755108475185099873}
   _levelNumber: {fileID: 8355395418241223429}
   _countMoves: {fileID: 6334485508688075638}
   _countBestMoves: {fileID: 4933100828111295000}

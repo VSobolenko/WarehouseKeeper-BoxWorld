@@ -3,7 +3,6 @@ using System.Reflection;
 using System.Reflection.Emit;
 using Game.Ads;
 using Game.Ads.Installers;
-using Game.Ads.Managers;
 using Game.AssetContent;
 using Game.AssetContent.Installers;
 using Game.Audio;
@@ -66,7 +65,7 @@ public class ProjectInstaller : MonoInstaller
             rewardedAdUnitId = "79c242342de99d2d",
             interstitialAdUnitId = "9c4f76c0b6c71a2e",
         };
-        var adManager = new ApplovinAdManager(adDetails);
+        var adManager = AdsInstaller.Plug();
         Container.Bind<IAdsManager>().FromInstance(adManager).AsSingle().NonLazy();
 
         var localization = LocalizationInstaller.Manager();
@@ -105,6 +104,7 @@ public class ProjectInstaller : MonoInstaller
         Container.DeclareSignal<ActivateHint>();
         Container.DeclareSignal<PurchaseAmber>();
         Container.DeclareSignal<PurchaseProduct>();
+        Container.DeclareSignal<ShopEvent>();
         Container.DeclareSignal<ResetProgress>();
         Container.DeclareSignal<UnlockLevelByAmber>();
     }

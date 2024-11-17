@@ -204,6 +204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: -8877057690765624862}
+  overrideTransition: {fileID: 0}
   <SoundToggle>k__BackingField: {fileID: 2172145818515476300}
   <MusicToggle>k__BackingField: {fileID: 6019043824694000424}
   windowButtons:
@@ -374,7 +375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df4668d89a344cc2b4f09fbd6f824570, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: settings_music
+  key: settings_sound
   fallback: 
   disableStartedLocalization: 0
   targetText: {fileID: 5306847229020508153}
@@ -397,7 +398,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8284995905684988281
 RectTransform:
   m_ObjectHideFlags: 0

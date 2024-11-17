@@ -12,6 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 160bfe6232ee453eb91cdea9c6d2746f, type: 3}
   m_Name: WindowSettings
   m_EditorClassIdentifier: 
-  windowSettings:
-    transitionMoveDuration: 0.5
-    moveType: 6
+  defaultSettings:
+    _moveDuration: 0.5
+    _fadeDuration: 0.5
+    _synchronicity: 1
+    _openType: 27
+    _closeType: 27
+    bouncedOpen:
+      duration: 0.3
+      ease: 27
+    bouncedClose:
+      duration: 0.1
+      ease: 26

@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Globalization;
 using System.Threading;
-using Game;
 using Game.GUI.Windows;
 using Game.Localizations;
 using Game.Shops;
 using Game.Utility;
+using UnityEngine;
 using WarehouseKeeper.Directors.Game.Analytics.Signals;
 using WarehouseKeeper.Directors.Game.UserResources;
 using WarehouseKeeper.Directors.UI.Shops;
@@ -26,6 +27,7 @@ internal class ShopWindowMediator : BaseMediator<ShopWindowView>
     private readonly CancellationTokenSource _cancellationTokenSource = new();
     private ShopItem[] _currencyItems;
     private ShopItem[] _localItems;
+    private bool _isFromGameState;
 
     public ShopWindowMediator(ShopWindowView window,
                               WindowsDirector windowsDirector, ShopItemFactory shopItemFactory,
@@ -90,21 +92,25 @@ internal class ShopWindowMediator : BaseMediator<ShopWindowView>
     private async void ProcessPurchasingCurrencyProduct(ShopItem shopItem)
     {
         window.DisableInteraction();
-        var purchaseResponse = await _shopManager.PurchaseProduct(shopItem.product.ProductId);
+        var productId = shopItem.product.ProductId;
+        var purchaseResponse = await _shopManager.PurchaseProduct(productId);
         window.EnableInteraction();
 
         if (_cancellationTokenSource.IsCancellationRequested || shopItem.product == null)
             return;
-        var productId = shopItem.product.ProductId;
+        
+        _signalBus.Fire(new PurchaseAmber
+        {
+            productId = productId, 
+            result = purchaseResponse.result, 
+            message = purchaseResponse.message,
+            time = Time.time.ToString(CultureInfo.InvariantCulture),
+        });
+        
         if (purchaseResponse.result == PurchaseResult.Success)
             ProcessPayoutReward(shopItem.product, shopItem.product.Rewards);
         else
             window.Informer.Show(_localizationManager.Localize("shop_purchasingError"));
-
-        _signalBus.Fire(new PurchaseAmber
-        {
-            productId = productId, result = purchaseResponse.result, message = purchaseResponse.message
-        });
     }
 
     private void ProcessPurchasingLocalProduct(ShopItem shopItem)
@@ -127,7 +133,8 @@ internal class ShopWindowMediator : BaseMediator<ShopWindowView>
                 productId = product.ProductId, reward = reward,
                 place = _windowsDirector.GetFirstOrDefaultWindow<MainWindowMediator>() != null ? "Menu" : "Game",
                 amberInitValue = _playerResourcesDirector.UserData.Amber.Value,
-                hintInitValue = _playerResourcesDirector.UserData.Hints.Value
+                hintInitValue = _playerResourcesDirector.UserData.Hints.Value,
+                time = Time.time.ToString(CultureInfo.InvariantCulture),
             });
 
             switch (reward.type)
@@ -193,14 +200,27 @@ internal class ShopWindowMediator : BaseMediator<ShopWindowView>
         switch (action)
         {
             case ShopWindowAction.OnClickCloseYourself:
-                _windowsDirector.CloseWindowAsync(this);
-
+                CloseWindow();
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(action), action, null);
         }
     }
 
+    private void CloseWindow()
+    {
+        if (_isFromGameState)
+            _windowsDirector.CloseWindow(this);
+        else
+            _windowsDirector.CloseWindowAsync(this);
+    }
+    
     #endregion
+
+    public void SetAsGameView()
+    {
+        _isFromGameState = true;
+        window.SetActiveBackground(true);
+    }
 }
 }

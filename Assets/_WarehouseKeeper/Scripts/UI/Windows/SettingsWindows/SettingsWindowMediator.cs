@@ -110,10 +110,10 @@ internal class SettingsWindowMediator : BaseMediator<SettingsWindowView>
                 if (count > 0)
                     _signalBus.Fire(new ResetProgress {countUnlockLevels = count});
 
-                _windowsDirector.CloseWindow(mediator);
+                _windowsDirector.CloseWindowBouncedAsync(mediator);
             }, () =>
             {
-                _windowsDirector.CloseWindow(mediator);
+                _windowsDirector.CloseWindowBouncedAsync(mediator);
             });
         });
     }

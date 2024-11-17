@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Game.GUI.Installers;
 using Game.GUI.Windows;
+using Game.GUI.Windows.Transitions;
 using WarehouseKeeper._WarehouseKeeper.Scripts.UI.Windows.LevelSelectionWindows.SybWindows;
 using WarehouseKeeper.Directors.UI.Windows.VictoryScreen;
 using WarehouseKeeper.Levels;
@@ -19,10 +21,14 @@ namespace WarehouseKeeper.Directors.UI.Windows
 internal class WindowsDirector : IInitializable
 {
     private readonly IWindowsManagerAsync _windowsManager;
+    private readonly IWindowTransition _openBounced;
+    private readonly IWindowTransition _closeBounced;
 
     public WindowsDirector(IWindowsManagerAsync windowsManager)
     {
         _windowsManager = windowsManager;
+        _openBounced = GuiInstaller.Configurable(GuiInstaller.Bounced(), GuiInstaller.Empty(), false);
+        _closeBounced = GuiInstaller.Configurable(GuiInstaller.Empty(), GuiInstaller.Bounced(), true, false);
     }
 
     public void Initialize()
@@ -52,9 +58,14 @@ internal class WindowsDirector : IInitializable
         return _windowsManager.OpenWindowOnTopAsync<LevelSelectionWindowMediator>();
     }
     
-    internal Task<ShopWindowMediator> OpenShopWindow()
+    internal Task<ShopWindowMediator> OpenShopWindowAsync()
     {
         return _windowsManager.OpenWindowOnTopAsync<ShopWindowMediator>();
+    }
+    
+    internal ShopWindowMediator OpenShopWindow(Action<ShopWindowMediator> action = null)
+    {
+        return _windowsManager.OpenWindowOnTop<ShopWindowMediator>(action);
     }
     
     internal Task<SettingsWindowMediator> OpenSettingsWindow()
@@ -62,32 +73,32 @@ internal class WindowsDirector : IInitializable
         return _windowsManager.OpenWindowOnTopAsync<SettingsWindowMediator>();
     }
     
-    internal AppearanceWindowMediator OpenAppearanceWindow()
+    internal Task<AppearanceWindowMediator> OpenAppearanceWindow()
     {
-        return _windowsManager.OpenWindowOnTop<AppearanceWindowMediator>();
+        return _windowsManager.OpenWindowOnTopAsync<AppearanceWindowMediator>();
     }
     
-    internal ConfirmWindowMediator OpenConfirmWindow(Action<ConfirmWindowMediator> initWindow)
+    internal Task<ConfirmWindowMediator> OpenConfirmWindow(Action<ConfirmWindowMediator> initWindow)
     {
-        return _windowsManager.OpenWindowOnTop(initWindow);
+        return _windowsManager.OpenWindowOnTopAsync(_openBounced, initWindow);
     }
     
     internal Task<LanguageSelectionWindowMediator> OpenLanguageSelectionWindow()
     {
-        return _windowsManager.OpenWindowOnTopAsync<LanguageSelectionWindowMediator>();
+        return _windowsManager.OpenWindowOnTopAsync<LanguageSelectionWindowMediator>(_openBounced);
     }
     
-    internal VictoryWindowMediator OpenVictoryWindow(int levelID, LevelStatistics statistics)
+    internal void OpenVictoryWindow(int levelID, LevelStatistics statistics)
     {
-        return _windowsManager.OpenWindowOnTop<VictoryWindowMediator>(window =>
+        _windowsManager.OpenWindowOnTopAsync<VictoryWindowMediator>(_openBounced, window =>
         {
             window.Setup(levelID, statistics);
         });
     }
     
-    internal LevelInfoWindowMediator OpenLevelInfoWindow(int levelID)
+    internal void OpenLevelInfoWindow(int levelID)
     {
-        return _windowsManager.OpenWindowOnTop<LevelInfoWindowMediator>(window =>
+        _windowsManager.OpenWindowOnTopAsync<LevelInfoWindowMediator>(_openBounced, window =>
         {
             window.Setup(levelID);
         });
@@ -95,6 +106,7 @@ internal class WindowsDirector : IInitializable
     
     internal void CloseWindow<TMediator>(TMediator mediator) where TMediator : class, IMediator => _windowsManager.CloseWindow(mediator);
     internal void CloseWindowAsync<TMediator>(TMediator mediator) where TMediator : class, IMediator => _windowsManager.CloseWindowAsync(mediator);
+    internal void CloseWindowBouncedAsync<TMediator>(TMediator mediator) where TMediator : class, IMediator => _windowsManager.CloseWindowAsync(_closeBounced, mediator);
     
     internal void CloseWindow<TMediator>() where TMediator : class, IMediator => _windowsManager.CloseWindow<TMediator>();
     

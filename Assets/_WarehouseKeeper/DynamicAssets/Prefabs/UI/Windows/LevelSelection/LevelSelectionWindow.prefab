@@ -52,6 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 4280964720023780143}
+  overrideTransition: {fileID: 0}
   <PlayerResourcesView>k__BackingField: {fileID: 6998998754893565409}
   <ItemsRoot>k__BackingField: {fileID: 106341006900978534}
   windowButtons:
@@ -86,7 +87,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8284995905684988281
 RectTransform:
   m_ObjectHideFlags: 0

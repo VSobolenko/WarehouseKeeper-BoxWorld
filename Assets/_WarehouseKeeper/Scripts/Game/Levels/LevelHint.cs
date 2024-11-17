@@ -1,5 +1,4 @@
-﻿using Game;
-using Game.AssetContent;
+﻿using Game.AssetContent;
 using Game.Pools;
 using Game.Utility;
 using UnityEngine;
@@ -39,6 +38,8 @@ internal class LevelHint : PrefabProviderByAddress<DirectionalArrow>
         _levelDirector.ActiveLevel.Data.CountActiveHints++;
         levelRepositoryDirector.SaveLevelData(_levelDirector.ActiveLevel.Data);
         _maxStage = GetActiveMaxStage();
+        var arrow = GetPrefab(DirectionArrowAddressableKey);
+        _objectPool.Prepare(arrow, 1);
     }
 
     public void SetCustomStage(int stage)

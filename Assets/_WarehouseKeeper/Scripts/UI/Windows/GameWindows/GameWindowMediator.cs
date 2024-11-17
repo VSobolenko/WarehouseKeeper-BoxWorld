@@ -163,7 +163,10 @@ internal class GameWindowMediator : BaseMediator<GameWindowView>
         if (_playerResourcesDirector.UserData.Hints.CanSpend(spendHints) == false)
         {
             _gameDirector.Pause();
-            _windowsDirector.OpenShopWindow();
+            _windowsDirector.OpenShopWindow(mediator =>
+            {
+                mediator.SetAsGameView();
+            });
             return;
         }
         

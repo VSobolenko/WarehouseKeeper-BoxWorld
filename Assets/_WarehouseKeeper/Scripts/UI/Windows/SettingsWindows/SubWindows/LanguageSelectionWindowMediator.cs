@@ -59,7 +59,7 @@ internal class LanguageSelectionWindowMediator : BaseMediator<LanguageSelectionW
     
     private void ClickCancelButton()
     {
-        _windowsDirector.CloseWindow(this);
+        _windowsDirector.CloseWindowBouncedAsync(this);
     }
     
     #endregion

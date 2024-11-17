@@ -393,6 +393,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 4068860944875555302}
+  overrideTransition: {fileID: 0}
+  _background: {fileID: 4070292509860340119}
   <ProductsRoot>k__BackingField: {fileID: 1378911492282898188}
   <PlayerResourcesView>k__BackingField: {fileID: 3579343497705216535}
   <Informer>k__BackingField: {fileID: 2331138044792908861}

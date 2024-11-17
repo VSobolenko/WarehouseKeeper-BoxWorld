@@ -167,6 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc4d5b19a0b644fba69f2412d9bce245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enableSelfDestruct: 1
   _enableInEditor: 0
   _countTouchToDestroy: 5
 --- !u!114 &28613415

@@ -1,15 +1,16 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Game;
 using Game.AssetContent;
 using Game.Localizations;
 using Game.Pools;
 using Game.Shops;
 using Game.Utility;
 using UnityEngine;
+using WarehouseKeeper.Directors.Game.Analytics.Signals;
 using WarehouseKeeper.Directors.Game.UserResources;
 using WarehouseKeeper.Directors.UI.Shops;
 using Zenject;
@@ -25,10 +26,12 @@ internal class ShopItemFactory : IInitializable, IDisposable
     private readonly ILocalizationManager _localizationManager;
     private readonly ShopDirector _shopDirector;
     private readonly PlayerResourcesDirector _playerResourcesDirector;
+    private readonly SignalBus _signalBus;
 
     public ShopItemFactory(IResourceManagement resourceManagement, IObjectPoolManager objectPool,
                            IShopManager shopManager, ILocalizationManager localizationManager,
-                           ShopDirector shopDirector, PlayerResourcesDirector playerResourcesDirector)
+                           ShopDirector shopDirector, PlayerResourcesDirector playerResourcesDirector,
+                           SignalBus signalBus)
     {
         _resourceManagement = resourceManagement;
         _objectPool = objectPool;
@@ -36,12 +39,20 @@ internal class ShopItemFactory : IInitializable, IDisposable
         _localizationManager = localizationManager;
         _shopDirector = shopDirector;
         _playerResourcesDirector = playerResourcesDirector;
+        _signalBus = signalBus;
     }
 
     public async void Initialize()
     {
         await _shopManager.Initialize();
         await PrepareItemsAsync();
+        _signalBus.Fire(new ShopEvent
+        {
+            message = $"Initialize complete: " +
+                      $"Count products={_shopManager.Products.Count}; " +
+                      $"Id={string.Join(";", _shopManager.Products.Select(x => x.ProductId))}",
+            time = Time.time.ToString(CultureInfo.InvariantCulture),
+        });
     }
 
     public void Dispose()
@@ -56,7 +67,7 @@ internal class ShopItemFactory : IInitializable, IDisposable
         var uniqueLocalAddressableKeys = _shopDirector.LocalProducts.Select(x => x.AddressableItemKey).Distinct();
 
         var keys = uniqueCurrencyAddressableKeys.Union(uniqueLocalAddressableKeys);
-        
+
         foreach (var addressableKey in keys)
         {
             if (string.IsNullOrEmpty(addressableKey))
@@ -65,15 +76,17 @@ internal class ShopItemFactory : IInitializable, IDisposable
             if (_cancellationTokenSource.IsCancellationRequested)
                 return;
             var item = await GetPrefabAsync<ShopItem>(addressableKey, _cancellationTokenSource.Token);
+
             if (_cancellationTokenSource.IsCancellationRequested)
                 return;
-            
+
             if (item == null)
             {
                 Log.InternalError();
 
                 continue;
             }
+
             await _objectPool.PrepareAsync(item, 1, _cancellationTokenSource.Token);
         }
     }
@@ -85,9 +98,11 @@ internal class ShopItemFactory : IInitializable, IDisposable
         for (var i = 0; i < _shopManager.Products.Count; i++)
         {
             var adsDisable = _playerResourcesDirector.UserData.AdsDisable;
+
             if (_shopManager.Products.ElementAt(i).Rewards.Count(x => x.type == RewardType.RemoveAds) > 0 && adsDisable)
                 continue;
-            items.Add(GetCurrencyItem(_shopManager.Products.ElementAt(i), root));
+            var shopItem = GetCurrencyItem(_shopManager.Products.ElementAt(i), root);
+            items.Add(shopItem);
         }
 
         return items.ToArray();
@@ -100,9 +115,10 @@ internal class ShopItemFactory : IInitializable, IDisposable
         instance.transform.localScale = prefab.transform.localScale;
         var displayedName = _localizationManager.Localize(product.LocalizationKeyName);
         instance.Setup(product, product.Icon, $"{product.Price}$", displayedName);
+
         return instance;
     }
-    
+
     public ShopItem[] GetLocalItems(Transform root)
     {
         var items = new ShopItem[_shopDirector.LocalProducts.Length];
@@ -120,10 +136,11 @@ internal class ShopItemFactory : IInitializable, IDisposable
         instance.transform.localScale = prefab.transform.localScale;
         var displayedName = _localizationManager.Localize(product.LocalizationKeyName);
         instance.Setup(product, product.Icon, $"{product.Price}", displayedName);
+
         return instance;
     }
-    
-    protected async Task<T> GetPrefabAsync<T>(string addressableKey, CancellationToken token) where T : class
+
+    private async Task<T> GetPrefabAsync<T>(string addressableKey, CancellationToken token) where T : class
     {
         var prefab = await _resourceManagement.LoadAssetAsync<GameObject>(addressableKey);
 
@@ -133,35 +150,39 @@ internal class ShopItemFactory : IInitializable, IDisposable
         if (prefab == null)
         {
             Log.Error($"Addressable key prefab {addressableKey} missing");
+
             return null;
         }
 
         var levelSelectionItem = prefab.GetComponent<T>();
-        
+
         if (levelSelectionItem == null)
         {
             Log.Error($"Component [LevelSelectionItem] missing from {prefab.name} gameObject");
+
             return null;
         }
 
         return levelSelectionItem;
     }
-    
-    protected T GetPrefab<T>(string addressableKey) where T : class
+
+    private T GetPrefab<T>(string addressableKey) where T : class
     {
         var prefab = _resourceManagement.LoadAsset<GameObject>(addressableKey);
-        
+
         if (prefab == null)
         {
             Log.Error($"Addressable key prefab {addressableKey} missing");
+
             return null;
         }
 
         var levelSelectionItem = prefab.GetComponent<T>();
-        
+
         if (levelSelectionItem == null)
         {
             Log.Error($"Component [LevelSelectionItem] missing from {prefab.name} gameObject");
+
             return null;
         }
 

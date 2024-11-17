@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Game.Utility;
 using GameAnalyticsSDK;
 using WarehouseKeeper.Directors.Game.Analytics.Signals;
 using Zenject;
@@ -28,6 +29,7 @@ internal class AnalyticsDirector : IDisposable
         _signalBus.Subscribe<ActivateHint>(UserActivateHint);
         _signalBus.Subscribe<PurchaseAmber>(UserPurchaseProductReal);
         _signalBus.Subscribe<PurchaseProduct>(UserPurchaseProduct);
+        _signalBus.Subscribe<ShopEvent>(UserShopEvent);
         _signalBus.Subscribe<ResetProgress>(UserResetProgress);
         _signalBus.Subscribe<UnlockLevelByAmber>(UserBoughtLevel);
     }
@@ -41,8 +43,19 @@ internal class AnalyticsDirector : IDisposable
         _signalBus.Unsubscribe<ActivateHint>(UserActivateHint);
         _signalBus.Unsubscribe<PurchaseAmber>(UserPurchaseProductReal);
         _signalBus.Unsubscribe<PurchaseProduct>(UserPurchaseProduct);
+        _signalBus.Unsubscribe<ShopEvent>(UserShopEvent);
         _signalBus.Unsubscribe<ResetProgress>(UserResetProgress);
         _signalBus.Unsubscribe<UnlockLevelByAmber>(UserBoughtLevel);
+    }
+
+    private void UserShopEvent(ShopEvent shopEvent)
+    {
+        GameAnalytics.NewDesignEvent("Shop Event", new Dictionary<string, object>
+        {
+            {"Message", shopEvent.message},
+            {"Time", shopEvent.time},
+        });
+        Log.Analytics(shopEvent);
     }
 
     private void UserPurchaseProduct(PurchaseProduct product)
@@ -52,22 +65,27 @@ internal class AnalyticsDirector : IDisposable
                                        {
                                            {"AmberInit", product.amberInitValue},
                                            {"HintInit", product.hintInitValue},
+                                           {"Time", product.time},
                                        });
+        Log.Analytics(product);
     }
 
     private void UserPurchaseProductReal(PurchaseAmber product)
     {
         GameAnalytics.NewDesignEvent("AmberPurchaser", new Dictionary<string, object>
         {
-            {"ProductId", product.result},
+            {"ProductId", product.productId},
             {"Result", product.result},
             {"Message", product.message},
+            {"Time", product.time},
         });
+        Log.Analytics(product);
     }
 
     private void UserResetProgress(ResetProgress progress)
     {
         GameAnalytics.NewDesignEvent("ResetProgress", progress.countUnlockLevels);
+        Log.Analytics(progress);
     }
 
     private void UserStartLevel(LevelStart level)
@@ -77,16 +95,19 @@ internal class AnalyticsDirector : IDisposable
                                           {
                                               {"LevelId", level.levelId}
                                           });
+        Log.Analytics(level);
     }
 
     private void UserRestartLevel(LevelRestart level)
     {
         GameAnalytics.NewProgressionEvent(GAProgressionStatus.Undefined, "levelRestart", level.levelId);
+        Log.Analytics(level);
     }
 
     private void UserGoHome(LevelGoHome level)
     {
         GameAnalytics.NewProgressionEvent(GAProgressionStatus.Undefined, "levelGoHome", level.levelId);
+        Log.Analytics(level);
     }
 
     private void UserCompleteLevel(LevelVictory level)
@@ -99,6 +120,7 @@ internal class AnalyticsDirector : IDisposable
                                               {"ElapsedTime", level.elapsedTime},
                                               {"ActivatedHint", level.countActivatedHint},
                                           });
+        Log.Analytics(level);
     }
 
     private void UserActivateHint(ActivateHint level)
@@ -108,6 +130,7 @@ internal class AnalyticsDirector : IDisposable
                                        {
                                            {"LevelId", level.levelId},
                                        });
+        Log.Analytics(level);
     }
 
     private void UserBoughtLevel(UnlockLevelByAmber level)
@@ -117,6 +140,7 @@ internal class AnalyticsDirector : IDisposable
                                        {
                                            {"LevelId", level.levelId},
                                        });
+        Log.Analytics(level);
     }
 
     private void InitializeGameAnalytics()

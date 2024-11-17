@@ -87,7 +87,7 @@ internal class LevelSelectionWindowMediator : BaseMediator<LevelSelectionWindowV
         }
         else
         {
-            _windowsDirector.OpenShopWindow();
+            _windowsDirector.OpenShopWindowAsync();
         }
     }
 
@@ -118,7 +118,7 @@ internal class LevelSelectionWindowMediator : BaseMediator<LevelSelectionWindowV
                 _windowsDirector.CloseWindowAsync(this);
                 break;
             case LevelSelectionWindowAction.OnClickAmber:
-                _windowsDirector.OpenShopWindow();
+                _windowsDirector.OpenShopWindowAsync();
                 break;
             default:
                 Log.Error($"Unknown action {action}");
