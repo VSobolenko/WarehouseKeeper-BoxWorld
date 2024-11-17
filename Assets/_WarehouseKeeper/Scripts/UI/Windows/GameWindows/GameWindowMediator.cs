@@ -174,6 +174,9 @@ internal class GameWindowMediator : BaseMediator<GameWindowView>
         {
             data.Hints.Spend(spendHints);
         });
+
+        if (window.Hint.IsActive == false)
+            _gameDirector.RestartLevel();
         
         if(window.Hint.IsActive)
             window.Hint.Disable();

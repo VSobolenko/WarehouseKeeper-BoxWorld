@@ -72,7 +72,7 @@ internal class AnalyticsDirector : IDisposable
 
     private void UserPurchaseProductReal(PurchaseAmber product)
     {
-        GameAnalytics.NewDesignEvent("AmberPurchaser", new Dictionary<string, object>
+        GameAnalytics.NewDesignEvent("PurchaseAmber", new Dictionary<string, object>
         {
             {"ProductId", product.productId},
             {"Result", product.result},

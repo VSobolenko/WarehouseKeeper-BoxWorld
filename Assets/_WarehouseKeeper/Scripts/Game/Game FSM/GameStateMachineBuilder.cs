@@ -31,7 +31,7 @@ public class GameStateMachineBuilder
             _fsmProfiler.stateMachine = _stateMachine;
         };
 
-        Log.Info($"Create new {GetType().Name}; Hash={GetHashCode()}");
+        // Log.Info($"Create new {GetType().Name}; Hash={GetHashCode()}");
     }
 
     public void Initialize()

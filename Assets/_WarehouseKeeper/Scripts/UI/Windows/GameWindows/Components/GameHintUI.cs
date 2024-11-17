@@ -35,11 +35,11 @@ public class GameHintUI : MonoBehaviour
 
     public void Disable()
     {
-        StopTwins();
         IsActive = false;
-        _selfCanvasGroup.blocksRaycasts = false;
-        _live.DOScale(1f, _decreaseDuration);
-        _root.DOScale(0f, _decreaseDuration);
+        // StopTwins();
+        // _selfCanvasGroup.blocksRaycasts = false;
+        // _live.DOScale(1f, _decreaseDuration);
+        // _root.DOScale(0f, _decreaseDuration);
     }
 
     public void TurnOn()

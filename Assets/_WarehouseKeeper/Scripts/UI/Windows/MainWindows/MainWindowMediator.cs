@@ -117,6 +117,7 @@ internal class MainWindowMediator : BaseMediator<MainWindowView>
     
     private void ClickOpenDiscord()
     {
+        Log.Info("Open Discord");
         Application.OpenURL(GameData.DiscordUrl);    
     }
     
