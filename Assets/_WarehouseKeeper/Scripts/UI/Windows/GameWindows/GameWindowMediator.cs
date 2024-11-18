@@ -169,7 +169,10 @@ internal class GameWindowMediator : BaseMediator<GameWindowView>
             });
             return;
         }
-        
+
+        if (_levelDirector.ActiveLevel.Hint.IsActive)
+            return;
+
         _playerResourcesDirector.UpdateData(data =>
         {
             data.Hints.Spend(spendHints);

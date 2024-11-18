@@ -73,7 +73,7 @@ public class GameStateMachineBuilder
 
     public void Pause()
     {
-        _stateMachine.StopMachine();
+        //_stateMachine.StopMachine();
         _stateMachine.ForceTransitTo(_pauseState, false);
     }
 
