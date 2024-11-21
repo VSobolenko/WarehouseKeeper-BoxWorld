@@ -5,7 +5,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "73575516048ef17c212d93e03517740d429183e8"
+      "hash": "ac405b32a618bf9d9880e4fc1b63c5e45036c72c"
     },
     "com.gexetr.gamecorelib": {
       "version": "file:com.gexetr.gamecorelib",
