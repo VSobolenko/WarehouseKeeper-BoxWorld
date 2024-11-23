@@ -2,7 +2,6 @@
 using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
 using Game;
-using Game.Utility;
 using UnityEngine;
 
 namespace WarehouseKeeper.UI.Windows.GameWindows.Components

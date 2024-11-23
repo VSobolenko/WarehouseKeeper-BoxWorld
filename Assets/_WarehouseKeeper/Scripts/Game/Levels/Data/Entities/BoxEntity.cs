@@ -1,7 +1,6 @@
 ﻿using System.Threading;
 using DG.Tweening;
 using Game;
-using Game.Utility;
 using UnityEngine;
 
 namespace WarehouseKeeper.Levels.Entities

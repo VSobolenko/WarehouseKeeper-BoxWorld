@@ -8,7 +8,7 @@ using Game.AssetContent;
 using Game.Localizations;
 using Game.Pools;
 using Game.Shops;
-using Game.Utility;
+using Game;
 using UnityEngine;
 using WarehouseKeeper.Directors.Game.Analytics.Signals;
 using WarehouseKeeper.Directors.Game.UserResources;

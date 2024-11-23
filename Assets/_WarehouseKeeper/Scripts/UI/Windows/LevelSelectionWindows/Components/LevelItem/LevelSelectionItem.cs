@@ -1,7 +1,6 @@
 ﻿using System;
 using Game;
 using Game.Pools;
-using Game.Utility;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

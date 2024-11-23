@@ -3,7 +3,6 @@ using System.Text;
 using Game;
 using Game.GUI.Windows;
 using Game.Localizations;
-using Game.Utility;
 using WarehouseKeeper._WarehouseKeeper.Scripts.UI.Windows.LevelSelectionWindows.SybWindows.Components;
 using WarehouseKeeper.Directors.UI.Windows;
 using WarehouseKeeper.Levels;

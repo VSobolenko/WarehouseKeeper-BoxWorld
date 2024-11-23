@@ -4,7 +4,7 @@ using System.Threading;
 using Game.GUI.Windows;
 using Game.Localizations;
 using Game.Shops;
-using Game.Utility;
+using Game;
 using UnityEngine;
 using WarehouseKeeper.Directors.Game.Analytics.Signals;
 using WarehouseKeeper.Directors.Game.UserResources;

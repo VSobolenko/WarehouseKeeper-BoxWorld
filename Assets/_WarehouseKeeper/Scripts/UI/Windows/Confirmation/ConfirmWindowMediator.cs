@@ -2,7 +2,6 @@ using System;
 using Game;
 using Game.GUI.Windows;
 using Game.Localizations;
-using Game.Utility;
 using WarehouseKeeper.UI.Windows.ConfirmationWindows.Components;
 
 namespace WarehouseKeeper.UI.Windows.ConfirmationWindows

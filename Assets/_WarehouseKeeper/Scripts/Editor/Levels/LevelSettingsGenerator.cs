@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Game.Repositories;
-using Game.Utility.Extensions;
+using Game.Extensions;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
@@ -24,7 +24,6 @@ internal class LevelSettingsGenerator : LevelsGenerator<LevelSettings, LevelPiec
                                   Action onUpdateAssets) : base(repository, log, defaultGridSize, onUpdateAssets)
     {
         ForceUpdateReorderableList();
-
     }
 
     protected override void DrawCustomUserPanel()

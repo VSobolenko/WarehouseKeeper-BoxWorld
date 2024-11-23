@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Game.Utility;
+using Game;
 using GameAnalyticsSDK;
 using WarehouseKeeper.Directors.Game.Analytics.Signals;
 using Zenject;

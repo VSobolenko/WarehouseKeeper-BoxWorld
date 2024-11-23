@@ -23,7 +23,7 @@ internal abstract class LevelsGenerator<TData, TLevel>
     {
         this.repository = repository;
         _defaultGridSize = defaultGridSize;
-        this._log = log;
+        _log = log;
         _updateAssets = onUpdateAssets;
         
         _offset = new Vector2(16f, 2f);

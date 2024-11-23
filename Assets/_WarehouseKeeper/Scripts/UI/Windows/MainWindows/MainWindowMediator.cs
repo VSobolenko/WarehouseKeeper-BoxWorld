@@ -2,7 +2,6 @@
 using Game;
 using Game.GUI.Windows;
 using Game.Localizations;
-using Game.Utility;
 using UnityEngine;
 using WarehouseKeeper.Directors.Game;
 using WarehouseKeeper.Directors.Game.Analytics.Signals;
