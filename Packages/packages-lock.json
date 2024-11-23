@@ -1,12 +1,5 @@
 {
   "dependencies": {
-    "com.boundfoxstudios.fluentassertions": {
-      "version": "https://github.com/BoundfoxStudios/fluentassertions-unity.git#upm",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "ac405b32a618bf9d9880e4fc1b63c5e45036c72c"
-    },
     "com.gexetr.gamecorelib": {
       "version": "file:com.gexetr.gamecorelib",
       "depth": 0,
@@ -16,6 +9,13 @@
         "com.unity.addressables": "1.22.2",
         "com.unity.textmeshpro": "3.0.6"
       }
+    },
+    "com.github-glitchenzo.nugetforunity": {
+      "version": "https://github.com/GlitchEnzo/NuGetForUnity.git?path=/src/NuGetForUnity",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "0d0e4af9c79d63224ae26f1a3e822300b1475da7"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
@@ -269,6 +269,12 @@
         "com.unity.modules.ui": "1.0.0",
         "com.unity.modules.imgui": "1.0.0"
       }
+    },
+    "nuget-packages": {
+      "version": "file:nuget-packages",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",
