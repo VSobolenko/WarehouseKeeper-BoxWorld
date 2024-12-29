@@ -1,4 +1,5 @@
-﻿using Game;
+﻿using System;
+using Game;
 using Game.FSMCore.States;
 using Game.Inputs;
 using UnityEngine;
@@ -34,7 +35,7 @@ internal class WaitingState : State<bool, Vector2>
     {
     }
 
-    protected override Vector2 ReturnProcessedResult()
+    protected override Vector2 ReturnStateProcessedResult()
     {
         if (_levelDirector.ActiveLevel.Hint.InProgress || _levelDirector.ActiveLevel.Hint.IsActive == false ||
             _levelDirector.ActiveLevel.Hint.IsComplete)

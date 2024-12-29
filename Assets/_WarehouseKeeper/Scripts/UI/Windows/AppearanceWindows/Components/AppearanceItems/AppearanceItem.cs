@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace WarehouseKeeper._WarehouseKeeper.Scripts.UI.Windows.AppearanceWindows.Components.AppearanceItems
 {
-internal class AppearanceItem : KeyPooledObject
+internal class AppearanceItem : MonoPooledObject
 {
     [SerializeField] private RectTransform root;
     [SerializeField] private Button selfButton;

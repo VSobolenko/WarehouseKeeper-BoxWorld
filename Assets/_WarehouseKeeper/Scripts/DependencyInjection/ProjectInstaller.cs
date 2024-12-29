@@ -52,7 +52,7 @@ public class ProjectInstaller : MonoInstaller
         Container.Bind<IRepository<LevelData>>().FromInstance(levelDataRepository).AsSingle().NonLazy();
         Container.Bind<IRepository<UserData>>().FromInstance(userDataRepository).AsSingle().NonLazy();
         Container.Bind<IRepository<LevelSettings>>().FromInstance(levelSettingsRepository).AsSingle().NonLazy();
-        Container.Bind<IResourceManagement>().FromInstance(ResourceManagementInstaller.Addressable()).AsSingle();
+        Container.Bind<IResourceManager>().FromInstance(ResourceManagerInstaller.Addressable()).AsSingle();
         Container.Bind<IFactoryGameObjects>().To<DependencyInjectionFactory>().AsSingle();
         var inputManager = InputInstaller.Manager();
         var swipe = InputInstaller.Swipe(inputManager);

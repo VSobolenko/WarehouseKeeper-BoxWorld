@@ -19,7 +19,7 @@ internal class LevelSelectionItemFactory : PrefabProviderByAddress<LevelSelectio
     private readonly IObjectPoolManager _objectPool;
     private readonly LevelRepositoryDirector _levelRepository;
 
-    public LevelSelectionItemFactory(IResourceManagement resourceManagement,
+    public LevelSelectionItemFactory(IResourceManager resourceManagement,
                                      IObjectPoolManager objectPool,
                                      LevelRepositoryDirector levelRepository) : base(resourceManagement)
     {
@@ -49,7 +49,7 @@ internal class LevelSelectionItemFactory : PrefabProviderByAddress<LevelSelectio
             return;
         }
 
-        await _objectPool.PrepareAsync(item, countSettings, _cancellationTokenSource.Token);
+        await _objectPool.PrepareAsync(item, countSettings, token: _cancellationTokenSource.Token);
     }
 
     // public async Task<LevelSelectionItem[]> GetLevelItemsAsync()

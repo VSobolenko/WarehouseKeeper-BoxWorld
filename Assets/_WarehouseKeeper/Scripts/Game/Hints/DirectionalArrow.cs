@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace WarehouseKeeper.Directors.Game.Hints
 {
-internal class DirectionalArrow : KeyPooledObject
+internal class DirectionalArrow : MonoPooledObject
 {
     [SerializeField] private Transform _arrow;
     [SerializeField] private float _distance = 2f ;

@@ -45,7 +45,7 @@ internal class MotionState : State<Vector2, bool>
     {
     }
 
-    protected override bool ReturnProcessedResult()
+    protected override bool ReturnStateProcessedResult()
     {
         return false;
     }

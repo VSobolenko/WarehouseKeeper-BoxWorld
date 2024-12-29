@@ -4,6 +4,6 @@ namespace WarehouseKeeper.Directors.Game.Game_FSM
 {
 internal class PauseState : State<bool, bool>
 {
-    protected override bool ReturnProcessedResult() => false;
+    protected override bool ReturnStateProcessedResult() => false;
 }
 }

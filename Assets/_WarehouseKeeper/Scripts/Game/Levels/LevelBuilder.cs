@@ -11,7 +11,7 @@ namespace WarehouseKeeper.Levels
 internal class LevelBuilder : IInitializable
 {
     private readonly LevelRepositoryDirector _levelRepositoryDirector;
-    private readonly IResourceManagement _resourceManagement;
+    private readonly IResourceManager _resourceManagement;
     private readonly IFactoryGameObjects _factory;
     private readonly IObjectPoolManager _objectPool;
 
@@ -23,7 +23,7 @@ internal class LevelBuilder : IInitializable
 
     private GameObject _activeLevelRoot;
     
-    public LevelBuilder(LevelRepositoryDirector levelRepositoryDirector, IResourceManagement resourceManagement,
+    public LevelBuilder(LevelRepositoryDirector levelRepositoryDirector, IResourceManager resourceManagement,
                         IFactoryGameObjects factory, IObjectPoolManager objectPool)
     {
         _levelRepositoryDirector = levelRepositoryDirector;

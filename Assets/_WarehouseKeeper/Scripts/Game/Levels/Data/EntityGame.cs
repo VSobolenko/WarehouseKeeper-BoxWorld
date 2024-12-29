@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace WarehouseKeeper.Levels
 {
-internal class EntityGame : KeyPooledObject
+internal class EntityGame : MonoPooledObject
 {
     public virtual void UpdateState(Node node) { }
     public virtual void OnStartMoving(Vector2Int direction, GameEntity self, Node[,] nodes, GameEntity[,] gameEntities) { }

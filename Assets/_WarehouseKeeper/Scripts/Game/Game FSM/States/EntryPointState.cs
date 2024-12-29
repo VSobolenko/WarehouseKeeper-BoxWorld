@@ -28,7 +28,7 @@ internal class EntryPointState : State<int, bool>
         _windowsDirector.OpenGameWindow(mediator => { mediator.UpdateWindowData(); });
     }
 
-    protected override bool ReturnProcessedResult() => false;
+    protected override bool ReturnStateProcessedResult() => false;
 
     public override void UpdateState() { }
 }

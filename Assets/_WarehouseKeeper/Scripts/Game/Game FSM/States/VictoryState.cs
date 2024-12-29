@@ -43,7 +43,7 @@ internal class VictoryState : State<bool, bool>
     {
     }
 
-    protected override bool ReturnProcessedResult()
+    protected override bool ReturnStateProcessedResult()
     {
         return false;
     }

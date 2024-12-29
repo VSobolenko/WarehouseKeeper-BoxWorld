@@ -22,7 +22,7 @@ internal class AppearanceItemFactory : PrefabProviderByAddress<AppearanceItem>, 
     private const string AddressableItemKey = "AppearanceItem";
     private readonly CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
 
-    public AppearanceItemFactory(IResourceManagement resourceManagement, 
+    public AppearanceItemFactory(IResourceManager resourceManagement, 
                                  IObjectPoolManager objectPool, 
                                  PlayerResourcesDirector playerResources,
                                  ResourcesDirector resourcesDirector) : base(resourceManagement)
@@ -51,7 +51,7 @@ internal class AppearanceItemFactory : PrefabProviderByAddress<AppearanceItem>, 
             return;
         }
 
-        await _objectPool.PrepareAsync(item, maxCountElements, _cancellationTokenSource.Token);
+        await _objectPool.PrepareAsync(item, maxCountElements, token: _cancellationTokenSource.Token);
     }
     
     public AppearanceItem[] GetAnimationsItems(Transform root)

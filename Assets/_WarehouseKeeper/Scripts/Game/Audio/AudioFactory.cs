@@ -16,7 +16,7 @@ internal class AudioFactory : PrefabProviderByAddress<Source>, IInitializable, I
     private const string AddressableItemKey = "AudioSource";
     private readonly CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
 
-    public AudioFactory(IResourceManagement resourceManagement, IObjectPoolManager objectPool) : base(resourceManagement)
+    public AudioFactory(IResourceManager resourceManagement, IObjectPoolManager objectPool) : base(resourceManagement)
     {
         _objectPool = objectPool;
     }
@@ -41,7 +41,7 @@ internal class AudioFactory : PrefabProviderByAddress<Source>, IInitializable, I
             return;
         }
 
-        await _objectPool.PrepareAsync(item, 2, _cancellationTokenSource.Token);
+        await _objectPool.PrepareAsync(item, 2, token: _cancellationTokenSource.Token);
     }
 
     public Source GetSource()

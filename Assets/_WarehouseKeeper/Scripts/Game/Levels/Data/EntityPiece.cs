@@ -2,7 +2,7 @@
 
 namespace WarehouseKeeper.Levels
 {
-internal class EntityPiece : KeyPooledObject
+internal class EntityPiece : MonoPooledObject
 {
     
 }

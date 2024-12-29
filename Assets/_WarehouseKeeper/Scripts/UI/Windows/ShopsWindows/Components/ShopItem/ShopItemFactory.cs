@@ -20,7 +20,7 @@ namespace WarehouseKeeper.UI.Windows.ShopWindows
 internal class ShopItemFactory : IInitializable, IDisposable
 {
     private readonly CancellationTokenSource _cancellationTokenSource = new();
-    private readonly IResourceManagement _resourceManagement;
+    private readonly IResourceManager _resourceManagement;
     private readonly IShopManager _shopManager;
     private readonly IObjectPoolManager _objectPool;
     private readonly ILocalizationManager _localizationManager;
@@ -28,7 +28,7 @@ internal class ShopItemFactory : IInitializable, IDisposable
     private readonly PlayerResourcesDirector _playerResourcesDirector;
     private readonly SignalBus _signalBus;
 
-    public ShopItemFactory(IResourceManagement resourceManagement, IObjectPoolManager objectPool,
+    public ShopItemFactory(IResourceManager resourceManagement, IObjectPoolManager objectPool,
                            IShopManager shopManager, ILocalizationManager localizationManager,
                            ShopDirector shopDirector, PlayerResourcesDirector playerResourcesDirector,
                            SignalBus signalBus)
@@ -87,7 +87,7 @@ internal class ShopItemFactory : IInitializable, IDisposable
                 continue;
             }
 
-            await _objectPool.PrepareAsync(item, 1, _cancellationTokenSource.Token);
+            await _objectPool.PrepareAsync(item, 1, token: _cancellationTokenSource.Token);
         }
     }
 

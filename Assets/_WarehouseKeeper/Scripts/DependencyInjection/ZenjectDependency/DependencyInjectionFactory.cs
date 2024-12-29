@@ -52,35 +52,35 @@ public class DependencyInjectionFactory : IFactoryGameObjects
 
     public GameObject InstantiateEmpty(string name, Vector3 position, Quaternion rotation, Transform parent, params System.Type[] components) =>
         InternalInstantiateBase(name, position, rotation, parent, components);
-    
+
     // Creates a new object from a prefab
-    public GameObject InstantiatePrefab(Object prefab) => 
+    public GameObject InstantiatePrefab(GameObject prefab) => 
         _container.InstantiatePrefab(prefab);
 
-    public GameObject InstantiatePrefab(Object prefab, Transform parent) => 
+    public GameObject InstantiatePrefab(GameObject prefab, Transform parent) => 
         _container.InstantiatePrefab(prefab, parent);
 
-    public GameObject InstantiatePrefab(Object prefab, Vector3 position, Quaternion rotation, Transform parent) =>
+    public GameObject InstantiatePrefab(GameObject prefab, Vector3 position, Quaternion rotation, Transform parent) =>
         _container.InstantiatePrefab(prefab, position, rotation, parent);
 
     // Creates a new object from a prefab that already has a component T
-    public T Instantiate<T>(T prefab) where T : Object => 
+    public T Instantiate<T>(T prefab) where T : Component => 
         _container.InstantiatePrefabForComponent<T>(prefab);
 
-    public T Instantiate<T>(T prefab, IEnumerable<object> extraArgs) where T : Object =>
+    public T Instantiate<T>(T prefab, IEnumerable<object> extraArgs) where T : Component =>
         _container.InstantiatePrefabForComponent<T>(prefab, extraArgs);
 
-    public T Instantiate<T>(T prefab, Transform parent) where T : Object =>
+    public T Instantiate<T>(T prefab, Transform parent) where T : Component =>
         _container.InstantiatePrefabForComponent<T>(prefab, parent);
 
-    public T Instantiate<T>(T prefab, Transform parent, IEnumerable<object> extraArgs) where T : Object =>
+    public T Instantiate<T>(T prefab, Transform parent, IEnumerable<object> extraArgs) where T : Component =>
         _container.InstantiatePrefabForComponent<T>(prefab, parent, extraArgs);
 
-    public T Instantiate<T>(T prefab, Vector3 position, Quaternion rotation, Transform parent) where T : Object =>
+    public T Instantiate<T>(T prefab, Vector3 position, Quaternion rotation, Transform parent) where T : Component =>
         _container.InstantiatePrefabForComponent<T>(prefab, position, rotation, parent);
 
     public T Instantiate<T>(T prefab, Vector3 position, Quaternion rotation, Transform parent,
-                            IEnumerable<object> extraArgs) where T : Object =>
+                            IEnumerable<object> extraArgs) where T : Component =>
         _container.InstantiatePrefabForComponent<T>(prefab, position, rotation, parent, extraArgs);
 
     // Creates a new object and adds a new component to it

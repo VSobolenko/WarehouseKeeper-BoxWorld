@@ -17,7 +17,7 @@ internal class AppearanceWindowMediator : BaseMediator<AppearanceWindowView>
     private readonly AppearanceItemFactory _appearanceItemFactory;
     private readonly PlayerResourcesDirector _playerResources;
     private readonly ResourcesDirector _resourcesDirector;
-    private readonly IResourceManagement _resourceManagement;
+    private readonly IResourceManager _resourceManagement;
     private readonly IFactoryGameObjects _factoryGameObjects;
 
     private AppearanceItem[] _items;
@@ -30,7 +30,7 @@ internal class AppearanceWindowMediator : BaseMediator<AppearanceWindowView>
                                     AppearanceItemFactory appearanceItemFactory,
                                     PlayerResourcesDirector playerResources,
                                     ResourcesDirector resourcesDirector,
-                                    IResourceManagement resourceManagement,
+                                    IResourceManager resourceManagement,
                                     IFactoryGameObjects factoryGameObjects) : base(window)
     {
         _windowsDirector = windowsDirector;

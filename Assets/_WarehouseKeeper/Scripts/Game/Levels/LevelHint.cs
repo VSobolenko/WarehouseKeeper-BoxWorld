@@ -24,7 +24,7 @@ internal class LevelHint : PrefabProviderByAddress<DirectionalArrow>
     private int _activeMoveState;
     private readonly int _maxStage;
 
-    public LevelHint(IResourceManagement resourceManagement, 
+    public LevelHint(IResourceManager resourceManagement, 
                      IObjectPoolManager objectPool,
                      LevelRepositoryDirector levelRepositoryDirector, 
                      LevelDirector levelDirector) 

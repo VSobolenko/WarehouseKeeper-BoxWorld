@@ -8,7 +8,7 @@ using WarehouseKeeper.Levels;
 
 namespace WarehouseKeeper.UI.Windows.LevelSelections
 {
-internal class LevelSelectionItem : KeyPooledObject
+internal class LevelSelectionItem : MonoPooledObject
 {
     [SerializeField] private TextMeshProUGUI levelNumber;
     [SerializeField] private GameObject lockImage;

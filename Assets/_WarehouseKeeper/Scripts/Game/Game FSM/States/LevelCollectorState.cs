@@ -26,7 +26,7 @@ internal class LevelCollectorState : State<bool, bool>
     {
     }
 
-    protected override bool ReturnProcessedResult()
+    protected override bool ReturnStateProcessedResult()
     {
         return false;
     }
