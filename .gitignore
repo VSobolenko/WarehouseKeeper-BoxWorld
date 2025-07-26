@@ -35,7 +35,6 @@ Assets/AssetStoreTools*
 /[Aa]ssets/Plugins/Editor/JetBrains*
 
 # Visual Studio cache directory
-*.a
 .vs/
 
 #idea
