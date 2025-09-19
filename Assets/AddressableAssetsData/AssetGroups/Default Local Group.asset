@@ -13,8 +13,6 @@ MonoBehaviour:
   m_Name: Default Local Group
   m_EditorClassIdentifier: 
   m_GroupName: Default Local Group
-  m_Data:
-    m_SerializedData: []
   m_GUID: d6f7dbd20d2d5554f9777200c6cc118f
   m_SerializeEntries:
   - m_GUID: 0571b4895455d624fb22887455386dc9
@@ -159,6 +157,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d9c88da864c495548910ebc2e4727004
     m_Address: UI/LevelInfoWindowMediator
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dcd85ab9acb50354d92963f74bd3dc14
+    m_Address: UI/UIRoot
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

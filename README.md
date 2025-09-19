@@ -1,12 +1,25 @@
 # Warehouse Keeper: Box World  
 
+## How to Run
+
+1.  **Clone the repository:**
+    ```bash
+    git clone --recurse-submodules https://github.com/VSobolenko/WarehouseKeeper-BoxWorld
+    ```
+
+2.  **If you forgot `--recurse-submodules`:**
+    ```bash
+    git submodule update --init --recursive
+    ```
+3. Open and Run *Assets/_WarehouseKeeper/Scenes/Main.unity* scene
+
 ## Available on  
 - [Google Play](https://play.google.com/store/apps/details?id=com.gexetr.warehousekeeperboxworld)  
 - [APKPure](https://apkpure.com/p/com.gexetr.warehousekeeperboxworld)  
 - [AppBrain](https://www.appbrain.com/app/warehouse-keeper-box-world/com.gexetr.warehousekeeperboxworld)  
 
 ## Unity Version  
-**2022.3.46f1**  
+**6000.0.38f1**  
 
 ## Description  
 Train your brain and solve challenging puzzles in this **Sokoban-style** logic game!  
