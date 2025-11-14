@@ -1,4 +1,17 @@
+<div align="center">
+  <img src="Content/GooglePlayImages/MainIcon.png" 
+alt="Warehouse Keeper: Box World" width="256"/>
+
 # Warehouse Keeper: Box World  
+
+_The logic game Sokoban_
+
+[![Unity](https://img.shields.io/badge/Unity-6000.2.8f1-black?logo=unity)](https://unity.com/)
+[![Discord](https://img.shields.io/badge/Discord-Join-5865F2?logo=discord&logoColor=white)](https://discord.gg/udWD2NCvc6)
+[![Google Play](https://img.shields.io/badge/Google_Play-Download-3DDC84?logo=googleplay&logoColor=white)](https://play.google.com/store/apps/details?id=com.gexetr.warehousekeeperboxworld)
+[![AppBrain](https://img.shields.io/badge/AppBrain-Download-3DDC84)](https://www.appbrain.com/app/warehouse-keeper-box-world/com.gexetr.warehousekeeperboxworld)
+[![APKPure](https://img.shields.io/badge/APKPure-Download-3DDC84)](https://apkpure.com/p/com.gexetr.warehousekeeperboxworld)
+</div>
 
 ## How to Run
 
@@ -12,14 +25,6 @@
     git submodule update --init --recursive
     ```
 3. Open and Run *Assets/_WarehouseKeeper/Scenes/Main.unity* scene
-
-## Available on  
-- [Google Play](https://play.google.com/store/apps/details?id=com.gexetr.warehousekeeperboxworld)  
-- [APKPure](https://apkpure.com/p/com.gexetr.warehousekeeperboxworld)  
-- [AppBrain](https://www.appbrain.com/app/warehouse-keeper-box-world/com.gexetr.warehousekeeperboxworld)  
-
-## Unity Version  
-**6000.0.38f1**  
 
 ## Description  
 Train your brain and solve challenging puzzles in this **Sokoban-style** logic game!  
@@ -37,3 +42,7 @@ Check out similar games:
 ## Screenshots  
 | ![](Content/Screenshots/ss_image_1.jpg) | ![](Content/Screenshots/ss_image_2.jpg) | ![](Content/Screenshots/ss_image_3.jpg) | ![](Content/Screenshots/ss_image_4.jpg) |  
 |---|---|---|---|  
+
+<div align="center">
+  <sub>Made with ❤️ by Gexetr</sub>
+</div>
