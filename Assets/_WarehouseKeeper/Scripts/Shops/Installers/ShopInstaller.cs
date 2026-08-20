@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if MONETIZATION_PURCHASING_ENABLE_IAP_V4
+using System;
 using UnityEngine;
 
 namespace Game.Shops.Installers
@@ -32,3 +33,5 @@ public static class ShopInstaller
     }
 }
 }
+
+#endif

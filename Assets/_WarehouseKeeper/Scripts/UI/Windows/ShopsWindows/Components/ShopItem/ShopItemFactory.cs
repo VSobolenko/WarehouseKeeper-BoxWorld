@@ -13,6 +13,7 @@ using UnityEngine;
 using WarehouseKeeper.Directors.Game.Analytics.Signals;
 using WarehouseKeeper.Directors.Game.UserResources;
 using WarehouseKeeper.Directors.UI.Shops;
+using WarehouseKeeper._WarehouseKeeper.Scripts.Shops.Monetization.Purchasing;
 using Zenject;
 
 namespace WarehouseKeeper.UI.Windows.ShopWindows
@@ -21,7 +22,8 @@ internal class ShopItemFactory : IInitializable, IDisposable
 {
     private readonly CancellationTokenSource _cancellationTokenSource = new();
     private readonly IResourceManager _resourceManagement;
-    private readonly IShopManager _shopManager;
+    private readonly IShopCatalog _shopCatalog;
+    private readonly IPurchasingDirector _purchasingDirector;
     private readonly IObjectPoolManager _objectPool;
     private readonly ILocalizationManager _localizationManager;
     private readonly ShopDirector _shopDirector;
@@ -29,13 +31,15 @@ internal class ShopItemFactory : IInitializable, IDisposable
     private readonly SignalBus _signalBus;
 
     public ShopItemFactory(IResourceManager resourceManagement, IObjectPoolManager objectPool,
-                           IShopManager shopManager, ILocalizationManager localizationManager,
+                           IShopCatalog shopCatalog, IPurchasingDirector purchasingDirector,
+                           ILocalizationManager localizationManager,
                            ShopDirector shopDirector, PlayerResourcesDirector playerResourcesDirector,
                            SignalBus signalBus)
     {
         _resourceManagement = resourceManagement;
         _objectPool = objectPool;
-        _shopManager = shopManager;
+        _shopCatalog = shopCatalog;
+        _purchasingDirector = purchasingDirector;
         _localizationManager = localizationManager;
         _shopDirector = shopDirector;
         _playerResourcesDirector = playerResourcesDirector;
@@ -44,13 +48,21 @@ internal class ShopItemFactory : IInitializable, IDisposable
 
     public async void Initialize()
     {
-        await _shopManager.Initialize();
+        try
+        {
+            await _purchasingDirector.InitializeAsync(_cancellationTokenSource.Token);
+        }
+        catch (Exception exception)
+        {
+            Log.Error(exception.Message);
+        }
+
         await PrepareItemsAsync();
         _signalBus.Fire(new ShopEvent
         {
             message = $"Initialize complete: " +
-                      $"Count products={_shopManager.Products.Count}; " +
-                      $"Id={string.Join(";", _shopManager.Products.Select(x => x.ProductId))}",
+                      $"Count products={_shopCatalog.Products.Count}; " +
+                      $"Id={string.Join(";", _shopCatalog.Products.Select(x => x.ProductId))}",
             time = Time.time.ToString(CultureInfo.InvariantCulture),
         });
     }
@@ -63,7 +75,7 @@ internal class ShopItemFactory : IInitializable, IDisposable
 
     public async Task PrepareItemsAsync()
     {
-        var uniqueCurrencyAddressableKeys = _shopManager.Products.Select(x => x.AddressableItemKey).Distinct();
+        var uniqueCurrencyAddressableKeys = _shopCatalog.Products.Select(x => x.AddressableItemKey).Distinct();
         var uniqueLocalAddressableKeys = _shopDirector.LocalProducts.Select(x => x.AddressableItemKey).Distinct();
 
         var keys = uniqueCurrencyAddressableKeys.Union(uniqueLocalAddressableKeys);
@@ -93,15 +105,18 @@ internal class ShopItemFactory : IInitializable, IDisposable
 
     public ShopItem[] GetCurrencyItems(Transform root)
     {
-        var items = new List<ShopItem>(_shopManager.Products.Count - 1);
+        var products = _shopCatalog.Products.ToArray();
+        var items = new List<ShopItem>(products.Length);
 
-        for (var i = 0; i < _shopManager.Products.Count; i++)
+        for (var i = 0; i < products.Length; i++)
         {
             var adsDisable = _playerResourcesDirector.UserData.AdsDisable;
+            var product = products[i];
 
-            if (_shopManager.Products.ElementAt(i).Rewards.Count(x => x.type == RewardType.RemoveAds) > 0 && adsDisable)
+            if (product.Rewards.Count(x => x.type == RewardType.RemoveAds) > 0 && adsDisable)
                 continue;
-            var shopItem = GetCurrencyItem(_shopManager.Products.ElementAt(i), root);
+
+            var shopItem = GetCurrencyItem(product, root);
             items.Add(shopItem);
         }
 

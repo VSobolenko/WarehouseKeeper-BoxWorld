@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if MONETIZATION_PURCHASING_ENABLE_IAP_V4
+using System;
 using System.Threading.Tasks;
 using Unity.Services.Core;
 using Unity.Services.Core.Environments;
@@ -28,3 +29,5 @@ internal class UnityServicesManager
     }
 }
 }
+
+#endif

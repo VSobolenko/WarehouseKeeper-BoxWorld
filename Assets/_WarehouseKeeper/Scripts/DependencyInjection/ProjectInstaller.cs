@@ -18,14 +18,17 @@ using Game.Localizations.Installers;
 using Game.Repositories;
 using Game.Repositories.Installers;
 using Game.Shops;
-using Game.Shops.Installers;
 using UnityEngine;
 using WarehouseKeeper.DependencyInjection.ZenjectDependency;
 using WarehouseKeeper.Directors.Game.Analytics.Signals;
 using WarehouseKeeper.Directors.Game.UserResources;
 using WarehouseKeeper.Levels;
+using WarehouseKeeper._WarehouseKeeper.Scripts.Shops.Monetization.Purchasing.IAP;
+using WarehouseKeeper._WarehouseKeeper.Scripts.Shops.Monetization.Purchasing.IAP.UnityServices;
+using WarehouseKeeper._WarehouseKeeper.Scripts.Shops.Monetization.Purchasing;
 using WarehouseKeeper.UI.Windows.MainWindows;
 using Zenject;
+using PurchasingUnityServicesManager = WarehouseKeeper._WarehouseKeeper.Scripts.Shops.Monetization.Purchasing.IAP.UnityServices.UnityServicesManager;
 
 namespace WarehouseKeeper.DependencyInjection
 {
@@ -74,8 +77,18 @@ public class ProjectInstaller : MonoInstaller
         var factory = Container.Resolve<IFactoryGameObjects>();
         var audioManager = AudioInstaller.UnityAudio(factory);
         Container.Bind<IAudioManager>().FromInstance(audioManager).AsSingle().NonLazy();
-        var shopManager = ShopInstaller.IAP();
-        Container.Bind<IShopManager>().FromInstance(shopManager).AsSingle().NonLazy();
+        var iapCollection = Resources.Load<IAPConfigurationCollection>($"Purchasing/{nameof(IAPConfigurationCollection)}");
+        if (iapCollection == null)
+        {
+            Debug.LogWarning($"Missing Resources/Purchasing/{nameof(IAPConfigurationCollection)}. Using empty IAP catalog fallback.");
+            iapCollection = ScriptableObject.CreateInstance<IAPConfigurationCollection>();
+            iapCollection.products = Array.Empty<IAPConfigurationData>();
+        }
+
+        Container.Bind<IAPConfigurationCollection>().FromInstance(iapCollection).AsSingle().NonLazy();
+        Container.Bind<IUnityServicesInitializer>().To<PurchasingUnityServicesManager>().AsSingle().NonLazy();
+        Container.Bind<IShopCatalog>().To<ResourcesShopCatalog>().AsSingle().NonLazy();
+        Container.Bind<IPurchasingDirector>().To<PurchasingDirectorV5>().AsSingle().NonLazy();
 
         // SaveSystemInstallerZenject<LevelData, LevelSettings, UserData>.Install(Container);
         // AddressablesInstaller.Install(Container);

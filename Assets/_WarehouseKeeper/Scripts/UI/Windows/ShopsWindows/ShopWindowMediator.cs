@@ -9,6 +9,9 @@ using UnityEngine;
 using WarehouseKeeper.Directors.Game.Analytics.Signals;
 using WarehouseKeeper.Directors.Game.UserResources;
 using WarehouseKeeper.Directors.UI.Shops;
+using AnalyticsPurchaseResult = Game.Shops.PurchaseResult;
+using PurchasingDirector = WarehouseKeeper._WarehouseKeeper.Scripts.Shops.Monetization.Purchasing.IPurchasingDirector;
+using PurchasingResult = WarehouseKeeper._WarehouseKeeper.Scripts.Shops.Monetization.Purchasing.PurchaseResult;
 using WarehouseKeeper.Directors.UI.Windows;
 using WarehouseKeeper.UI.Windows.MainWindows;
 using Zenject;
@@ -19,7 +22,7 @@ internal class ShopWindowMediator : BaseMediator<ShopWindowView>
 {
     private readonly WindowsDirector _windowsDirector;
     private readonly ShopItemFactory _shopItemFactory;
-    private readonly IShopManager _shopManager;
+    private readonly PurchasingDirector _purchasingDirector;
     private readonly ILocalizationManager _localizationManager;
     private readonly ShopDirector _shopDirector;
     private readonly PlayerResourcesDirector _playerResourcesDirector;
@@ -31,13 +34,13 @@ internal class ShopWindowMediator : BaseMediator<ShopWindowView>
 
     public ShopWindowMediator(ShopWindowView window,
                               WindowsDirector windowsDirector, ShopItemFactory shopItemFactory,
-                              IShopManager shopManager, PlayerResourcesDirector playerResourcesDirector,
+                              PurchasingDirector purchasingDirector, PlayerResourcesDirector playerResourcesDirector,
                               ShopDirector shopDirector, ILocalizationManager localizationManager,
                               SignalBus signalBus) : base(window)
     {
         _windowsDirector = windowsDirector;
         _shopItemFactory = shopItemFactory;
-        _shopManager = shopManager;
+        _purchasingDirector = purchasingDirector;
         _playerResourcesDirector = playerResourcesDirector;
         _shopDirector = shopDirector;
         _localizationManager = localizationManager;
@@ -93,7 +96,8 @@ internal class ShopWindowMediator : BaseMediator<ShopWindowView>
     {
         window.DisableInteraction();
         var productId = shopItem.product.ProductId;
-        var purchaseResponse = await _shopManager.PurchaseProduct(productId);
+        var purchaseResponse = await _purchasingDirector.PurchaseProduct(productId, _cancellationTokenSource.Token);
+        var analyticsResult = MapPurchaseResult(purchaseResponse.result);
         window.EnableInteraction();
 
         if (_cancellationTokenSource.IsCancellationRequested || shopItem.product == null)
@@ -102,15 +106,28 @@ internal class ShopWindowMediator : BaseMediator<ShopWindowView>
         _signalBus.Fire(new PurchaseAmber
         {
             productId = productId, 
-            result = purchaseResponse.result, 
+            result = analyticsResult, 
             message = purchaseResponse.message,
             time = Time.time.ToString(CultureInfo.InvariantCulture),
         });
         
-        if (purchaseResponse.result == PurchaseResult.Success)
+        if (analyticsResult == PurchaseResult.Success)
             ProcessPayoutReward(shopItem.product, shopItem.product.Rewards);
         else
             window.Informer.Show(_localizationManager.Localize("shop_purchasingError"));
+    }
+
+    private static AnalyticsPurchaseResult MapPurchaseResult(PurchasingResult result)
+    {
+        switch (result)
+        {
+            case PurchasingResult.Success:
+                return AnalyticsPurchaseResult.Success;
+            case PurchasingResult.Cancel:
+                return AnalyticsPurchaseResult.Cancel;
+            default:
+                return AnalyticsPurchaseResult.Error;
+        }
     }
 
     private void ProcessPurchasingLocalProduct(ShopItem shopItem)

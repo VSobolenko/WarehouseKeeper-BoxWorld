@@ -7,13 +7,12 @@
         "Unity.ResourceManager",
         "Unity.Services.Core",
         "Unity.Services.Core.Environments",
-        "UnityEngine.Purchasing",
-        "UnityEngine.Purchasing.Stores",
         "Zenject",
         "UniTask",
         "DOTween.Modules",
         "GameCoreLib",
-        "GameAnalyticsSDK"
+        "GameAnalyticsSDK",
+        "Unity.Purchasing"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

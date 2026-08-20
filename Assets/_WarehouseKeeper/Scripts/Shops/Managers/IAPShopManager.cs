@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if MONETIZATION_PURCHASING_ENABLE_IAP_V4
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -211,7 +212,7 @@ internal class IAPShopManager : IShopManager, IDetailedStoreListener
         var purchaseResult = new PurchaseResponseResult
         {
             message = $"OPM3; " +
-                      $"ID={failureDescription.productId};" +
+                      $"ID={failureDescription.item.Product.definition};" +
                       $"Reason={failureDescription.reason};" +
                       $"Msg={failureDescription.message};" +
                       $"{GetInitializedStatus()}",
@@ -264,3 +265,5 @@ internal class IAPShopManager : IShopManager, IDetailedStoreListener
     }
 }
 }
+
+#endif
