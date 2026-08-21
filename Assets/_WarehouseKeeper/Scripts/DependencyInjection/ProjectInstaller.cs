@@ -77,12 +77,26 @@ public class ProjectInstaller : MonoInstaller
         var factory = Container.Resolve<IFactoryGameObjects>();
         var audioManager = AudioInstaller.UnityAudio(factory);
         Container.Bind<IAudioManager>().FromInstance(audioManager).AsSingle().NonLazy();
-        var iapCollection = Resources.Load<IAPConfigurationCollection>($"Purchasing/{nameof(IAPConfigurationCollection)}");
-        if (iapCollection == null)
+        var productsConfig = Resources.Load<ProductsSettingsCollections>("Shop/ProductsConfig");
+        var iapCollection = ScriptableObject.CreateInstance<IAPConfigurationCollection>();
+        if (productsConfig == null || productsConfig.products == null)
         {
-            Debug.LogWarning($"Missing Resources/Purchasing/{nameof(IAPConfigurationCollection)}. Using empty IAP catalog fallback.");
-            iapCollection = ScriptableObject.CreateInstance<IAPConfigurationCollection>();
+            Debug.LogWarning("Missing Resources/Shop/ProductsConfig. Using empty IAP catalog fallback.");
             iapCollection.products = Array.Empty<IAPConfigurationData>();
+        }
+        else
+        {
+            var mapped = new System.Collections.Generic.List<IAPConfigurationData>(productsConfig.products.Length);
+            foreach (var p in productsConfig.products)
+            {
+                if (p == null || p.Ignored) continue;
+                mapped.Add(new IAPConfigurationData
+                {
+                    id          = p.ProductId,
+                    productType = (UnityEngine.Purchasing.ProductType)(int)p.Type,
+                });
+            }
+            iapCollection.products = mapped.ToArray();
         }
 
         Container.Bind<IAPConfigurationCollection>().FromInstance(iapCollection).AsSingle().NonLazy();

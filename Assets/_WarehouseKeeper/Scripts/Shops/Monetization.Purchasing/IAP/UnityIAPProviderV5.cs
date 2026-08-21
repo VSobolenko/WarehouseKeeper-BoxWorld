@@ -11,58 +11,54 @@ internal sealed class UnityIAPProviderV5 : IUnityIAPProviderV5, IDisposable
     private readonly UnityIAPLoggerV5 _logger = new();
 
     public event Action<PendingOrder> OnProductBuy;
-    public bool IsInitialized { get; private set; } = true;
+    public bool IsInitialized { get; private set; }
     public bool HasActivePurchaseTransaction => _purchaseCompletionSource != null;
 
     private StoreController _controller;
     private TaskCompletionSource<CartPurchaseRequestResult> _purchaseCompletionSource;
+    private TaskCompletionSource<bool> _initializationCompletionSource;
 
     public async Task InitializeAsync(IAPConfigurationData[] products, CancellationToken token)
     {
+        IsInitialized = false;
+        _initializationCompletionSource = new TaskCompletionSource<bool>();
+
         _controller = UnityIAPServices.StoreController();
         _logger.LogInitializeStart();
 
         await _controller.Connect();
 
+        if (token.IsCancellationRequested)
+        {
+            _initializationCompletionSource.TrySetResult(false);
+            return;
+        }
+
         _logger.LogOnInitialized();
         _controller.OnProductsFetched += OnProductsFetched;
         _controller.OnPurchasesFetched += OnPurchasesFetched;
 
-        // void OnInitializeFailed(InitializationFailureReason error)
-        _controller.OnStoreDisconnected += OnStoreDisconnected; // (InitializationFailureReason error, string message)
+        _controller.OnStoreDisconnected += OnStoreDisconnected;
         _controller.OnProductsFetchFailed += OnProductsFetchFailed;
         _controller.OnPurchasesFetchFailed += OnPurchasesFetchFailed;
 
-        // void OnPurchaseFailed(Product product, PurchaseFailureDescription failureDescription)
         _controller.OnPurchaseFailed += OnPurchaseFailed;
-
-        // PurchaseProcessingResult ProcessPurchase(PurchaseEventArgs e)
         _controller.OnPurchasePending += OnPurchasePending;
 
-        // {
-        //     var catalog = new CatalogProvider();
-        //     for (var i = 0; i < products.Length; i++)
-        //     {
-        //         var product = products[i];
-        //         catalog.AddProduct(product.id, product.productType);
-        //     }
-        //     catalog.AddProduct("100_gold_coins", ProductType.Consumable);
-        //
-        //     // Connect to the store
-        //     catalog.FetchProducts(UnityIAPServices.DefaultProduct().FetchProductsWithNoRetries);
-        // }
+        var initialProductsToFetch = new List<ProductDefinition>(products.Length);
+        for (var i = 0; i < products.Length; i++)
         {
-            var initialProductsToFetch = new List<ProductDefinition>(products.Length);
+            var product = products[i];
+            initialProductsToFetch.Add(new ProductDefinition(product.id, product.productType));
+        }
 
-            for (var i = 0; i < products.Length; i++)
-            {
-                var product = products[i];
-                var productDefinition = new ProductDefinition(product.id, product.productType);
-                initialProductsToFetch.Add(productDefinition);
-            }
+        _controller.FetchProducts(initialProductsToFetch);
+        _logger.LogFetchProducts(initialProductsToFetch);
 
-            _controller.FetchProducts(initialProductsToFetch);
-            _logger.LogFetchProducts(initialProductsToFetch);
+        // Wait until OnProductsFetched or a fetch-failure fires before returning
+        using (token.Register(() => _initializationCompletionSource.TrySetResult(false)))
+        {
+            await _initializationCompletionSource.Task;
         }
     }
 
@@ -105,18 +101,21 @@ internal sealed class UnityIAPProviderV5 : IUnityIAPProviderV5, IDisposable
     {
         IsInitialized = false;
         _logger.LogOnInitializeFailed(failed);
+        _initializationCompletionSource?.TrySetResult(false);
     }
 
     private void OnStoreDisconnected(StoreConnectionFailureDescription failed)
     {
         IsInitialized = false;
         _logger.LogOnInitializeFailed(failed);
+        _initializationCompletionSource?.TrySetResult(false);
     }
 
     private void OnProductsFetchFailed(ProductFetchFailed failed)
     {
         IsInitialized = false;
         _logger.LogOnInitializeFailed(failed);
+        _initializationCompletionSource?.TrySetResult(false);
     }
 
     private void OnPurchasePending(PendingOrder order)
@@ -147,9 +146,12 @@ internal sealed class UnityIAPProviderV5 : IUnityIAPProviderV5, IDisposable
 
     private void OnProductsFetched(List<Product> products)
     {
-        // Handle fetched products  
-        _controller.FetchPurchases();
+        IsInitialized = true;
         _logger.LogProductsFetched(products);
+        _initializationCompletionSource?.TrySetResult(true);
+
+        // Now that products are available, fetch existing purchases (entitlements)
+        _controller.FetchPurchases();
     }
 
     private void OnPurchasesFetched(Orders orders)
